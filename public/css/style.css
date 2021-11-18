@@ -50,7 +50,7 @@
      flex-direction: column;
  }
  .form-border {
-     background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+     background-color: #0085FF;
      height: 1px;
      width: 100%;
  }
@@ -68,10 +68,9 @@
      text-align: center;
  }
  #submit-btn {
-     background: -webkit-linear-gradient(right, #C0C0C0, #2dbd6e);
+     background: #0085FF;
      border: none;
      border-radius: 21px;
-     box-shadow: 0px 1px 8px #24c64f;
      cursor: pointer;
      color: white;
      font-family: "Raleway SemiBold", sans-serif;
@@ -81,9 +80,9 @@
      transition: 0.25s;
      width: 153px;
  }
- #submit-btn:hover {
-     box-shadow: 0px 1px 18px #24c64f;
- }
+  #submit-btn:active {
+      background-color: #00417e;
+  }
  
  #logo-desa {
      width: 10rem;
@@ -172,5 +171,4 @@
     .main {
         left: 0;
     }
-  }
-  
+}
