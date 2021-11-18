@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +19,15 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/login', function() {
-    return view('login');
-});
 Route::get('/admin', function() {
     return view('admin');
 });
 
-Route::post('/login', function(Request $request) {
-    $nama_input = $request->input('pengguna');
-    $password_input = $request->input('password');
+Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan']);
+Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
+Route::post('/login/admin', [LoginController::class, 'loginAdmin']);
+Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan']);
 
-    $password = User::where('name', $nama_input)->first()->password;
-
-    if (password_verify($password_input, $password)) {
-        return redirect('/admin');
-    } else {
-        return redirect('/login');
-    }
+Route::get('/daftar', function() {
+    return view('daftar');
 });
