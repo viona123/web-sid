@@ -38,11 +38,14 @@
      font-size: 11pt;
  }
  #forgot-pass {
-     color: #3C565B;
+     color: #000405;
      font-family: "Raleway", sans-serif;
      font-size: 10pt;
      margin-top: 3px;
      text-align: right;
+ }
+ #forgot-pass a {
+     color: #00FFFF;
  }
  .form {
      align-items: left;
@@ -162,6 +165,11 @@
 
 .main {
     left: 15rem;
+}
+
+.dropdown-item:hover {
+    background-color: #0085FF;
+    color: #FFFFFF;
 }
 
 @media screen and (max-width: 480px) {

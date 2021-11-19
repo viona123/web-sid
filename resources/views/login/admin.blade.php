@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     </head>
     <body>
-        <img src="/images/bg.jpeg" alt="background" id="background">
+        <img src="/images/bg.jpg" alt="background" id="background">
         <div id="card">
             <div id="card-content">
             <img src="/images/logo-provinsi-jawa-tengah.jpg" id="logo-desa"/>
