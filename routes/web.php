@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -21,12 +19,12 @@ Route::get('/', function () {
 });
 Route::get('/admin', function() {
     return view('admin');
-});
+})->middleware('auth');
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan']);
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);
-Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan']);
+Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan'])->name('login-admin');
 
 Route::get('/daftar', function() {
     return view('daftar');

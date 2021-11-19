@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     </head>
@@ -16,9 +17,9 @@
         </div>
         <form method="post" class="form">
             @csrf
-            <label for="Nama pengguna" style="padding-top:13px">&nbsp;Nama pengguna</label>
+            <label for="nama-pengguna" style="padding-top:13px">&nbsp;Nama pengguna</label>
             <input
-            id="nama pengguna"
+            id="nama-pengguna"
             class="form-content"
             type="pengguna"
             name="pengguna"

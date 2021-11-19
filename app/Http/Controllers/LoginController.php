@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -10,13 +11,13 @@ class LoginController extends Controller
         $nama_input = $request->input('pengguna');
         $password_input = $request->input('password');
 
-        $password = User::where('name', $nama_input)->first()->password;
+        if (Auth::attempt(['name' => $nama_input, 'password' => $password_input])) {
+            $request->session()->regenerate();
 
-        if (password_verify($password_input, $password)) {
-            return redirect('/admin');
-        } else {
-            return redirect('/login');
+            return redirect()->intended('/admin');
         }
+
+        return back();
     }
 
     public function loginPenduduk(Request $request) {
