@@ -13,32 +13,40 @@
 <body style="background-color: #0085FF; padding: 0 1rem 0 1rem;">
     <form method="post" class="ms-auto me-auto mt-5 mb-5 shadow p-4 bg-light" style="max-width: 30rem; border-radius: 1rem">
         <h1 class="text-center mb-5">Halaman Pendaftaran</h1>
+        @csrf
         <div class="mb-3">
             <label for="nik" class="form-label">NIK</label>
             <input type="number" class="form-control" id="nik" name="nik" placeholder="nomor induk kependudukan...">
         </div>
         <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="nama" placeholder="nama lengkap...">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="nama lengkap...">
         </div>
         <div class="mb-3">
             <label for="tempat-lahir" class="form-label">Tempat Lahir</label>
-            <input type="text" class="form-control" id="tempat-lahir" placeholder="tempat lahir...">
+            <input type="text" class="form-control" id="tempat-lahir" name="tempat_lahir" placeholder="tempat lahir...">
         </div>
         <div class="mb-3">
             <label for="tanggal-lahir" class="form-label">Tanggal Lahir</label>
-            <input type="datetime-local" class="form-control" id="tanggal-lahir">
+            <input type="date" class="form-control" id="tanggal-lahir" name="tanggal_lahir" value="1000-01-01">
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block">Jenis kelamin</label>
+            <input type="radio" value="L" id="jenis-kelamin-laki" name="jenis_kelamin">
+            <label for="jenis-kelamin-laki" class="form-label d-inline-block me-2">Laki-laki</label>
+            <input type="radio" value="P" id="jenis-kelamin-perempuan" name="jenis_kelamin">
+            <label for="jenis-kelamin-perempuan" class="form-label">Perempuan</label>
         </div>
         <div class="mb-3">
             <label for="pin" class="form-label">Buat PIN</label>
-            <input type="password" class="form-control" id="pin" placeholder="buat pin anda...">
+            <input type="password" class="form-control" id="pin" name="pin" placeholder="buat pin anda...">
         </div>
         <div class="mb-3">
             <label for="pin" class="form-label">Konfirmasi PIN</label>
             <input type="password" class="form-control" id="pin-confirm" placeholder="masukan ulang pin yang telah dibuat...">
         </div>
         <div class="text-center mt-5">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Kirim</button>
         </div>
     </form>
 
