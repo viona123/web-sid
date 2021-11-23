@@ -71,7 +71,7 @@
      text-align: center;
  }
  #submit-btn {
-     background: #0085FF;
+     background: #339dff;
      border: none;
      border-radius: 21px;
      cursor: pointer;
@@ -169,6 +169,21 @@
 
 .dropdown-item:hover {
     background-color: #0085FF;
+    color: #FFFFFF;
+}
+
+.contact {
+    border: 1px solid #000000;
+    display: block;
+    padding: 0.5rem;
+    margin: 0.7rem;
+    color: #FFFFFF;
+    border-radius: 1rem;
+    transition: all 0.7s;
+}
+
+.contact:hover {
+    background-color: #000000;
     color: #FFFFFF;
 }
 
