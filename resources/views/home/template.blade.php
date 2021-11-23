@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>SISKA | Sistem Informasi Desa dan Kawasan</title>
+    <title>SISKA | @yield('title')</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #339DFF">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #339DFF">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="/images/logo.jpeg" alt="Siska" style="width: 2rem">
@@ -22,39 +23,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Home</a>
+                    <a class="nav-link text-white" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Kontak</a>
+                    <a class="nav-link text-white" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Tentang</a>
+                    <a class="nav-link text-white" href="/tentang">Tentang</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="position-relative">
-        <img src="/images/bg.jpg" alt="desa" style="width: 100%">
-        <div class="position-absolute text-white text-center" style="width: 60%; top: 7rem; left: 20%">
-            <h1 style="font-size: 7rem;">SISKA</h1>
-            <p style="font-size: 2rem;">Sistem Informasi Desa dan Kawasan</p>
-            <div class="d-flex justify-content-center">
-                <div class="dropdown me-4">
-                    <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Masuk
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="/login/admin">Admin</a></li>
-                        <li><a class="dropdown-item" href="/login/penduduk">Penduduk</a></li>
-                    </ul>
-                </div>
-
-                <button class="btn btn-success rounded-pill">Download</button>
-            </div>
-        </div>
-    </div>
+    @yield('content')
 
     <div class="bg-primary" style="height: 30rem; width: 100%">
         <div class="row">
@@ -68,7 +50,7 @@
                     </a>
                 </div>
 
-                <div class="m-4 text-center">
+                <div class="m-4 text-center" id="kontak">
                     <h2 class="mb-3 text-white">Kontak</h2>
                     <a href="tel:+6283128339244" class="contact"><i class="fas fa-phone-alt"></i> 083128339244</a>
                     <a href="mailto:siska@example.com" class="contact"><i class="fas fa-envelope"></i> siska@example.com</a>

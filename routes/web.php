@@ -15,7 +15,10 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.welcome');
+});
+Route::get('/tentang', function() {
+    return view('home.tentang');
 });
 Route::get('/admin', function() {
     return view('admin');

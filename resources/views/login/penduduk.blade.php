@@ -4,6 +4,7 @@
         <title>Login</title>
         <link rel="stylesheet" href="/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     </head>
     <body>
         <img src="/images/bg.jpg" alt="background" id="background">

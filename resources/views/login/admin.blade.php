@@ -4,6 +4,7 @@
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     </head>
     <body>

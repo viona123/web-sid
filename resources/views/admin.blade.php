@@ -9,14 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <title>Administrasi</title>
   </head>
   <body>
     <!--navbar menu-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #339DFF">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">OpenSID</a>
+  <a class="navbar-brand" href="/">
+      <img src="/images/logo.jpeg" alt="Siska" style="width: 2rem">
+      Siska
+  </a>
    <!--tooltip-->
    <div class="icon mx-auto">
       <h5>
@@ -31,7 +34,7 @@
   </nav>
     <!--list item-->
     <div class="row no-gutters">
-    <div class="col-md-2 mt-5 bg-dark mt-2 pe-3 pt-4 position-fixed top-0 start-0 menu" style="height: 100%; overflow: scroll;">
+    <div class="col-md-2 mt-5 bg-dark mt-2 pe-3 pt-4 position-fixed top-0 start-0 menu" style="height: 100%;">
     <ul class="nav flex-column ml-2 mb-2">
       <li class="nav-header ps-3">Menu Utama</li><hr class="bg-secondary">
       <li class="nav-item">
@@ -79,7 +82,7 @@
     </ul>
    </div>
     <div class="col-md-8 position-fixed main">
-      <h3>Tentang OpenSID</h3><hr class="bg-primary"> 
+      <h3>SISKA</h3><hr class="bg-primary"> 
       <div class="row text-white ms-2">
         <div class="card bg-primary m-2" style="width: 15rem;">
          <div class="card-body">
