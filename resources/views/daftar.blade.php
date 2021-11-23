@@ -16,12 +16,16 @@
         <h1 class="text-center mb-5">Halaman Pendaftaran</h1>
         @csrf
         <div class="mb-3">
+            <label for="no_kk" class="form-label">Nomor Kartu Keluarga</label>
+            <input type="number" class="form-control" id="no_kk" name="no_kk" placeholder="nomor kartu keluarga...">
+        </div>
+        <div class="mb-3">
             <label for="nik" class="form-label">NIK</label>
             <input type="number" class="form-control" id="nik" name="nik" placeholder="nomor induk kependudukan...">
         </div>
         <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="nama lengkap...">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="nama lengkap sesuai akta kelahiran...">
         </div>
         <div class="mb-3">
             <label for="tempat-lahir" class="form-label">Tempat Lahir</label>
@@ -30,6 +34,10 @@
         <div class="mb-3">
             <label for="tanggal-lahir" class="form-label">Tanggal Lahir</label>
             <input type="date" class="form-control" id="tanggal-lahir" name="tanggal_lahir" value="1000-01-01">
+        </div>
+        <div class="mb-3">
+            <label for="tempat-tinggal" class="form-label">Tempat Tinggal</label>
+            <input type="text" class="form-control" id="tempat-tinggal" name="tempat_tinggal" placeholder="tempat tinggal...">
         </div>
         <div class="mb-3">
             <label class="form-label d-block">Jenis kelamin</label>

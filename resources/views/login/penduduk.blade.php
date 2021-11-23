@@ -17,12 +17,12 @@
         </div>
         <form method="post" class="form">
             @csrf
-            <label for="nik" style="padding-top:13px">&nbsp;NIK</label>
+            <label for="nik" style="padding-top:13px">&nbsp;Nama Lengkap</label>
             <input
-            id="nik"
+            id="nama_lengkap"
             class="form-content"
             type="text"
-            name="nik"
+            name="nama_lengkap"
             autocomplete="on"
             required />
             <div class="form-border"></div>
