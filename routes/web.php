@@ -26,7 +26,7 @@ Route::get('/admin', function() {
     return view('admin');
 })->middleware('auth');
 
-Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan']);
+Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);
 Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan'])->name('login-admin');
@@ -56,13 +56,23 @@ Route::post('/daftar', function(Request $request) {
         "pin" => $pin
     ]);
 
-    return "Data sudah diproses";
+    $request->session()->flash('status', 'Berhasil!');
+
+    return redirect("/profil/$nik");
 });
 
-Route::get('/profil/{nik}', function($nik) {
+Route::get('/profil/{nik}', function(Request $request, $nik) {
     $penduduk = Penduduk::firstWhere('nik', $nik);
 
-    return view('profil', [
+    $data = [
         "penduduk" => $penduduk
-    ]);
-});
+    ];
+
+    if ($request->session()->get('status')) {
+        $data['status'] = $request->session()->get('status');
+    } else {
+        $data['status'] = null;
+    }
+
+    return view('profil', $data);
+})->middleware('penduduk');

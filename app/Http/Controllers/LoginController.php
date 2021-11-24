@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Penduduk;
 
 class LoginController extends Controller
 {
@@ -22,11 +23,17 @@ class LoginController extends Controller
     }
 
     public function loginPenduduk(Request $request) {
-        $nik_input = $request->input('nik');
+        $nama_input = $request->input('nama_lengkap');
         $pin_input = $request->input('pin');
 
-        dd($nik_input);
-        dd($pin_input);
+        $penduduk = Penduduk::firstWhere('nama', $nama_input);
+        if ($pin_input == $penduduk->pin) {
+            return redirect('/profil/' . $penduduk->nik)->cookie(
+                'nik', $penduduk->nik . "", 3 * 24 * 60
+            );
+        }
+
+        return back();
     }
 
     public function loginAdminTampilan() {

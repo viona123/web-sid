@@ -17,7 +17,7 @@
         </div>
         <form method="post" class="form">
             @csrf
-            <label for="nik" style="padding-top:13px">&nbsp;Nama Lengkap</label>
+            <label for="nama_lengkap" style="padding-top:13px">&nbsp;Nama Lengkap</label>
             <input
             id="nama_lengkap"
             class="form-content"

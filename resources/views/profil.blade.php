@@ -12,16 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body>
+<body class="bg-primary ms-2 me-2">
     <div class="container">
         <div class="row">
-            <div class="col-md-5 m-auto shadow mt-4">
-                <div class="mb-5">
-                    <img src="/images/user.png" alt="ikon" class="m-auto d-block mb-4" style="width: 7rem">
+            <div class="col-md-5 m-auto shadow mt-4 bg-white" style="max-width: 30rem; border-radius: 1rem">
+                <div class="mb-5 mt-4">
+                    @if ($status)
+                        <div class="alert alert-success">
+                            Pendaftaran <strong>{{ $status }}</strong>
+                        </div>
+                    @endif
+                    @if ($penduduk->jenis_kelamin == "L")
+                        <img src="/images/avatar-male.png" alt="ikon" class="m-auto d-block mb-4" style="width: 7rem">
+                    @elseif ($penduduk->jenis_kelamin == "P")
+                        <img src="/images/avatar-female.png" alt="ikon" class="m-auto d-block mb-4" style="width: 7rem">
+                    @endif
                     <h1 class="text-center">{{ $penduduk->nama }}</h1>
                 </div>
                 <hr>
-                <div class="mt-4">
+                <div class="mt-4 mb-4">
                     <div class="mb-3">
                         <label class="form-label">Nomor Kartu Keluarga</label>
                         <input type="number" class="form-control" value="{{ $penduduk->no_kk }}" disabled>
