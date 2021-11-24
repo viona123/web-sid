@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col-md-5 m-auto shadow mt-4 bg-white" style="max-width: 30rem; border-radius: 1rem">
                 <div class="mb-5 mt-4">
-                    @if ($status)
+                    @if ($status == "daftar-berhasil")
                         <div class="alert alert-success">
-                            Pendaftaran <strong>{{ $status }}</strong>
+                            Pendaftaran <strong>Berhasil!</strong>
                         </div>
                     @endif
                     @if ($penduduk->jenis_kelamin == "L")

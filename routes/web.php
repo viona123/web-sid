@@ -56,7 +56,7 @@ Route::post('/daftar', function(Request $request) {
         "pin" => $pin
     ]);
 
-    $request->session()->flash('status', 'Berhasil!');
+    $request->session()->flash('status', 'daftar-berhasil');
 
     return redirect("/profil/$nik");
 });

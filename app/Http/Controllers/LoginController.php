@@ -15,8 +15,10 @@ class LoginController extends Controller
 
         if (Auth::attempt(['name' => $nama_input, 'password' => $password_input])) {
             $request->session()->regenerate();
-
+            $request->session()->flash('status', 'berhasil');
             return redirect()->intended('/admin');
+        } else {
+            $request->session()->flash('status', 'gagal');
         }
 
         return back();
@@ -28,19 +30,30 @@ class LoginController extends Controller
 
         $penduduk = Penduduk::firstWhere('nama', $nama_input);
         if ($pin_input == $penduduk->pin) {
+            $request->session()->flash('status', 'berhasil');
             return redirect('/profil/' . $penduduk->nik)->cookie(
                 'nik', $penduduk->nik . "", 3 * 24 * 60
             );
+        } else {
+            $request->session()->flash('status', 'gagal');
         }
 
         return back();
     }
 
-    public function loginAdminTampilan() {
-        return view('login.admin');
+    public function loginAdminTampilan(Request $request) {
+        $status = $request->session()->get('status');
+
+        return view('login.admin', [
+            "status" => $status
+        ]);
     }
 
-    public function loginPendudukTampilan() {
-        return view('login.penduduk');
+    public function loginPendudukTampilan(Request $request) {
+        $status = $request->session()->get('status');
+
+        return view('login.penduduk', [
+            "status" => $status
+        ]);
     }
 }
