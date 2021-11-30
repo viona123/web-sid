@@ -5,9 +5,9 @@
 @section('content')
 <div class="position-relative">
     <img src="/images/bg.jpg" alt="desa" style="width: 100%">
-    <div class="position-absolute text-white text-center" style="width: 60%; top: 7rem; left: 20%">
-        <h1 style="font-size: 7rem;">SISKA</h1>
-        <p style="font-size: 2rem;">Sistem Informasi Desa dan Kawasan</p>
+    <div class="position-absolute text-white text-center" style="width: 60%; top: 7vw; left: 20%">
+        <h1 style="font-size: 10vw;">SISKA</h1>
+        <p>Sistem Informasi Desa dan Kawasan</p>
         <div class="d-flex justify-content-center">
             <div class="dropdown me-4">
                 <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

@@ -41,7 +41,7 @@ Route::post('/daftar', function(Request $request) {
     $nama = $request->input('nama');
     $tempat_lahir = $request->input('tempat_lahir');
     $tanggal_lahir = $request->input('tanggal_lahir');
-    $tempat_lahir = $request->input('tempat_tinggal');
+    $tempat_tinggal = $request->input('tempat_tinggal');
     $jenis_kelamin = $request->input('jenis_kelamin');
     $pin = $request->input('pin');
 
@@ -50,7 +50,7 @@ Route::post('/daftar', function(Request $request) {
         "no_kk" => $no_kk,
         "nama" => $nama,
         "tempat_lahir" => $tempat_lahir,
-        "tempat_tinggal" => $tempat_lahir,
+        "tempat_tinggal" => $tempat_tinggal,
         "tanggal_lahir" => $tanggal_lahir,
         "jenis_kelamin" => $jenis_kelamin,
         "pin" => $pin
