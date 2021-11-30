@@ -3,11 +3,10 @@
 @section('title', 'Beranda')
 
 @section('content')
-<div class="position-relative">
-    <img src="/images/bg.jpg" alt="desa" style="width: 100%">
-    <div class="position-absolute text-white text-center" style="width: 60%; top: 7vw; left: 20%">
+<div class="position-relative d-flex justify-content-center align-items-center" style="background-image: url('/images/bg.jpg'); background-size: cover; min-height: 50vw">
+    <div class="text-white text-center">
         <h1 style="font-size: 10vw;">
-            <img style="width: 14vw; margin-right: -3rem; display: inline-block;" src="/images/logo-transparent.png" alt="siska">
+            <img style="width: 14vw; margin-right: -4vw; display: inline-block;" src="/images/logo-transparent.png" alt="siska">
             SISKA
         </h1>
         <p>Sistem Informasi Desa dan Kawasan</p>
