@@ -187,6 +187,10 @@
     color: #FFFFFF;
 }
 
+.btn-aksi {
+    font-size: 0.8rem;
+}
+
 @media screen and (max-width: 480px) {
     .menu {
         display: none;

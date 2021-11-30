@@ -6,7 +6,10 @@
 <div class="position-relative">
     <img src="/images/bg.jpg" alt="desa" style="width: 100%">
     <div class="position-absolute text-white text-center" style="width: 60%; top: 7vw; left: 20%">
-        <h1 style="font-size: 10vw;">SISKA</h1>
+        <h1 style="font-size: 10vw;">
+            <img style="width: 14vw; margin-right: -3rem; display: inline-block;" src="/images/logo-transparent.png" alt="siska">
+            SISKA
+        </h1>
         <p>Sistem Informasi Desa dan Kawasan</p>
         <div class="d-flex justify-content-center">
             <div class="dropdown me-4">

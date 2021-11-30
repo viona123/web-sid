@@ -91,7 +91,7 @@
           </div>
           <div class="display-4">18</div>
            <h5 class="card-title">Wilayah Dusun</h5>
-          <a href="#"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+          <a href="/admin/wilayah_desa"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
          </div>
       </div>
        <div class="card bg-info m-2" style="width: 15rem;">

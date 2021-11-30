@@ -23,8 +23,11 @@ Route::get('/tentang', function() {
     return view('home.tentang');
 });
 Route::get('/admin', function() {
-    return view('admin');
+    return view('admin.index');
 })->middleware('auth');
+Route::get('/admin/wilayah_desa', function() {
+    return view('admin.dusun');
+});
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
