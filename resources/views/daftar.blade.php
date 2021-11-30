@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body style="background-color: #339DFF; padding: 0 1rem 0 1rem;">
+<body>
+    <img src="/images/background-biru.png" alt="background" class="position-fixed top-0 start-0" style="width: 100%; height: 100%; z-index: -1">
     <form method="post" class="ms-auto me-auto mt-5 mb-5 shadow p-4 bg-light" style="max-width: 30rem; border-radius: 1rem">
         <h1 class="text-center mb-5">Halaman Pendaftaran</h1>
         @csrf

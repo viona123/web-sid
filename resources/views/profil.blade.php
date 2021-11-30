@@ -13,6 +13,7 @@
 
 </head>
 <body class="bg-primary ms-2 me-2">
+<img src="/images/background-biru.png" alt="background" class="position-fixed top-0 start-0" style="width: 100%; height: 100%; z-index: -1">
     <div class="container">
         <div class="row">
             <div class="col-md-5 m-auto shadow mt-4 bg-white" style="max-width: 30rem; border-radius: 1rem">
