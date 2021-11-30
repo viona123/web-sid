@@ -37,7 +37,7 @@
                         <input type="number" class="form-control" value="{{ $penduduk->no_kk }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Nomor Identitas Kependudukan</label>
+                        <label class="form-label">Nomor Induk Kependudukan</label>
                         <input type="number" class="form-control" value="{{ $penduduk->nik }}" disabled>
                     </div>
                     <div class="mb-3">
