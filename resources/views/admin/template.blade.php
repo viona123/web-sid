@@ -26,7 +26,7 @@
           <i class="fas fa-print me-4"data-bs-toggle="tooltip" data-bs-html="true" title="cetak"></i>
           <i class="far fa-comment-dots me-4 "data-bs-toggle="tooltip" data-bs-html="true" title="komentar"></i>
           <i class="fas fa-envelope me-4"data-bs-toggle="tooltip" data-bs-html="true" title="pesan"></i>
-          <i class="fas fa-users"> <em>team </em></i>
+          <i class="fas fa-users"></i>
       </h5> 
     </div>
     </div>
