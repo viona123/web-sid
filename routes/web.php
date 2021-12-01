@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use App\Models\Penduduk;
+use App\Models\Dusun;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,28 @@ Route::get('/admin', function() {
     return view('admin.index');
 })->middleware('auth');
 Route::get('/admin/wilayah_desa', function() {
-    return view('admin.dusun');
+    $semua_dusun = Dusun::all();
+
+    return view('admin.dusun', [
+        'semua_dusun' => $semua_dusun
+    ]);
+});
+Route::post('/admin/wilayah_dusun/tambah', function(Request $request) {
+    $nama = $request->input('nama-dusun');
+    $kepala = $request->input('kepala-dusun');
+
+    Dusun::create([
+        'nama' => $nama,
+        'kepala_dusun' => $kepala
+    ]);
+
+    return back();
+});
+Route::get('/admin/wilayah_dusun/hapus/{id}', function($id) {
+    $dusun_hapus = Dusun::find($id);
+    $dusun_hapus->delete();
+
+    return back();
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

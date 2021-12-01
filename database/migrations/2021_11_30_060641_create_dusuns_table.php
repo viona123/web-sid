@@ -17,12 +17,12 @@ class CreateDusunsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('kepala_dusun');
-            $table->integer('jumlah_rw');
-            $table->integer('jumlah_rt');
-            $table->integer('jumlah_kk');
-            $table->integer('jumlah_lp');
-            $table->integer('jumlah_l');
-            $table->integer('jumlah_p');
+            $table->integer('jumlah_rw')->default(0);
+            $table->integer('jumlah_rt')->default(0);
+            $table->integer('jumlah_kk')->default(0);
+            $table->integer('jumlah_lp')->default(0);
+            $table->integer('jumlah_l')->default(0);
+            $table->integer('jumlah_p')->default(0);
             $table->timestamps();
         });
     }

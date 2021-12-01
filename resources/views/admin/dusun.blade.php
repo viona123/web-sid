@@ -1,5 +1,7 @@
 @extends('admin.template')
 
+@section('title', 'Wilayah Dusun')
+
 @section('content')
 <div class="container">
     <div class="col-md-8 position-fixed main">
@@ -25,14 +27,12 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($semua_dusun as $dusun)
                 <tr>
-                    <td>1</td>
+                    <td>{{ $dusun->id }}</td>
                     <td>
-                        <button class="btn btn-success btn-aksi"><i class="fas fa-arrow-up"></i></button>
-                        <button class="btn btn-success btn-aksi"><i class="fas fa-arrow-down"></i></button>
                         <button class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-primary btn-aksi"><i class="fas fa-th-list"></i></button>
-                        <button class="btn btn-danger btn-aksi"><i class="fas fa-trash-alt"></i></button>
+                        <a onclick="return confirm('Hapus data dusun ini?')" class="btn btn-danger btn-aksi" href="/admin/wilayah_dusun/hapus/{{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
                         <div class="dropdown d-inline-block">
                             <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -41,15 +41,16 @@
                             </ul>
                         </div>
                     </td>
-                    <td>SSSSSS</td>
-                    <td>Unknown</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>{{ $dusun->nama }}</td>
+                    <td>{{ $dusun->kepala_dusun }}</td>
+                    <td>{{ $dusun->jumlah_rw }}</td>
+                    <td>{{ $dusun->jumlah_rt }}</td>
+                    <td>{{ $dusun->jumlah_kk }}</td>
+                    <td>{{ $dusun->jumlah_lp }}</td>
+                    <td>{{ $dusun->jumlah_l }}</td>
+                    <td>{{ $dusun->jumlah_p }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -63,7 +64,8 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form>
+      <form action="/admin/wilayah_dusun/tambah" method="post">
+      @csrf
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama-dusun" class="form-label">Nama Dusun</label>
