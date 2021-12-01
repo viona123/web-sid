@@ -58,40 +58,48 @@
      width: 100%;
  }
  .form-content {
-     background: #fbfbfb;
-     border: none;
+     background: #FFFFFF;
+     border: 1px solid #000000;
      outline: none;
-     padding-top: 14px;
+     padding: 7px;
+     border-radius: 14px;
+     width: calc(70% - 14px);
+     margin: 12px auto;
+     transition: 0.25s;
+     text-align: center;
+ }
+ .form-content:focus {
+     width: calc(100% - 14px);
  }
  #signup {
      color: #2dbd6e;
      font-family: "Raleway", sans-serif;
      font-size: 10pt;
-     margin-top: 16px;
+     margin-top: 12px;
      text-align: center;
  }
  #submit-btn {
-     background: #339dff;
+     background: #0085FF;
      border: none;
      border-radius: 21px;
      cursor: pointer;
-     color: white;
+     color: #FFFFFF;
      font-family: "Raleway SemiBold", sans-serif;
      height: 42.3px;
-     margin: 0 auto;
-     margin-top: 50px;
+     margin: 20px auto;
      transition: 0.25s;
-     width: 153px;
+     width: 150px;
  }
   #submit-btn:active {
       background-color: #00417e;
   }
  
- #logo-desa {
+#logo-desa {
      width: 10rem;
      display: block;
      margin: 0 auto 0 auto;
  }
+
 
  html{
 	position: relative;
@@ -190,6 +198,7 @@
 .btn-aksi {
     font-size: 0.8rem;
 }
+
 
 @media screen and (max-width: 480px) {
     .menu {

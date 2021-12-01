@@ -24,25 +24,23 @@
         @endif
         <form method="post" class="form">
             @csrf
-            <label for="nama_lengkap" style="padding-top:13px">&nbsp;Nama Lengkap</label>
             <input
             id="nama_lengkap"
             class="form-content"
             type="text"
             name="nama_lengkap"
             autocomplete="on"
+            placeholder="Nama Lengkap"
             required />
-            <div class="form-border"></div>
-            <label for="user-pin" style="padding-top:22px">&nbsp;PIN</label>
             <input
             id="user-pin"
             class="form-content"
             type="pin"
             name="pin"
+            placeholder="PIN"
             required />
-            <div class="form-border"></div>
             <legend id="forgot-pass">Belum memiliki akun? <a href="/daftar">Daftar!</a></legend>
-            <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
+            <input id="submit-btn" type="submit" name="submit" value="MASUK" />
         </form>
     </body>
 </html>
