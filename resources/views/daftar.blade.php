@@ -16,6 +16,11 @@
     <form method="post" class="ms-auto me-auto mt-5 mb-5 shadow p-4 bg-light" style="max-width: 30rem; border-radius: 1rem">
         <h1 class="text-center mb-5">Halaman Pendaftaran</h1>
         @csrf
+        @if ($status == 'daftar-gagal-nik')
+        <div class="alert alert-danger" role="alert">
+            Login <strong>Gagal!</strong>, NIK sudah digunakan.
+        </div>
+        @endif
         <div class="mb-3">
             <label for="no_kk" class="form-label">Nomor Kartu Keluarga</label>
             <input type="number" class="form-control" id="no_kk" name="no_kk" placeholder="nomor kartu keluarga...">
