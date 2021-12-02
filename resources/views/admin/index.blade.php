@@ -1,5 +1,7 @@
 @extends('admin.template')
 
+@section('title', 'Home')
+
 @section('content')
     <div class="col-md-8 position-fixed main" style="overflow: scroll;">
       <h3>SISKA</h3><hr class="bg-primary"> 

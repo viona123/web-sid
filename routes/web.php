@@ -33,7 +33,7 @@ Route::get('/admin/wilayah_desa', function() {
         'semua_dusun' => $semua_dusun
     ]);
 });
-Route::post('/admin/wilayah_dusun/tambah', function(Request $request) {
+Route::post('/admin/wilayah_desa/tambah', function(Request $request) {
     $nama = $request->input('nama-dusun');
     $kepala = $request->input('kepala-dusun');
 
@@ -44,11 +44,36 @@ Route::post('/admin/wilayah_dusun/tambah', function(Request $request) {
 
     return back();
 });
-Route::get('/admin/wilayah_dusun/hapus/{id}', function($id) {
+Route::get('/admin/wilayah_desa/hapus/{id}', function($id) {
     $dusun_hapus = Dusun::find($id);
     $dusun_hapus->delete();
 
     return back();
+});
+Route::post('/admin/wilayah_desa/ubah/{id}', function(Request $request, $id) {
+     $nama = $request->input('nama-dusun');
+     $kepala = $request->input('kepala-dusun');
+     $rw = $request->input('jumlah-rw');
+     $rt = $request->input('jumlah-rt');
+     $kk = $request->input('jumlah-kk');
+     $lp = $request->input('jumlah-lp');
+     $l = $request->input('jumlah-l');
+     $p = $request->input('jumlah-p');
+
+     $dusun = Dusun::find($id);
+     $dusun->nama = $nama;
+     $dusun->kepala_dusun = $kepala;
+     $dusun->jumlah_rw = $rw;
+     $dusun->jumlah_rt = $rt;
+     $dusun->jumlah_kk = $kk;
+     $dusun->jumlah_lp = $lp;
+     $dusun->jumlah_l = $l;
+     $dusun->jumlah_p = $p;
+     $dusun->save();
+
+     return back();
+
+     dd($request);
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
@@ -56,8 +81,11 @@ Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);
 Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan'])->name('login-admin');
 
-Route::get('/daftar', function() {
-    return view('daftar');
+Route::get('/daftar', function(Request $request) {
+    $status = $request->session()->get('status');
+    return view('daftar', [
+        'status' => $status
+    ]);
 });
 
 Route::post('/daftar', function(Request $request) {
@@ -70,20 +98,25 @@ Route::post('/daftar', function(Request $request) {
     $jenis_kelamin = $request->input('jenis_kelamin');
     $pin = $request->input('pin');
 
-    Penduduk::create([
-        "nik" => $nik,
-        "no_kk" => $no_kk,
-        "nama" => $nama,
-        "tempat_lahir" => $tempat_lahir,
-        "tempat_tinggal" => $tempat_tinggal,
-        "tanggal_lahir" => $tanggal_lahir,
-        "jenis_kelamin" => $jenis_kelamin,
-        "pin" => $pin
-    ]);
+    $identik = Penduduk::firstWhere('nik', $nik);
 
-    $request->session()->flash('status', 'daftar-berhasil');
-
-    return redirect("/profil/$nik");
+    if ($identik == null) {
+        Penduduk::create([
+            "nik" => $nik,
+            "no_kk" => $no_kk,
+            "nama" => $nama,
+            "tempat_lahir" => $tempat_lahir,
+            "tempat_tinggal" => $tempat_tinggal,
+            "tanggal_lahir" => $tanggal_lahir,
+            "jenis_kelamin" => $jenis_kelamin,
+            "pin" => $pin
+        ]);
+        $request->session()->flash('status', 'daftar-berhasil');
+        return redirect("/profil/$nik");
+    } else {
+        $request->session()->flash('status', 'daftar-gagal-nik');
+        return back();
+    }
 });
 
 Route::get('/profil/{nik}', function(Request $request, $nik) {
