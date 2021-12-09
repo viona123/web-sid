@@ -42,6 +42,12 @@
             name="password"
             placeholder="Password"
             required />
+            <select name="desa" id="desa" class="form-content">
+                <option selected>---PILIH DESA---</option>
+                @foreach($list_desa as $desa)
+                <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
+                @endforeach
+            </select>
             <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
         </form>
     </body>

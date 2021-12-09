@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Penduduk;
+use App\Models\Desa;
 
 class LoginController extends Controller
 {
     public function loginAdmin(Request $request) {
         $nama_input = $request->input('pengguna');
         $password_input = $request->input('password');
+        $desa = Desa::find($request->input('desa'));
 
         if (Auth::attempt(['name' => $nama_input, 'password' => $password_input])) {
             $request->session()->regenerate();
             $request->session()->flash('status', 'berhasil');
-            return redirect()->intended('/admin');
+            return redirect()->intended('/admin/' . $desa->id);
         } else {
             $request->session()->flash('status', 'gagal');
         }
@@ -44,8 +46,11 @@ class LoginController extends Controller
     public function loginAdminTampilan(Request $request) {
         $status = $request->session()->get('status');
 
+        $list_desa = Desa::all();
+
         return view('login.admin', [
-            "status" => $status
+            "status" => $status,
+            "list_desa" => $list_desa
         ]);
     }
 
