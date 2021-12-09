@@ -15,14 +15,14 @@
         <colgroup>
             <col span="1" style="min-width: 2rem">
             <col span="1" style="width: 14rem">
-            <col span="1" style="min-width: 10rem" style="white-space: nowrap;">
-            <col span="1" style="min-width: 10rem">
-            <col span="1" style="min-width: 2rem">
-            <col span="1" style="min-width: 2rem">
-            <col span="1" style="min-width: 2rem">
-            <col span="1" style="min-width: 2rem">
-            <col span="1" style="min-width: 2rem">
-            <col span="1" style="min-width: 2rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
         </colgroup>
         
 	    <thead>
@@ -45,7 +45,7 @@
 	            <td>{{ $dusun->id }}</td>
 	            <td>
 	                <a onclick="edit(this, {{ $dusun->id }})" href="#ubah-data&nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
-	                <a onclick="return confirm('Hapus data dusun ini?')" class="btn btn-danger btn-aksi" href="/admin/{{ $desa->id }}/wilayah_desa/hapus/{{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
+                    <a onclick="return confirm('Hapus data dusun {{ $dusun->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/wilayah_desa/hapus?desa={{ $desa->id }}&dusun={{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
 	                <div class="dropdown d-inline-block">
 	                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
 	                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -75,7 +75,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/wilayah_desa/tambah" method="post">
+      <form action="/admin/wilayah_desa/tambah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -103,7 +103,7 @@
         <h5 class="modal-title" id="ubah-data-label">Ubah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/wilayah_desa/ubah" method="post">
+      <form action="/admin/wilayah_desa/ubah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -151,7 +151,7 @@
 <script>
     function edit(anchor, id) {
         const formUbah = document.forms[1];
-        formUbah.action = "/admin/{{ $desa->id }}/wilayah_desa/ubah/" + id;
+        formUbah.action = "/admin/wilayah_desa/ubah?desa={{ $desa->id }}&dusun=" + id;
 
         const url = anchor.href;
         const urlFragment = url.substring(url.indexOf('#') + 1);

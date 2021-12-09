@@ -13,7 +13,7 @@
           </div>
           <div class="display-4">{{ $total_dusun }}</div>
            <h5 class="card-title">Wilayah Dusun</h5>
-          <a href="/admin/{{ $desa->id }}/wilayah_desa" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+           <a href="/admin/wilayah_desa?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
          </div>
       </div>
        <div class="card bg-info m-2" style="width: 15rem;">
@@ -23,7 +23,7 @@
           </div>
           <div class="display-4">10338</div>
            <h5 class="card-title">Penduduk</h5>
-          <a href="/admin/{{ $desa->id }}/penduduk" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+           <a href="/admin/penduduk?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
          </div>
       </div>
        <div class="card bg-success m-2" style="width: 15rem;">

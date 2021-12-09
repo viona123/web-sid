@@ -25,25 +25,25 @@ Route::get('/', function () {
 Route::get('/tentang', function() {
     return view('home.tentang');
 });
-Route::get('/admin/{desa_id}', function($desa_id) {
+Route::get('/admin', function() {
     $dusuns = Dusun::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
         'desa' => $desa
     ]);
 })->middleware('auth');
-Route::get('/admin/{desa_id}/wilayah_desa', function($desa_id) {
+Route::get('/admin/wilayah_desa', function() {
     $semua_dusun = Dusun::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.dusun', [
         'semua_dusun' => $semua_dusun,
         'desa' => $desa
     ]);
 });
-Route::post('/admin/{desa_id}/wilayah_desa/tambah', function(Request $request) {
+Route::post('/admin/wilayah_desa/tambah', function(Request $request) {
     $nama = $request->input('nama-dusun');
     $kepala = $request->input('kepala-dusun');
 
@@ -54,13 +54,13 @@ Route::post('/admin/{desa_id}/wilayah_desa/tambah', function(Request $request) {
 
     return back();
 });
-Route::get('/admin/{desa_id}/wilayah_desa/hapus/{id}', function($desa_id, $id) {
-    $dusun_hapus = Dusun::find($id);
+Route::get('/admin/wilayah_desa/hapus', function() {
+    $dusun_hapus = Dusun::find(request('dusun'));
     $dusun_hapus->delete();
 
     return back();
 });
-Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request, $desa_id, $id) {
+Route::post('/admin/wilayah_desa/ubah', function(Request $request) {
      $nama = $request->input('nama-dusun');
      $kepala = $request->input('kepala-dusun');
      $rw = $request->input('jumlah-rw');
@@ -70,7 +70,7 @@ Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request
      $l = $request->input('jumlah-l');
      $p = $request->input('jumlah-p');
 
-     $dusun = Dusun::find($id);
+     $dusun = Dusun::find(request('dusun'));
      $dusun->nama = $nama;
      $dusun->kepala_dusun = $kepala;
      $dusun->jumlah_rw = $rw;
@@ -84,9 +84,9 @@ Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request
      return back();
 });
 
-Route::get('/admin/{desa_id}/penduduk', function($desa_id) {
+Route::get('/admin/penduduk', function() {
     $semua_penduduk = Sensus::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.penduduk', [
         'semua_penduduk' => $semua_penduduk,
@@ -94,7 +94,7 @@ Route::get('/admin/{desa_id}/penduduk', function($desa_id) {
     ]);
 });
 
-Route::post('/admin/{desa_id}/penduduk/tambah', function(Request $request) {
+Route::post('/admin/penduduk/tambah', function(Request $request) {
     $status_dasar = $request->input('status_dasar');
     $nik = $request->input('nik');
     $no_kk = $request->input('no_kk');
@@ -150,8 +150,8 @@ Route::post('/admin/{desa_id}/penduduk/tambah', function(Request $request) {
     return back();
 });
 
-Route::get('/admin/{desa_id}/penduduk/hapus/{sensus_id}', function($desa_id, $sensus_id) {
-    $sensus_hapus = Sensus::find($sensus_id);
+Route::get('/admin/penduduk/hapus', function() {
+    $sensus_hapus = Sensus::find(request('sensus'));
     $sensus_hapus->delete();
 
     return back();

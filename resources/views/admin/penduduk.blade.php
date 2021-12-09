@@ -59,7 +59,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#"><i class="fas fa-th-list d-inline-block me-2"></i> Lihat detail Biodata Penduduk</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
-                            <li><a onclick="return confirm('Hapus data sensus ini?')" class="dropdown-item" href="/admin/{{ $desa->id }}/penduduk/hapus/{{ $penduduk->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
+                            <li><a onclick="return confirm('Hapus data sensus {{ $penduduk->nama }}?')" class="dropdown-item" href="/admin/penduduk/hapus?desa={{ $desa->id }}&sensus={{ $penduduk->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
                         </ul>
                     </div>
                 </td>
@@ -91,7 +91,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Penduduk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/penduduk/tambah" method="post">
+      <form action="/admin/penduduk/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
