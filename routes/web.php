@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use App\Models\Penduduk;
 use App\Models\Dusun;
+use App\Models\Desa;
+use App\Models\Sensus;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +25,25 @@ Route::get('/', function () {
 Route::get('/tentang', function() {
     return view('home.tentang');
 });
-Route::get('/admin', function() {
-    return view('admin.index');
+Route::get('/admin/{desa_id}', function($desa_id) {
+    $dusuns = Dusun::all();
+    $desa = Desa::find($desa_id);
+
+    return view('admin.index', [
+        'total_dusun' => $dusuns->count(),
+        'desa' => $desa
+    ]);
 })->middleware('auth');
-Route::get('/admin/wilayah_desa', function() {
+Route::get('/admin/{desa_id}/wilayah_desa', function($desa_id) {
     $semua_dusun = Dusun::all();
+    $desa = Desa::find($desa_id);
 
     return view('admin.dusun', [
-        'semua_dusun' => $semua_dusun
+        'semua_dusun' => $semua_dusun,
+        'desa' => $desa
     ]);
 });
-Route::post('/admin/wilayah_desa/tambah', function(Request $request) {
+Route::post('/admin/{desa_id}/wilayah_desa/tambah', function(Request $request) {
     $nama = $request->input('nama-dusun');
     $kepala = $request->input('kepala-dusun');
 
@@ -44,13 +54,13 @@ Route::post('/admin/wilayah_desa/tambah', function(Request $request) {
 
     return back();
 });
-Route::get('/admin/wilayah_desa/hapus/{id}', function($id) {
+Route::get('/admin/{desa_id}/wilayah_desa/hapus/{id}', function($desa_id, $id) {
     $dusun_hapus = Dusun::find($id);
     $dusun_hapus->delete();
 
     return back();
 });
-Route::post('/admin/wilayah_desa/ubah/{id}', function(Request $request, $id) {
+Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request, $desa_id, $id) {
      $nama = $request->input('nama-dusun');
      $kepala = $request->input('kepala-dusun');
      $rw = $request->input('jumlah-rw');
@@ -72,8 +82,79 @@ Route::post('/admin/wilayah_desa/ubah/{id}', function(Request $request, $id) {
      $dusun->save();
 
      return back();
+});
 
-     dd($request);
+Route::get('/admin/{desa_id}/penduduk', function($desa_id) {
+    $semua_penduduk = Sensus::all();
+    $desa = Desa::find($desa_id);
+
+    return view('admin.penduduk', [
+        'semua_penduduk' => $semua_penduduk,
+        'desa' => $desa
+    ]);
+});
+
+Route::post('/admin/{desa_id}/penduduk/tambah', function(Request $request) {
+    $status_dasar = $request->input('status_dasar');
+    $nik = $request->input('nik');
+    $no_kk = $request->input('no_kk');
+    $no_kk_sebelum = $request->input('no_kk_sebelumnya');
+    $nama_lengkap = $request->input('nama_lengkap');
+    $nik_ayah = $request->input('nik_ayah');
+    $nik_ibu = $request->input('nik_ibu');
+    $hubungan_keluarga = $request->input('hubungan_keluarga');
+    $jenis_kelamin = $request->input('jenis_kelamin');
+    $agama = $request->input('agama');
+    $status_penduduk = $request->input('status_penduduk');
+    $ttl = $request->input('ttl');
+    $anak_ke = $request->input('anak_ke');
+    $pendidikan_kk = $request->input('pendidikan_kk');
+    $pendidikan_ditempuh = $request->input('pendidikan_ditempuh');
+    $no_telp = $request->input('no_telp');
+    $alamat_email = $request->input('alamat_email');
+    $alamat = $request->input('alamat');
+    $dusun = $request->input('dusun');
+    $umur = $request->input('umur');
+    $pekerjaan = $request->input('pekerjaan');
+    $kawin = $request->input('kawin');
+    $tanggal_perkawinan = $request->input('tanggal_perkawinan');
+    $now = date('Y-m-d');
+
+    Sensus::create([
+        'status_dasar' => $status_dasar,
+        'nama' => $nama_lengkap,
+        'nik' => $nik,
+        'no_kk' => $no_kk,
+        'no_kk_sebelumnya' => $no_kk_sebelum,
+        'hubungan_keluarga' => $hubungan_keluarga,
+        'jenis_kelamin' => $jenis_kelamin,
+        'agama' => $agama,
+        'status_penduduk' => $status_penduduk,
+        'ttl' => $ttl,
+        'umur' => $umur,
+        'anak_ke' => $anak_ke,
+        'pendidikan_kk' => $pendidikan_kk,
+        'pendidikan_ditempuh' => $pendidikan_ditempuh,
+        'pekerjaan' => $pekerjaan,
+        'nik_ayah' => $nik_ayah,
+        'nik_ibu' => $nik_ibu,
+        'no_telp' => $no_telp,
+        'alamat_email' => $alamat_email,
+        'alamat' => $alamat,
+        'dusun' => $dusun,
+        'status_kawin' => $kawin,
+        'tanggal_perkawinan' => $tanggal_perkawinan,
+        'tanggal_terdaftar' => $now
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/{desa_id}/penduduk/hapus/{sensus_id}', function($desa_id, $sensus_id) {
+    $sensus_hapus = Sensus::find($sensus_id);
+    $sensus_hapus->delete();
+
+    return back();
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
