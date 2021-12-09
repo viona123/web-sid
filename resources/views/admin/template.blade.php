@@ -39,7 +39,7 @@
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>
           </div>
         </div>
-        <div class="col-md-10 ps-4 pt-4">
+        <div class="col-md-10 ps-4 pt-4" style="height: 100vh">
           @yield('content')
         </div>
       </div>

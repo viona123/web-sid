@@ -5,13 +5,31 @@
 @section('content')
 
 <h3>Data Penduduk</h3><hr class="bg-primary">
-<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data Penduduk</button>
-<button class="btn btn-primary"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
-<button class="btn btn-secondary"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
-<button class="btn btn-primary"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
+<button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data Penduduk</button>
+<button class="btn btn-primary m-2"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
+<button class="btn btn-secondary m-2"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
+<button class="btn btn-primary m-2"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
 
-<div style="width: 100%; overflow: scroll; height: 70vh" class="mt-4">
-    <table class="table table-secondary table-stripped">
+<div style="width: auto; overflow: scroll; height: 70vh" class="mt-4">
+    <table class="table table-secondary table-stripped" style="table-layout: fixed">
+        <colgroup>
+            <col span="1" style="width: 2rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 3rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 8rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 5rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+        </colgroup>
+
         <thead>
             <tr>
                 <th>No</th>
@@ -46,7 +64,7 @@
                     </div>
                 </td>
                 <td>
-                    <img src="/images/avatar-female.png" alt="info" style="width: 2rem">
+                    <img src="/images/avatar-male.png" alt="info" style="width: 2rem">
                 </td>
                 <td>{{ $penduduk->nik }}</td>
                 <td>{{ $penduduk->nama }}</td>
