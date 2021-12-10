@@ -7,6 +7,8 @@ use App\Models\Penduduk;
 use App\Models\Dusun;
 use App\Models\Desa;
 use App\Models\Sensus;
+use App\Models\ProgramBantuan;
+use App\Models\Keluarga;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,11 @@ Route::get('/tentang', function() {
 Route::get('/admin', function() {
     $dusuns = Dusun::all();
     $desa = Desa::find(request('desa'));
+    $sensus = Sensus::all();
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
+        'total_sensus' => $sensus->count(),
         'desa' => $desa
     ]);
 })->middleware('auth');
@@ -155,6 +159,60 @@ Route::get('/admin/penduduk/hapus', function() {
     $sensus_hapus->delete();
 
     return back();
+});
+
+Route::get('/admin/{desa_id}/penduduk/detail/{sensus_id}', function($desa_id, $sensus_id) {
+    $penduduk = Sensus::find($sensus_id);
+    $desa = Desa::find($desa_id);
+    $bantuan = ProgramBantuan::where('nik_penerima', $penduduk->nik)->get();
+
+    return view('admin.penduduk-detail', [
+        'penduduk' => $penduduk,
+        'desa' => $desa,
+        'bantuan' => $bantuan
+    ]);
+});
+
+Route::post('/admin/{desa_id}/penduduk/ubah/{sensus_id}', function(Request $request, $desa_id, $sensus_id) {
+    $penduduk = Sensus::find($sensus_id);
+
+    $penduduk->status_dasar = $request->input('status_dasar');
+    $penduduk->nik = $request->input('nik');
+    $penduduk->no_kk = $request->input('no_kk');
+    $penduduk->no_kk_sebelumnya = $request->input('no_kk_sebelumnya');
+    $penduduk->nama = $request->input('nama_lengkap');
+    $penduduk->nik_ayah = $request->input('nik_ayah');
+    $penduduk->nik_ibu = $request->input('nik_ibu');
+    $penduduk->hubungan_keluarga = $request->input('hubungan_keluarga');
+    $penduduk->jenis_kelamin = $request->input('jenis_kelamin');
+    $penduduk->agama = $request->input('agama');
+    $penduduk->status_penduduk = $request->input('status_penduduk');
+    $penduduk->ttl = $request->input('ttl');
+    $penduduk->anak_ke = $request->input('anak_ke');
+    $penduduk->pendidikan_kk = $request->input('pendidikan_kk');
+    $penduduk->pendidikan_ditempuh = $request->input('pendidikan_ditempuh');
+    $penduduk->no_telp = $request->input('no_telp');
+    $penduduk->alamat_email = $request->input('alamat_email');
+    $penduduk->alamat = $request->input('alamat');
+    $penduduk->dusun = $request->input('dusun');
+    $penduduk->umur = $request->input('umur');
+    $penduduk->pekerjaan = $request->input('pekerjaan');
+    $penduduk->status_kawin = $request->input('kawin');
+    $penduduk->tanggal_perkawinan = $request->input('tanggal_perkawinan');
+
+    $penduduk->save();
+
+    return back();
+});
+
+Route::get('/admin/{desa_id}/keluarga', function($desa_id) {
+    $keluarga = Keluarga::all();
+    $desa = Desa::find($desa_id);
+
+    return view('admin.keluarga', [
+        'keluarga' => $keluarga,
+        'desa' => $desa
+    ]);
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

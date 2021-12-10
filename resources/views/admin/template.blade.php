@@ -6,11 +6,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <title>Administrasi - @yield('title')</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark" style="background-color: #339DFF">
+    <nav class="navbar navbar-dark position-sticky top-0" style="background-color: #339DFF">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="/images/logo.jpeg" width="30" height="24" class="d-inline-block">
@@ -39,7 +40,7 @@
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>
           </div>
         </div>
-        <div class="col-md-10 ps-4 pt-4" style="height: 100vh">
+        <div class="col-md-10 ps-5 pt-4" style="height: 100vh; overflow-y: scroll">
           @yield('content')
         </div>
       </div>

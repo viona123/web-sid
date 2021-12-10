@@ -21,7 +21,7 @@
           <div class="card-body-icon">
             <i class="fas fa-user"></i>
           </div>
-          <div class="display-4">10338</div>
+          <div class="display-4">{{ $total_sensus }}</div>
            <h5 class="card-title">Penduduk</h5>
            <a href="/admin/penduduk?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
          </div>
@@ -33,7 +33,7 @@
           </div>
           <div class="display-4">5338</div>
            <h5 class="card-title">Keluarga</h5>
-          <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+          <a href="/admin/{{ $desa->id }}/keluarga" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
          </div>
       </div>
        <div class="card bg-danger m-2" style="width: 15rem;">

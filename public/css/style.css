@@ -104,76 +104,6 @@
  html{
 	position: relative;
 }
-.navbar{
-	height: 50px;
-}
-.icon h5 {
-	color: #fff;
-	margin-left: 500px;
-}
-
-.icon h5 i:nth-child(4){
-	color: #fff;
-}
-.icon h5 i:nth-child(4):hover{
-	color: black;
-}
-
-.icon h5 i em{
-	color: #fff;
-}
- .nav .nav-item  a{
-	color: #fff;
-	font-size: 12px;
-}
-.nav .nav-item  a:hover{
-	background-color: grey;
-}
-.nav .nav-header{
-	color: #666;
-    background: #1a2226;
-}
-
-.col-md-8{
-	margin-top: 70px;
-}
-.col-md-8 h3{
-	font-size: 18px;
-}
-
-.display-4{
-	font-weight: bold;
-	padding-bottom: 3px;
-}
-
-.card{
-	background-color: #605ca8
-}
-
-.card-title{
-	font-family: sans-serif;
-}
-
-.card-text {
-	font-size: 13px;
-}
-
- .card a{
-	text-decoration: none;
-}
-
-.card-body-icon{
-	position: absolute;
-	z-index: 0;
-	top: 12px;
-	right: 7px;
-	opacity: 0.19;
-	font-size: 80px;
-}
-
-.main {
-    left: 15rem;
-}
 
 .dropdown-item:hover {
     background-color: #0085FF;
@@ -199,6 +129,10 @@
     font-size: 0.8rem;
 }
 
+table.detail {
+    border-collapse: separate;
+    border-spacing: 1rem;
+}
 
 @media screen and (max-width: 480px) {
     .menu {

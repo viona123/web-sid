@@ -37,7 +37,7 @@ class CreateSensusesTable extends Migration
             $table->string('alamat');
             $table->string('dusun');
             $table->string('status_kawin');
-            $table->date('tanggal_perkawinan');
+            $table->date('tanggal_perkawinan')->nullable();
             $table->date('tanggal_terdaftar');
             $table->timestamps();
         });
