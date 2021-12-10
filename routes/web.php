@@ -7,7 +7,11 @@ use App\Models\Penduduk;
 use App\Models\Dusun;
 use App\Models\Desa;
 use App\Models\Sensus;
+<<<<<<< HEAD
 use App\Models\ProgramBantuan;
+=======
+use App\Models\Keluarga;
+>>>>>>> 7cd86de2a72e6f83f0cf5d45b0620545d8fe8c66
 
 /*
 |--------------------------------------------------------------------------
@@ -160,6 +164,7 @@ Route::get('/admin/{desa_id}/penduduk/hapus/{sensus_id}', function($desa_id, $se
     return back();
 });
 
+<<<<<<< HEAD
 Route::get('/admin/{desa_id}/penduduk/detail/{sensus_id}', function($desa_id, $sensus_id) {
     $penduduk = Sensus::find($sensus_id);
     $desa = Desa::find($desa_id);
@@ -204,6 +209,18 @@ Route::post('/admin/{desa_id}/penduduk/ubah/{sensus_id}', function(Request $requ
     return back();
 });
 
+=======
+Route::get('/admin/{desa_id}/keluarga', function($desa_id) {
+    $keluarga = Keluarga::all();
+    $desa = Desa::find($desa_id);
+
+    return view('admin.keluarga', [
+        'keluarga' => $keluarga,
+        'desa' => $desa
+    ]);
+});
+
+>>>>>>> 7cd86de2a72e6f83f0cf5d45b0620545d8fe8c66
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);

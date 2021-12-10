@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #339DFF">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/images/siska-persegi.png" alt="siska" style="width: 2rem">
+                <img src="/images/logo-transparent.png" alt="siska" style="width: 2rem">
                 SISKA
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
