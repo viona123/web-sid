@@ -7,6 +7,7 @@ use App\Models\Penduduk;
 use App\Models\Dusun;
 use App\Models\Desa;
 use App\Models\Sensus;
+use App\Models\Keluarga;
 
 /*
 |--------------------------------------------------------------------------
@@ -155,6 +156,16 @@ Route::get('/admin/{desa_id}/penduduk/hapus/{sensus_id}', function($desa_id, $se
     $sensus_hapus->delete();
 
     return back();
+});
+
+Route::get('/admin/{desa_id}/keluarga', function($desa_id) {
+    $keluarga = Keluarga::all();
+    $desa = Desa::find($desa_id);
+
+    return view('admin.keluarga', [
+        'keluarga' => $keluarga,
+        'desa' => $desa
+    ]);
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
