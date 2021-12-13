@@ -74,7 +74,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/keluarga/tambah" method="post">
+      <form action="/admin/keluarga/tambah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -102,7 +102,7 @@
         <h5 class="modal-title" id="ubah-data-label">Ubah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/wilayah_desa/ubah" method="post">
+      <form action="/admin/wilayah_desa/ubah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -150,7 +150,7 @@
 <script>
     function edit(anchor, id) {
         const formUbah = document.forms[1];
-        formUbah.action = "/admin/{{ $desa->id }}/keluarga" + id;
+        formUbah.action = "/admin/keluarga?desa={{ $desa->id }}&keluarga=" + id;
 
         const url = anchor.href;
         const urlFragment = url.substring(url.indexOf('#') + 1);

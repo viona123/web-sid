@@ -32,7 +32,7 @@
                 </div>
                 <div class="display-4">5338</div>
                 <h5 class="card-title">Keluarga</h5>
-                <a href="/admin/{{ $desa->id }}/keluarga" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+                <a href="/admin/keluarga?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
         <div class="card bg-danger m-2" style="width: 15rem;">
