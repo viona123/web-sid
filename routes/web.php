@@ -31,10 +31,12 @@ Route::get('/admin', function() {
     $dusuns = Dusun::all();
     $desa = Desa::find(request('desa'));
     $sensus = Sensus::all();
+    $keluarga = Keluarga::all();
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
         'total_sensus' => $sensus->count(),
+        'total_keluarga' => $keluarga->count(),
         'desa' => $desa
     ]);
 })->middleware('auth');
@@ -213,6 +215,52 @@ Route::get('/admin/keluarga', function() {
         'keluarga' => $keluarga,
         'desa' => $desa
     ]);
+});
+
+Route::post('/admin/keluarga/tambah', function(Request $request) {
+    $nomor_kk = $request->input('nomor_kk');
+    $kepala_keluarga = $request->input('kepala_keluarga');
+    $jumlah_anggota = $request->input('jumlah_anggota');
+    $alamat = $request->input('alamat');
+    $dusun = $request->input('dusun');
+    $rt = $request->input('rt');
+    $rw = $request->input('rw');
+
+    Keluarga::create([
+        'Nomor_KK' => $nomor_kk,
+        'kepala_keluarga' => $kepala_keluarga,
+        'Jumlah_Anggota_Keluarga' => $jumlah_anggota,
+        'NIK' => $kepala_keluarga,
+        'Alamat' => $alamat,
+        'Dusun' => $dusun,
+        'RT' => $rt,
+        'RW' => $rw
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/keluarga/hapus', function() {
+    $keluarga = Keluarga::find(request('keluarga'));
+    $keluarga->delete();
+
+    return back();
+});
+
+Route::post('/admin/keluarga/ubah', function(Request $request) {
+    $keluarga = Keluarga::find(request('keluarga'));
+
+    $keluarga->Nomor_KK = $request->input('nomor_kk');
+    $keluarga->kepala_keluarga = $request->input('kepala_keluarga');
+    $keluarga->Jumlah_Anggota_Keluarga = $request->input('jumlah_anggota');
+    $keluarga->Alamat = $request->input('alamat');
+    $keluarga->Dusun = $request->input('dusun');
+    $keluarga->RT = $request->input('rt');
+    $keluarga->RW = $request->input('rw');
+
+    $keluarga->save();
+
+    return back();
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

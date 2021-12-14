@@ -30,7 +30,7 @@
                 <div class="card-body-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <div class="display-4">5338</div>
+                <div class="display-4">{{ $total_keluarga }}</div>
                 <h5 class="card-title">Keluarga</h5>
                 <a href="/admin/keluarga?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>

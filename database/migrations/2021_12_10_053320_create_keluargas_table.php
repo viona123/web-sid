@@ -15,9 +15,9 @@ class CreateKeluargasTable extends Migration
     {
         Schema::create('keluargas', function (Blueprint $table) {
             $table->id();
-            $table->integer('Nomor_KK');
+            $table->string('Nomor_KK');
             $table->string('kepala_keluarga');
-            $table->integer('NIK');
+            $table->string('NIK');
             $table->integer('Jumlah_Anggota_Keluarga');
             $table->string('Alamat');
             $table->string('Dusun');
