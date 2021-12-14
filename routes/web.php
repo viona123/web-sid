@@ -252,6 +252,7 @@ Route::post('/admin/keluarga/ubah', function(Request $request) {
 
     $keluarga->Nomor_KK = $request->input('nomor_kk');
     $keluarga->kepala_keluarga = $request->input('kepala_keluarga');
+    $keluarga->NIK = $request->input('kepala_keluarga');
     $keluarga->Jumlah_Anggota_Keluarga = $request->input('jumlah_anggota');
     $keluarga->Alamat = $request->input('alamat');
     $keluarga->Dusun = $request->input('dusun');
@@ -261,6 +262,18 @@ Route::post('/admin/keluarga/ubah', function(Request $request) {
     $keluarga->save();
 
     return back();
+});
+
+Route::get('/admin/keluarga/detail', function() {
+    $keluarga = Keluarga::find(request('keluarga'));
+    $anggota = $keluarga->anggota;
+    $desa = Desa::find(request('desa'));
+
+    return view('admin.keluarga-detail', [
+        'keluarga' => $keluarga,
+        'anggota' => $anggota,
+        'desa' => $desa
+    ]);
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

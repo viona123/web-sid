@@ -3,13 +3,13 @@
 @section('title', 'Keluarga')
 
 @section('content')
-<h3>Wilayah Administrasi Dusun</h3><hr class="bg-primary">
+<h3>Data Keluarga</h3><hr class="bg-primary">
 <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Keluarga</button>
 <button class="btn btn-primary m-2"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
 <button class="btn btn-secondary m-2"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
 <button class="btn btn-primary m-2"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
 
-<div style="overflow-x: auto";>
+<div style="overflow-x: auto">
 	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed">
         <colgroup>
             <col span="1" style="width: 3rem">
@@ -43,19 +43,13 @@
 	        <tr>
 	            <td>{{ $keluarga->id }}</td>
 	            <td>
+                <a class="btn btn-primary btn-aksi" href="/admin/keluarga/detail?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-list"></i></a> 
 	                <a onclick="edit(this, {{ $keluarga->id }})" href="#ubah-data&nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&jumlah-anggota={{ $keluarga->Jumlah_Anggota_Keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
-	                <a onclick="return confirm('Hapus data keluarga {{ $keluarga->kepala_keluarga }}?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/hapus?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-trash-alt"></i></a>
-	                <div class="dropdown d-inline-block">
-	                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
-	                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-	                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Lokasi Kantor</a></li>
-	                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Peta Wilayah</a></li>
-	                    </ul>
-	                </div>
+	                <a onclick="return confirm('Hapus data keluarga {{ $keluarga->kepala->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/hapus?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-trash-alt"></i></a>
 	            </td>
 	            <td>{{ $keluarga->Nomor_KK }}</td>
-	            <td>{{ $keluarga->kepala_keluarga}}</td>
-	            <td>{{ $keluarga->NIK}}</td>
+	            <td>{{ $keluarga->kepala->nama }}</td>
+	            <td>{{ $keluarga->NIK }}</td>
 	            <td>{{ $keluarga->Jumlah_Anggota_Keluarga }}</td>
 	            <td>{{ $keluarga->Alamat}}</td>
 	            <td>{{ $keluarga->Dusun }}</td>
