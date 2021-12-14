@@ -44,7 +44,7 @@
 	        <tr>
 	            <td>{{ $dusun->id }}</td>
 	            <td>
-	                <a onclick="edit(this, {{ $dusun->id }})" href="#ubah-data&nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
+	                <button onclick="edit(this, )" data-fields="nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-dusun-id="{{ $dusun->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data dusun {{ $dusun->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/wilayah_desa/hapus?desa={{ $desa->id }}&dusun={{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
 	                <div class="dropdown d-inline-block">
 	                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
@@ -149,13 +149,13 @@
 </div>
 
 <script>
-    function edit(anchor, id) {
+    function edit(element) {
         const formUbah = document.forms[1];
+        const id = element.getAttribute('data-dusun-id');
         formUbah.action = "/admin/wilayah_desa/ubah?desa={{ $desa->id }}&dusun=" + id;
 
-        const url = anchor.href;
-        const urlFragment = url.substring(url.indexOf('#') + 1);
-        const data = urlFragment.split('&');
+        const fields = element.getAttribute('data-fields');
+        const data = fields.split('&');
         
         const 
             nama = document.getElementById('nama-dusun-edit'),
@@ -167,14 +167,14 @@
             l = document.getElementById('jumlah-l'),
             p = document.getElementById('jumlah-p');
 
-        nama.value = data[1].substring(data[1].indexOf('=') + 1);
-        kdusun.value = data[2].substring(data[2].indexOf('=') + 1);
-        rw.value = data[3].substring(data[3].indexOf('=') + 1);
-        rt.value = data[4].substring(data[4].indexOf('=') + 1);
-        kk.value = data[5].substring(data[5].indexOf('=') + 1);
-        lp.value = data[6].substring(data[6].indexOf('=') + 1);
-        l.value = data[7].substring(data[7].indexOf('=') + 1);
-        p.value = data[8].substring(data[8].indexOf('=') + 1);
+        nama.value = data[0].substring(data[0].indexOf('=') + 1);
+        kdusun.value = data[1].substring(data[1].indexOf('=') + 1);
+        rw.value = data[2].substring(data[2].indexOf('=') + 1);
+        rt.value = data[3].substring(data[3].indexOf('=') + 1);
+        kk.value = data[4].substring(data[4].indexOf('=') + 1);
+        lp.value = data[5].substring(data[5].indexOf('=') + 1);
+        l.value = data[6].substring(data[6].indexOf('=') + 1);
+        p.value = data[7].substring(data[7].indexOf('=') + 1);
     }
 </script>
 

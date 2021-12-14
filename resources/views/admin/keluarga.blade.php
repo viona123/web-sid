@@ -44,7 +44,7 @@
 	            <td>{{ $keluarga->id }}</td>
 	            <td>
                 <a class="btn btn-primary btn-aksi" href="/admin/keluarga/detail?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-list"></i></a> 
-	                <a onclick="edit(this, {{ $keluarga->id }})" href="#ubah-data&nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&jumlah-anggota={{ $keluarga->Jumlah_Anggota_Keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
+                <button onclick="edit(this)" data-fields="nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&jumlah-anggota={{ $keluarga->Jumlah_Anggota_Keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-keluarga-id="{{ $keluarga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
 	                <a onclick="return confirm('Hapus data keluarga {{ $keluarga->kepala->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/hapus?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-trash-alt"></i></a>
 	            </td>
 	            <td>{{ $keluarga->Nomor_KK }}</td>
@@ -158,16 +158,15 @@
 </div>
 
 <script>
-    function edit(anchor, id) {
+    function edit(element) {
         const formUbah = document.forms[1];
+        const id = element.getAttribute('data-keluarga-id');
         formUbah.action = "/admin/keluarga/ubah?desa={{ $desa->id }}&keluarga=" + id;
 
-        const url = anchor.href;
-        const urlFragment = url.substring(url.indexOf('#') + 1);
-        const data = urlFragment.split('&');
+        const fields = element.getAttribute('data-fields').split('&');
         
-        for (let i = 1; i < data.length; i++) {
-            const field = data[i].split('=');
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i].split('=');
             const fieldElement = document.getElementById(field[0] + '-edit');
 
             fieldElement.value = field[1];
