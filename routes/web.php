@@ -7,11 +7,8 @@ use App\Models\Penduduk;
 use App\Models\Dusun;
 use App\Models\Desa;
 use App\Models\Sensus;
-<<<<<<< HEAD
 use App\Models\ProgramBantuan;
-=======
 use App\Models\Keluarga;
->>>>>>> 7cd86de2a72e6f83f0cf5d45b0620545d8fe8c66
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +27,10 @@ Route::get('/', function () {
 Route::get('/tentang', function() {
     return view('home.tentang');
 });
-Route::get('/admin/{desa_id}', function($desa_id) {
+Route::get('/admin', function() {
     $dusuns = Dusun::all();
+    $desa = Desa::find(request('desa'));
     $sensus = Sensus::all();
-    $desa = Desa::find($desa_id);
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
@@ -41,16 +38,16 @@ Route::get('/admin/{desa_id}', function($desa_id) {
         'desa' => $desa
     ]);
 })->middleware('auth');
-Route::get('/admin/{desa_id}/wilayah_desa', function($desa_id) {
+Route::get('/admin/wilayah_desa', function() {
     $semua_dusun = Dusun::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.dusun', [
         'semua_dusun' => $semua_dusun,
         'desa' => $desa
     ]);
 });
-Route::post('/admin/{desa_id}/wilayah_desa/tambah', function(Request $request) {
+Route::post('/admin/wilayah_desa/tambah', function(Request $request) {
     $nama = $request->input('nama-dusun');
     $kepala = $request->input('kepala-dusun');
 
@@ -61,13 +58,13 @@ Route::post('/admin/{desa_id}/wilayah_desa/tambah', function(Request $request) {
 
     return back();
 });
-Route::get('/admin/{desa_id}/wilayah_desa/hapus/{id}', function($desa_id, $id) {
-    $dusun_hapus = Dusun::find($id);
+Route::get('/admin/wilayah_desa/hapus', function() {
+    $dusun_hapus = Dusun::find(request('dusun'));
     $dusun_hapus->delete();
 
     return back();
 });
-Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request, $desa_id, $id) {
+Route::post('/admin/wilayah_desa/ubah', function(Request $request) {
      $nama = $request->input('nama-dusun');
      $kepala = $request->input('kepala-dusun');
      $rw = $request->input('jumlah-rw');
@@ -77,7 +74,7 @@ Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request
      $l = $request->input('jumlah-l');
      $p = $request->input('jumlah-p');
 
-     $dusun = Dusun::find($id);
+     $dusun = Dusun::find(request('dusun'));
      $dusun->nama = $nama;
      $dusun->kepala_dusun = $kepala;
      $dusun->jumlah_rw = $rw;
@@ -91,9 +88,9 @@ Route::post('/admin/{desa_id}/wilayah_desa/ubah/{id}', function(Request $request
      return back();
 });
 
-Route::get('/admin/{desa_id}/penduduk', function($desa_id) {
+Route::get('/admin/penduduk', function() {
     $semua_penduduk = Sensus::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.penduduk', [
         'semua_penduduk' => $semua_penduduk,
@@ -101,7 +98,7 @@ Route::get('/admin/{desa_id}/penduduk', function($desa_id) {
     ]);
 });
 
-Route::post('/admin/{desa_id}/penduduk/tambah', function(Request $request) {
+Route::post('/admin/penduduk/tambah', function(Request $request) {
     $status_dasar = $request->input('status_dasar');
     $nik = $request->input('nik');
     $no_kk = $request->input('no_kk');
@@ -157,17 +154,16 @@ Route::post('/admin/{desa_id}/penduduk/tambah', function(Request $request) {
     return back();
 });
 
-Route::get('/admin/{desa_id}/penduduk/hapus/{sensus_id}', function($desa_id, $sensus_id) {
-    $sensus_hapus = Sensus::find($sensus_id);
+Route::get('/admin/penduduk/hapus', function() {
+    $sensus_hapus = Sensus::find(request('sensus'));
     $sensus_hapus->delete();
 
     return back();
 });
 
-<<<<<<< HEAD
-Route::get('/admin/{desa_id}/penduduk/detail/{sensus_id}', function($desa_id, $sensus_id) {
-    $penduduk = Sensus::find($sensus_id);
-    $desa = Desa::find($desa_id);
+Route::get('/admin/penduduk/detail', function() {
+    $penduduk = Sensus::find(request('sensus'));
+    $desa = Desa::find(request('desa'));
     $bantuan = ProgramBantuan::where('nik_penerima', $penduduk->nik)->get();
 
     return view('admin.penduduk-detail', [
@@ -177,8 +173,8 @@ Route::get('/admin/{desa_id}/penduduk/detail/{sensus_id}', function($desa_id, $s
     ]);
 });
 
-Route::post('/admin/{desa_id}/penduduk/ubah/{sensus_id}', function(Request $request, $desa_id, $sensus_id) {
-    $penduduk = Sensus::find($sensus_id);
+Route::post('/admin/penduduk/ubah', function(Request $request) {
+    $penduduk = Sensus::find(request('sensus'));
 
     $penduduk->status_dasar = $request->input('status_dasar');
     $penduduk->nik = $request->input('nik');
@@ -209,10 +205,9 @@ Route::post('/admin/{desa_id}/penduduk/ubah/{sensus_id}', function(Request $requ
     return back();
 });
 
-=======
-Route::get('/admin/{desa_id}/keluarga', function($desa_id) {
+Route::get('/admin/keluarga', function() {
     $keluarga = Keluarga::all();
-    $desa = Desa::find($desa_id);
+    $desa = Desa::find(request('desa'));
 
     return view('admin.keluarga', [
         'keluarga' => $keluarga,
@@ -220,7 +215,6 @@ Route::get('/admin/{desa_id}/keluarga', function($desa_id) {
     ]);
 });
 
->>>>>>> 7cd86de2a72e6f83f0cf5d45b0620545d8fe8c66
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);

@@ -5,13 +5,31 @@
 @section('content')
 
 <h3>Data Penduduk</h3><hr class="bg-primary">
-<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data Penduduk</button>
-<button class="btn btn-primary"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
-<button class="btn btn-secondary"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
-<button class="btn btn-primary"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
+<button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data Penduduk</button>
+<button class="btn btn-primary m-2"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
+<button class="btn btn-secondary m-2"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
+<button class="btn btn-primary m-2"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
 
-<div style="width: 100%; overflow: scroll; height: 70vh" class="mt-4">
-    <table class="table table-secondary table-stripped">
+<div style="width: auto; overflow: scroll; height: 70vh" class="mt-4">
+    <table class="table table-secondary table-stripped" style="table-layout: fixed">
+        <colgroup>
+            <col span="1" style="width: 2rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 3rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 8rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 5rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 10rem">
+            <col span="1" style="width: 10rem">
+        </colgroup>
+
         <thead>
             <tr>
                 <th>No</th>
@@ -39,14 +57,14 @@
                     <div class="dropdown d-inline-block">
                         <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Pilih Aksi</button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="/admin/{{ $desa->id }}/penduduk/detail/{{ $penduduk->id }}"><i class="fas fa-th-list d-inline-block me-2"></i> Lihat detail Biodata Penduduk</a></li>
+                            <li><a class="dropdown-item" href="/admin/penduduk/detail?desa={{ $desa->id }}&sensus={{ $penduduk->id }}"><i class="fas fa-th-list d-inline-block me-2"></i> Lihat detail Biodata Penduduk</a></li>
                             <li><a onclick="edit(this, {{ $penduduk->id }})" class="dropdown-item" href="#ubah-data&status_dasar={{ $penduduk->status_dasar }}&nik={{ $penduduk->nik }}&no_kk={{ $penduduk->no_kk }}&no_kk_sebelumnya={{ $penduduk->no_kk_sebelumnya }}&nama_lengkap={{ $penduduk->nama }}&nik_ayah={{ $penduduk->nik_ayah }}&nik_ibu={{ $penduduk->nik_ibu }}&hubungan_keluarga={{ $penduduk->hubungan_keluarga }}&jenis_kelamin={{ $penduduk->jenis_kelamin }}&agama={{ $penduduk->agama }}&status_penduduk={{ $penduduk->status_penduduk }}&ttl={{ $penduduk->ttl }}&anak_ke={{ $penduduk->anak_ke }}&pendidikan_kk={{ $penduduk->pendidikan_kk }}&pendidikan_ditempuh={{ $penduduk->pendidikan_ditempuh }}&no_telp={{ $penduduk->no_telp }}&alamat_email={{ $penduduk->alamat_email }}&alamat={{ $penduduk->alamat }}&dusun={{ $penduduk->dusun }}&umur={{ $penduduk->umur }}&pekerjaan={{ $penduduk->pekerjaan }}&kawin={{ $penduduk->status_kawin }}&tanggal_perkawinan={{ $penduduk->tanggal_perkawinan }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
                             <li><a onclick="return confirm('Hapus data sensus ini?')" class="dropdown-item" href="/admin/{{ $desa->id }}/penduduk/hapus/{{ $penduduk->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
                         </ul>
                     </div>
                 </td>
                 <td>
-                    <img src="/images/avatar-female.png" alt="info" style="width: 2rem">
+                    <img src="/images/avatar-male.png" alt="info" style="width: 2rem">
                 </td>
                 <td>{{ $penduduk->nik }}</td>
                 <td>{{ $penduduk->nama }}</td>
@@ -73,7 +91,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Penduduk</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/penduduk/tambah" method="post">
+      <form action="/admin/penduduk/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -325,7 +343,7 @@
 <script>
     function edit(anchor, id) {
         const ubahForm = document.forms[1];
-        ubahForm.action = '/admin/{{ $desa->id }}/penduduk/ubah/' + id;
+        ubahForm.action = '/admin/penduduk/ubah?desa={{ $desa->id }}&sensus=' + id;
 
         const url = anchor.href;
         const urlFragment = url.substring(url.indexOf('#') + 1);

@@ -40,7 +40,7 @@
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>
           </div>
         </div>
-        <div class="col-md-10 ps-5 pt-4" style="height: 100vh; overflow-y: scroll">
+        <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll">
           @yield('content')
         </div>
       </div>

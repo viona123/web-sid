@@ -4,54 +4,68 @@
 
 @section('content')
 <h3>Wilayah Administrasi Dusun</h3><hr class="bg-primary">
-<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Keluarga</button>
-<button class="btn btn-primary"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
-<button class="btn btn-secondary"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
-<button class="btn btn-primary"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
+<button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Keluarga</button>
+<button class="btn btn-primary m-2"><i class="fas fa-print d-inline-block me-2"></i> Cetak</button>
+<button class="btn btn-secondary m-2"><i class="fas fa-download d-inline-block me-2"></i> Unduh</button>
+<button class="btn btn-primary m-2"><i class="fas fa-sync d-inline-block me-2"></i> Bersihkan</button>
 
-<table class="table table-secondary table-stripped mt-5">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Aksi</th>
-            <th>Nomor_KK</th>
-            <th>kepala keluarga</th>
-            <th>NIK</th>
-            <th>Jumlah Anggota Keluarga</th>
-            <th>Alamat</th>
-            <th>Dusun</th>
-            <th>RW</th>
-            <th>RT</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($keluarga as $keluarga)
-        <tr>
-            <td>{{ $keluarga->id }}</td>
-            <td>
-                <a onclick="edit(this, {{ $dusun->id }})" href="#ubah-data&nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
-                <a onclick="return confirm('Hapus data dusun ini?')" class="btn btn-danger btn-aksi" href="/admin/{{ $desa->id }}/wilayah_desa/hapus/{{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Lokasi Kantor</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Peta Wilayah</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td>{{ $keluarga->Nomor_KK }}</td>
-            <td>{{ $keluarga->kepala_keluarga}}</td>
-            <td>{{ $keluarga->NIK}}</td>
-            <td>{{ $keluarga->Jumlah_Anggota_Keluarga }}</td>
-            <td>{{ $keluarga->Alamat}}</td>
-            <td>{{ $keluarga->Dusun }}</td>
-            <td>{{ $keluarga->RW }}</td>
-            <td>{{ $keluarga->RT }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div style="overflow-x: auto";>
+	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed">
+        <colgroup>
+            <col span="1" style="width: 3rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 15rem">
+            <col span="1" style="width: 12rem">
+            <col span="1" style="width: 8rem">
+            <col span="1" style="width: 4rem">
+            <col span="1" style="width: 4rem">
+        </colgroup>
+        
+	    <thead>
+	        <tr>
+	            <th>No</th>
+	            <th>Aksi</th>
+	            <th>Nomor_KK</th>
+	            <th>kepala keluarga</th>
+	            <th>NIK</th>
+	            <th>Jumlah Anggota Keluarga</th>
+	            <th>Alamat</th>
+	            <th>Dusun</th>
+	            <th>RW</th>
+	            <th>RT</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        @foreach($keluarga as $keluarga)
+	        <tr>
+	            <td>{{ $keluarga->id }}</td>
+	            <td>
+	                <a onclick="edit(this, {{ $dusun->id }})" href="#ubah-data&nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></a>
+	                <a onclick="return confirm('Hapus data dusun ini?')" class="btn btn-danger btn-aksi" href="/admin/{{ $desa->id }}/wilayah_desa/hapus/{{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
+	                <div class="dropdown d-inline-block">
+	                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
+	                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+	                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Lokasi Kantor</a></li>
+	                        <li><a class="dropdown-item" href="#"><i class="fas fa-map-marker-alt d-inline-block me-2"></i> Peta Wilayah</a></li>
+	                    </ul>
+	                </div>
+	            </td>
+	            <td>{{ $keluarga->Nomor_KK }}</td>
+	            <td>{{ $keluarga->kepala_keluarga}}</td>
+	            <td>{{ $keluarga->NIK}}</td>
+	            <td>{{ $keluarga->Jumlah_Anggota_Keluarga }}</td>
+	            <td>{{ $keluarga->Alamat}}</td>
+	            <td>{{ $keluarga->Dusun }}</td>
+	            <td>{{ $keluarga->RW }}</td>
+	            <td>{{ $keluarga->RT }}</td>
+	        </tr>
+	        @endforeach
+	    </tbody>
+	</table>
+</div>
 
 <div class="modal fade" id="tambah-data" tabindex="-1" aria-labelledby="tambah-data-label" aria-hidden="true">
   <div class="modal-dialog">
@@ -60,7 +74,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/keluarga/tambah" method="post">
+      <form action="/admin/keluarga/tambah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -88,7 +102,7 @@
         <h5 class="modal-title" id="ubah-data-label">Ubah Data Dusun</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/{{ $desa->id }}/wilayah_desa/ubah" method="post">
+      <form action="/admin/wilayah_desa/ubah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
@@ -136,7 +150,7 @@
 <script>
     function edit(anchor, id) {
         const formUbah = document.forms[1];
-        formUbah.action = "/admin/{{ $desa->id }}/keluarga" + id;
+        formUbah.action = "/admin/keluarga?desa={{ $desa->id }}&keluarga=" + id;
 
         const url = anchor.href;
         const urlFragment = url.substring(url.indexOf('#') + 1);

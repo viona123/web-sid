@@ -18,7 +18,7 @@ class LoginController extends Controller
         if (Auth::attempt(['name' => $nama_input, 'password' => $password_input])) {
             $request->session()->regenerate();
             $request->session()->flash('status', 'berhasil');
-            return redirect()->intended('/admin/' . $desa->id);
+            return redirect()->intended('/admin?desa=' . $desa->id);
         } else {
             $request->session()->flash('status', 'gagal');
         }

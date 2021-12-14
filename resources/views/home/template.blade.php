@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css"/>
     <title>SISKA | @yield('title')</title>
 </head>
 <body>
@@ -56,8 +57,8 @@
             <div class="col-md-5" id="kontak">
                 <div class="m-4 text-center">
 	                <h2 class="mb-3 text-white">Kontak</h2>
-	                <a href="tel:+6283128339244" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none"><i class="fas fa-phone-alt"></i> 083128339244</a>
-	                <a href="mailto:siska.contact@gmail.com" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none"><i class="fas fa-envelope"></i> siska.contact@gmail.com</a>
+	                <a href="tel:+6283128339244" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none contact"><i class="fas fa-phone-alt"></i> 083128339244</a>
+	                <a href="mailto:siska.contact@gmail.com" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none contact"><i class="fas fa-envelope"></i> siska.contact@gmail.com</a>
                 </div>
             </div>
         </div>
