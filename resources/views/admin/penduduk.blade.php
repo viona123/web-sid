@@ -58,7 +58,7 @@
                         <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Pilih Aksi</button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="/admin/penduduk/detail?desa={{ $desa->id }}&sensus={{ $penduduk->id }}"><i class="fas fa-th-list d-inline-block me-2"></i> Lihat detail Biodata Penduduk</a></li>
-                            <li><a onclick="edit(this, {{ $penduduk->id }})" class="dropdown-item" href="#ubah-data&status_dasar={{ $penduduk->status_dasar }}&nik={{ $penduduk->nik }}&no_kk={{ $penduduk->no_kk }}&no_kk_sebelumnya={{ $penduduk->no_kk_sebelumnya }}&nama_lengkap={{ $penduduk->nama }}&nik_ayah={{ $penduduk->nik_ayah }}&nik_ibu={{ $penduduk->nik_ibu }}&hubungan_keluarga={{ $penduduk->hubungan_keluarga }}&jenis_kelamin={{ $penduduk->jenis_kelamin }}&agama={{ $penduduk->agama }}&status_penduduk={{ $penduduk->status_penduduk }}&ttl={{ $penduduk->ttl }}&anak_ke={{ $penduduk->anak_ke }}&pendidikan_kk={{ $penduduk->pendidikan_kk }}&pendidikan_ditempuh={{ $penduduk->pendidikan_ditempuh }}&no_telp={{ $penduduk->no_telp }}&alamat_email={{ $penduduk->alamat_email }}&alamat={{ $penduduk->alamat }}&dusun={{ $penduduk->dusun }}&umur={{ $penduduk->umur }}&pekerjaan={{ $penduduk->pekerjaan }}&kawin={{ $penduduk->status_kawin }}&tanggal_perkawinan={{ $penduduk->tanggal_perkawinan }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
+                            <li><a onclick="edit(this)" class="dropdown-item" data-fields="status_dasar={{ $penduduk->status_dasar }}&nik={{ $penduduk->nik }}&no_kk={{ $penduduk->no_kk }}&no_kk_sebelumnya={{ $penduduk->no_kk_sebelumnya }}&nama_lengkap={{ $penduduk->nama }}&nik_ayah={{ $penduduk->nik_ayah }}&nik_ibu={{ $penduduk->nik_ibu }}&hubungan_keluarga={{ $penduduk->hubungan_keluarga }}&jenis_kelamin={{ $penduduk->jenis_kelamin }}&agama={{ $penduduk->agama }}&status_penduduk={{ $penduduk->status_penduduk }}&ttl={{ $penduduk->ttl }}&anak_ke={{ $penduduk->anak_ke }}&pendidikan_kk={{ $penduduk->pendidikan_kk }}&pendidikan_ditempuh={{ $penduduk->pendidikan_ditempuh }}&no_telp={{ $penduduk->no_telp }}&alamat_email={{ $penduduk->alamat_email }}&alamat={{ $penduduk->alamat }}&dusun={{ $penduduk->dusun }}&umur={{ $penduduk->umur }}&pekerjaan={{ $penduduk->pekerjaan }}&kawin={{ $penduduk->status_kawin }}&tanggal_perkawinan={{ $penduduk->tanggal_perkawinan }}" data-sensus-id="{{ $penduduk->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
                             <li><a onclick="return confirm('Hapus data sensus ini?')" class="dropdown-item" href="/admin/{{ $desa->id }}/penduduk/hapus/{{ $penduduk->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
                         </ul>
                     </div>
@@ -341,16 +341,15 @@
 </div>
 
 <script>
-    function edit(anchor, id) {
+    function edit(element) {
         const ubahForm = document.forms[1];
+        const id = element.getAttribute('data-sensus-id');
         ubahForm.action = '/admin/penduduk/ubah?desa={{ $desa->id }}&sensus=' + id;
 
-        const url = anchor.href;
-        const urlFragment = url.substring(url.indexOf('#') + 1);
-        const data = urlFragment.split('&');
+        const fields = element.getAttribute('data-fields').split('&');
 
-        for (let i = 1; i < data.length; i++) {
-            const field = data[i].split('=');
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i].split('=');
             if (field[0] !== 'jenis_kelamin') {
                 const fieldElement = document.getElementById(field[0] + '_edit');
                 fieldElement.value = field[1];
