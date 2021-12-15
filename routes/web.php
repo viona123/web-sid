@@ -276,6 +276,31 @@ Route::get('/admin/keluarga/detail', function() {
     ]);
 });
 
+Route::post('/admin/keluarga/anggota/tambah', function(Request $request) {
+    $anggota_baru = Sensus::firstWhere('nik', $request->input('nik') );
+    $anggota_baru->no_kk = $request->input('no_kk');
+    $anggota_baru->hubungan_keluarga = $request->input('hubungan_keluarga');
+    $anggota_baru->save();
+
+    return back();
+});
+
+Route::get('/admin/keluarga/anggota/hapus', function() {
+    $anggota = Sensus::find(request('sensus'));
+    $anggota->no_kk = '';
+    $anggota->save();
+
+    return back();
+});
+
+Route::post('/admin/keluarga/anggota/ubah', function(Request $request) {
+    $anggota = Sensus::firstWhere('nik', $request->input('nik'));
+    $anggota->hubungan_keluarga = $request->input('hubungan_keluarga');
+    $anggota->save();
+
+    return back();
+});
+
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);

@@ -22,6 +22,7 @@
 </table>
 
 <h5 class="mt-4">Daftar Anggota Keluarga</h5>
+<button class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus"></i> Tambah Anggota Keluarga</button>
 <div style="overflow-x: auto">
     <table width="100%" class="table table-secondary ms-3" style="table-layout: fixed">
         <colgroup>
@@ -31,7 +32,7 @@
             <col span="1" style="width: 12rem">
             <col span="1" style="width: 15rem">
             <col span="1" style="width: 8rem">
-            <col span="1" style="width: 8rem">
+            <col span="1" style="width: 12rem">
         </colgroup>
 
         <thead>
@@ -50,8 +51,8 @@
             <tr>
                 <td>{{ $sensus->id }}</td>
                 <td>
-                    <a class="btn btn-warning btn-aksi" href="javascript:void(0)"><i class="fas fa-link"></i></a>
-                    <a class="btn btn-danger btn-aksi" href="javascript:void(0)"><i class="fas fa-times"></i></a>
+                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="nik={{ $sensus->nik }}&nama={{ $sensus->nama }}&hubungan_keluarga={{ $sensus->hubungan_keluarga }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
+                    <a onclick="return confirm('Hapus {{ $sensus->nama }} dari keluarga ini?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/anggota/hapus?sensus={{ $sensus->id }}"><i class="fas fa-times"></i></a>
                 </td>
                 <td>{{ $sensus->nik }}</td>
                 <td>{{ $sensus->nama }}</td>
@@ -63,4 +64,76 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="tambah-data" tabindex="-1" aria-labelledby="tambah-data-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambah-data-label">Tambah Anggota Keluarga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/keluarga/anggota/tambah" method="post">
+      @csrf
+        <div class="modal-body">
+            <input type="hidden" value="{{ $keluarga->Nomor_KK }}" name="no_kk">
+            <div class="mb-3">
+                <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
+                <input type="number" class="form-control" id="nik" name="nik">
+            </div>
+            <div class="mb-3">
+                <label for="hubungan_keluarga" class="form-label">Hubungan Dalam Keluarga</label>
+                <input type="text" class="form-control" id="hubungan_keluarga" name="hubungan_keluarga">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ubah-data" tabindex="-1" aria-labelledby="ubah-data-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ubah-data-label">Ubah Hubungan dalam Keluarga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/keluarga/anggota/ubah" method="post">
+      @csrf
+        <div class="modal-body">
+            <input type="hidden" class="form-control" id="nik-ubah" name="nik">
+            <div class="mb-3">
+                <label for="nama-ubah" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama-ubah" name="nama-ubah" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="hubungan_keluarga" class="form-label">Hubungan Dalam Keluarga</label>
+                <input type="text" class="form-control" id="hubungan_keluarga-ubah" name="hubungan_keluarga">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    function edit(element) {
+        const formUbah = document.forms[1];
+        const fields = element.getAttribute('data-fields').split('&');
+
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i].split('=');
+            const fieldElem = document.getElementById(field[0] + '-ubah');
+
+            fieldElem.value = field[1];
+        }
+    }
+</script>
 @endsection
