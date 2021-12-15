@@ -50,9 +50,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-user-friends"></i>
                 </div>
-                <div class="display-4">0</div>
+                <div class="display-4">{{ $total_kelompok }}</div>
                 <h5 class="card-title">Kelompok</h5>
-                <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+                <a href="/admin/kelompok?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
         <div class="card bg-secondary m-2" style="width: 10em;">
