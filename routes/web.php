@@ -11,6 +11,7 @@ use App\Models\ProgramBantuan;
 use App\Models\Keluarga;
 use App\Models\KategoriKelompok;
 use App\Models\Kelompok;
+use App\Models\AnggotaKelompok;
 
 /*
 |--------------------------------------------------------------------------
@@ -323,7 +324,6 @@ Route::post('/admin/kelompok/tambah', function(Request $request) {
         'kode' => $request->input('kode_kelompok'),
         'nik_ketua' => $request->input('ketua_kelompok'),
         'kategori_id' => $request->input('kategori_kelompok'),
-        'jumlah_anggota' => $request->input('jumlah_anggota'),
         'keterangan' => $request->input('deskripsi_kelompok')
     ]);
 
@@ -333,6 +333,26 @@ Route::post('/admin/kelompok/tambah', function(Request $request) {
 Route::get('/admin/kelompok/hapus', function() {
     $kelompok = Kelompok::find(request('kelompok'));
     $kelompok->delete();
+
+    return back();
+});
+
+Route::post('/admin/kelompok/ubah', function(Request $request) {
+    $kelompok = Kelompok::firstWhere('kode', request('kelompok'));
+    $anggotas = $kelompok->anggota;
+
+    $kelompok->nama = $request->input('nama_kelompok');
+    $kelompok->kategori_id = $request->input('kategori_kelompok');
+    $kelompok->nik_ketua = $request->input('ketua_kelompok');
+    $kelompok->kode = $request->input('kode_kelompok');
+    $kelompok->keterangan = $request->input('deskripsi_kelompok');
+
+    foreach ($anggotas as $anggota) {
+        $anggota->kode_kelompok = $request->input('kode_kelompok');
+        $anggota->save();
+    }
+
+    $kelompok->save();
 
     return back();
 });
@@ -359,6 +379,45 @@ Route::post('/admin/kelompok/kategori/tambah', function(Request $request) {
 Route::get('/admin/kelompok/kategori/hapus', function() {
     $kategori = KategoriKelompok::find(request('kategori'));
     $kategori->delete();
+
+    return back();
+});
+
+Route::get('/admin/kelompok/detail', function() {
+    $kelompok = Kelompok::find(request('kelompok'));
+    $desa = Desa::find(request('desa'));
+    $anggota = $kelompok->anggota;
+
+    return view('admin.kelompok-detail', [
+        'desa' => $desa,
+        'kelompok' => $kelompok,
+        'anggotas' => $anggota
+    ]);
+});
+
+Route::post('/admin/kelompok/anggota/tambah', function(Request $request) {
+    AnggotaKelompok::create([
+        'kode_kelompok' => $request->input('kode_kelompok'),
+        'nik_anggota' => $request->input('nik'),
+        'jabatan' => $request->input('jabatan'),
+        'keterangan' => $request->input('keterangan')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/kelompok/anggota/hapus', function() {
+    $anggota = AnggotaKelompok::find(request('anggota'));
+    $anggota->delete();
+
+    return back();
+});
+
+Route::post('/admin/kelompok/anggota/ubah', function(Request $request) {
+    $anggota = AnggotaKelompok::find(request('anggota'));
+    $anggota->jabatan = $request->input('jabatan');
+    $anggota->keterangan = $request->input('keterangan');
+    $anggota->save();
 
     return back();
 });

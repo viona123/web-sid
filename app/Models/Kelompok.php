@@ -18,4 +18,8 @@ class Kelompok extends Model
     public function ketua() {
         return $this->hasOne(Sensus::class, 'nik', 'nik_ketua');
     }
+
+    public function anggota() {
+        return $this->hasMany(AnggotaKelompok::class, 'kode_kelompok', 'kode');
+    }
 }
