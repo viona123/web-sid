@@ -60,7 +60,7 @@
                 <div class="card-body-icon">
                     <i class="fas fa-home"></i>
                 </div>
-                <div class="display-4">1</div>
+                <div class="display-4">{{ $total_rt }}</div>
                 <h5 class="card-title">Rumah Tangga</h5>
                 <a href="/admin/rumah-tangga?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>

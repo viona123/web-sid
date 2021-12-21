@@ -40,12 +40,14 @@ Route::get('/admin', function() {
     $sensus = Sensus::all();
     $keluarga = Keluarga::all();
     $kelompok = Kelompok::all();
+    $rumah_tangga = RumahTangga::all();
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
         'total_sensus' => $sensus->count(),
         'total_keluarga' => $keluarga->count(),
         'total_kelompok' => $kelompok->count(),
+        'total_rt' => $rumah_tangga->count(),
         'desa' => $desa
     ]);
 })->middleware('auth');
