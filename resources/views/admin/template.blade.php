@@ -30,7 +30,7 @@
             <h4 class="nav-header text-white ps-3">Menu Utama</h4>
             <hr class="bg-secondary">
             <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-home me-1"></i> Home</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Info Perumahan</a>
+            <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Info Desa</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-user-plus me-1"></i> Kependudukan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-book-reader me-1"></i> Layanan Surat</a>
             <a class="nav-link text-white" href="#"><i class="far fa-clipboard me-1"></i> Buku Administrasi Desa</a>
