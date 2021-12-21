@@ -41,23 +41,25 @@
 	        </tr>
 	    </thead>
 	    <tbody>
+            @foreach ($semua_rt as $rumah_tangga)
 	        <tr>
-	            <td>1</td>
+	            <td>{{ $rumah_tangga->id }}</td>
 	            <td>
-                    <a class="btn btn-primary btn-aksi" href="/admin/rumah-tangga/detail"><i class="fas fa-list"></i></a> 
-                    <button onclick="edit(this)" data-fields="" data-keluarga-id="" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
-                        <a onclick="return confirm('Hapus data keluarga ?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/hapus"><i class="fas fa-trash-alt"></i></a>
+                    <a class="btn btn-primary btn-aksi" href="/admin/rumah-tangga/detail?desa={{ $desa->id }}&rt={{ $rumah_tangga->id }}"><i class="fas fa-list"></i></a> 
+                    <button onclick="edit(this)" data-fields="nomor-rt={{ $rumah_tangga->no_rt }}&kepala-rt={{ $rumah_tangga->nik_kepala_rt }}&alamat={{ $rumah_tangga->alamat }}&dusun={{ $rumah_tangga->dusun }}&rt={{ $rumah_tangga->rt }}&rw={{ $rumah_tangga->rw }}" data-rt-id="{{ $rumah_tangga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+                    <a onclick="return confirm('Hapus data rumah tangga {{ $rumah_tangga->nik_kepala_rt }} ?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/hapus?rt={{ $rumah_tangga->id }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
-	            <td>11223344</td>
-	            <td>33889100</td>
-	            <td>33348209502</td>
+	            <td>{{ $rumah_tangga->no_rt }}</td>
+	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
+	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
 	            <td>5</td>
-	            <td>gggggg</td>
-	            <td>Dusun</td>
-	            <td>2</td>
-	            <td>5</td>
-	            <td>2021-12-17</td>
+	            <td>{{ $rumah_tangga->alamat }}</td>
+	            <td>{{ $rumah_tangga->dusun }}</td>
+	            <td>{{ $rumah_tangga->rw }}</td>
+	            <td>{{ $rumah_tangga->rt }}</td>
+	            <td>{{ $rumah_tangga->tanggal_terdaftar }}</td>
 	        </tr>
+            @endforeach
 	    </tbody>
 	</table>
 </div>
@@ -73,12 +75,12 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="nomor-kk" class="form-label">Nomor Rumah Tangga</label>
-                <input type="number" class="form-control" id="nomor-kk" name="nomor_kk">
+                <label for="nomor-rt" class="form-label">Nomor Rumah Tangga</label>
+                <input type="number" class="form-control" id="nomor-rt" name="nomor_rt">
             </div>
             <div class="mb-3">
-                <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga">
+                <label for="kepala-rt" class="form-label">NIK Kepala Keluarga</label>
+                <input type="number" class="form-control" id="kepala-rt" name="kepala_rt">
             </div>
             <div class="mb-3">
                 <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
@@ -121,12 +123,12 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="nomor-kk" class="form-label">Nomor Rumah Tangga</label>
-                <input type="number" class="form-control" id="nomor-kk" name="nomor_kk">
+                <label for="nomor-rt" class="form-label">Nomor Rumah Tangga</label>
+                <input type="number" class="form-control" id="nomor-rt-edit" name="nomor_rt">
             </div>
             <div class="mb-3">
-                <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga">
+                <label for="kepala-rt" class="form-label">NIK Kepala Keluarga</label>
+                <input type="number" class="form-control" id="kepala-rt-edit" name="kepala_rt">
             </div>
             <div class="mb-3">
                 <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
@@ -134,19 +136,19 @@
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat">
+                <input type="text" class="form-control" id="alamat-edit" name="alamat">
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun" name="dusun">
+                <input type="text" class="form-control" id="dusun-edit" name="dusun">
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>
-                <input type="number" class="form-control" id="rt" name="rt">
+                <input type="number" class="form-control" id="rt-edit" name="rt">
             </div>
             <div class="mb-3">
                 <label for="rw" class="form-label">RW</label>
-                <input type="number" class="form-control" id="rw" name="rw">
+                <input type="number" class="form-control" id="rw-edit" name="rw">
             </div>
         </div>
         <div class="modal-footer">
@@ -157,4 +159,18 @@
     </div>
   </div>
 </div>
+
+<script>
+    function edit(element) {
+        const formUbah = document.forms[1];
+        formUbah.action = '/admin/rumah-tangga/ubah?rt_id=' + element.getAttribute('data-rt-id');
+        const fields = element.getAttribute('data-fields').split('&');
+
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i].split('=');
+            const fieldElem = document.getElementById(field[0] + '-edit');
+            fieldElem.value = field[1];
+        }
+    }
+</script>
 @endsection

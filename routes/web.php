@@ -15,6 +15,7 @@ use App\Models\Dusun;
 use App\Models\Sensus;
 use App\Models\Keluarga;
 use App\Models\Kelompok;
+use App\Models\RumahTangga;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,10 +84,85 @@ Route::post('/admin/kelompok/anggota/ubah', [KelompokController::class, 'ubahAng
 
 Route::get('/admin/rumah-tangga', function() {
     $desa = Desa::find(request('desa'));
+    $semua_rt = RumahTangga::all();
 
     return view('admin.rumah-tangga', [
-        'desa' => $desa
+        'desa' => $desa,
+        'semua_rt' => $semua_rt
     ]);
+});
+
+Route::post('/admin/rumah-tangga/tambah', function(Request $request) {
+    RumahTangga::create([
+        'no_rt' => $request->input('nomor_rt'),
+        'nik_kepala_rt' => $request->input('kepala_rt'),
+        'alamat' => $request->input('alamat'),
+        'dusun' => $request->input('dusun'),
+        'rw' => $request->input('rw'),
+        'rt' => $request->input('rt'),
+        'tanggal_terdaftar' => date('Y-m-d')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/rumah-tangga/hapus', function() {
+    $rt = RumahTangga::find(request('rt'));
+    $rt->delete();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/ubah', function(Request $request) {
+    $rt = RumahTangga::find(request('rt_id'));
+
+    $rt->no_rt = $request->input('nomor_rt');
+    $rt->nik_kepala_rt = $request->input('kepala_rt');
+    $rt->alamat = $request->input('alamat');
+    $rt->dusun = $request->input('dusun');
+    $rt->rt = $request->input('rt');
+    $rt->rw = $request->input('rw');
+
+    $rt->save();
+
+    return back();
+});
+
+Route::get('/admin/rumah-tangga/detail', function() {
+    $rt = RumahTangga::find(request('rt'));
+    $desa = Desa::find(request('desa'));
+    $anggota = $rt->anggota;
+
+    return view('admin.rumah-tangga-detail', [
+        'rumah_tangga' => $rt,
+        'desa' => $desa,
+        'anggota' => $anggota
+    ]);
+});
+
+Route::get('/admin/rumah-tangga/anggota/hapus', function() {
+    $anggotaRT = Sensus::find(request('sensus'));
+    $anggotaRT->no_rumah_tangga = 0;
+    $anggotaRT->save();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/anggota/tambah', function(Request $request) {
+    $sensus = Sensus::firstWhere('nik', $request->input('nik'));
+    $sensus->no_rumah_tangga = $request->input('no_rt');
+    $sensus->hubungan_keluarga = $request->input('hubungan_rt');
+    $sensus->save();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/anggota/ubah', function(Request $request) {
+    $sensus = Sensus::firstWhere('nik', $request->input('nik'));
+    $sensus->hubungan_keluarga = $request->input('hubungan_rt');
+    $sensus->save();
+
+    return back();
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
