@@ -422,6 +422,14 @@ Route::post('/admin/kelompok/anggota/ubah', function(Request $request) {
     return back();
 });
 
+Route::get('/admin/rumah-tangga', function() {
+    $desa = Desa::find(request('desa'));
+
+    return view('admin.rumah-tangga', [
+        'desa' => $desa
+    ]);
+});
+
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);

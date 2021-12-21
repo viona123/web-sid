@@ -62,7 +62,7 @@
                 </div>
                 <div class="display-4">1</div>
                 <h5 class="card-title">Rumah Tangga</h5>
-                <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
+                <a href="/admin/rumah-tangga?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
     </div>
