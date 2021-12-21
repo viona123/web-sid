@@ -6,7 +6,7 @@
 <div class="position-relative d-flex justify-content-center align-items-center" style="background-image: url('/images/bg.jpg'); background-size: cover; min-height: 50vw">
     <div class="text-white text-center">
         <h1 style="font-size: 10vw;">
-            <img style="width: 14vw; margin-right: -4vw; display: inline-block;" src="/images/logo-transparent.png" alt="siska">
+            <img class="hehe "style="  display: inline-block;" src="/images/logo-transparent.png" alt="siska">
             SISKA
         </h1>
         <p>Sistem Informasi Desa dan Kawasan</p>

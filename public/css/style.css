@@ -134,6 +134,34 @@ table.detail {
     border-spacing: 1rem;
 }
 
+.nav-link:hover{
+    background-color: #0085FF;
+    transition: 0,3s;
+}
+.hehe{
+    margin-left: 10px;
+    width: 195px;
+    height: 195px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    animation: muter 4s ease;
+    margin-right: -65px;
+}
+
+@keyframes muter {
+    from {
+        width: 42px;
+        height: 60px;
+    }
+
+    to {
+        width: 195px;
+        height: 195px;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 @media screen and (max-width: 480px) {
     .menu {
         display: none;
