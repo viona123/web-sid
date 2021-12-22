@@ -16,6 +16,7 @@ use App\Models\Sensus;
 use App\Models\Keluarga;
 use App\Models\Kelompok;
 use App\Models\RumahTangga;
+use App\Models\ProgramBantuan;
 
 /*
 |--------------------------------------------------------------------------
@@ -165,6 +166,16 @@ Route::post('/admin/rumah-tangga/anggota/ubah', function(Request $request) {
     $sensus->save();
 
     return back();
+});
+
+Route::get('/admin/program-bantuan', function() {
+	$desa = Desa::find(request('desa'));
+	$semua_bantuan = ProgramBantuan::all();
+
+	return view('admin.program_bantuan', [
+		'desa' => $desa,
+		'semua_bantuan' => $semua_bantuan
+	]);
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

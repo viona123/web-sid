@@ -29,12 +29,12 @@
           <div class="list-group bg-dark">
             <h4 class="nav-header text-white ps-3">Menu Utama</h4>
             <hr class="bg-secondary">
-            <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-home me-1"></i> Home</a>
+            <a class="nav-link text-white" href="/admin?desa={{ $desa->id }}"><i class="fas fa-home me-1"></i> Home</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Info Desa</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-user-plus me-1"></i> Kependudukan</a>
+            <a class="nav-link text-white" href="/admin/penduduk?desa={{ $desa->id }}"><i class="fas fa-user-plus me-1"></i> Kependudukan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-book-reader me-1"></i> Layanan Surat</a>
             <a class="nav-link text-white" href="#"><i class="far fa-clipboard me-1"></i> Buku Administrasi Desa</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-tint me-1"></i> Program Bantuan</a>
+            <a class="nav-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-tint me-1"></i> Program Bantuan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-globe-asia me-1"></i> Pemetaaan</a>
             <a class="nav-link text-white" href="#"><i class="far fa-envelope me-1"></i> SMS</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>
