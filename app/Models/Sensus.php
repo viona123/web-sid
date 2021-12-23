@@ -18,4 +18,8 @@ class Sensus extends Model
     public function rumahTangga() {
         return $this->belongsTo(RumahTangga::class, 'no_rt', 'no_rumah_tangga');
     }
+
+    public function bantuan() {
+        return $this->belongsTo(PenerimaBantuan::class, 'nik_penerima', 'nik');
+    }
 }

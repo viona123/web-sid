@@ -17,6 +17,7 @@ use App\Models\Keluarga;
 use App\Models\Kelompok;
 use App\Models\RumahTangga;
 use App\Models\ProgramBantuan;
+use App\Models\PenerimaBantuan;
 
 /*
 |--------------------------------------------------------------------------
@@ -172,10 +173,83 @@ Route::get('/admin/program-bantuan', function() {
 	$desa = Desa::find(request('desa'));
 	$semua_bantuan = ProgramBantuan::all();
 
-	return view('admin.program_bantuan', [
+	return view('admin.program_bantuan.index', [
 		'desa' => $desa,
 		'semua_bantuan' => $semua_bantuan
 	]);
+});
+
+Route::post('/admin/program-bantuan/tambah', function(Request $request) {
+    ProgramBantuan::create([
+        'sasaran' => $request->input('sasaran'),
+        'nama_program' => $request->input('nama_program'),
+        'keterangan' => $request->input('keterangan'),
+        'asal_dana' => $request->input('asal_dana'),
+        'tanggal_mulai' => $request->input('tanggal_mulai'),
+        'tanggal_akhir' => $request->input('tanggal_akhir'),
+        'status' => $request->input('status')
+    ]);
+
+    return back();
+});
+
+Route::post('/admin/program-bantuan/ubah', function(Request $request) {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $bantuan->nama_program = $request->input('nama_program');
+    $bantuan->sasaran = $request->input('sasaran');
+    $bantuan->keterangan = $request->input('keterangan');
+    $bantuan->tanggal_mulai = $request->input('tanggal_mulai');
+    $bantuan->tanggal_akhir = $request->input('tanggal_akhir');
+    $bantuan->asal_dana = $request->input('asal_dana');
+    $bantuan->status = $request->input('status');
+    $bantuan->save();
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/hapus', function() {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $bantuan->delete();
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/detail', function() {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $desa = Desa::find(request('desa'));
+    $penerima = $bantuan->penerima;
+
+    $view = 'admin.program_bantuan.detail_perorangan';
+
+    if ($bantuan->sasaran == 'Keluarga - KK') {
+        $view = 'admin.program_bantuan.detail_keluarga';
+    } else if ($bantuan->sasaran == 'Rumah Tangga') {
+        $view = 'admin.program_bantuan.detail_rt';
+    } else if ($bantuan->sasaran == 'Kelompok') {
+        $view = 'admin.program_bantuan.detail_kelompok';
+    }
+
+    return view($view, [
+        'desa' => $desa,
+        'bantuan' => $bantuan,
+        'penerimaBantuan' => $penerima
+    ]);
+});
+
+Route::post('/admin/program-bantuan/penerima/tambah', function(Request $request) {
+    PenerimaBantuan::create([
+        request('fkey') => $request->input('fkey_value'),
+        'bantuan_id' => request('bantuan')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/penerima/hapus', function(Request $request) {
+    $penerima = PenerimaBantuan::find(request('penerima'));
+    $penerima->delete();
+
+    return back();
 });
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');

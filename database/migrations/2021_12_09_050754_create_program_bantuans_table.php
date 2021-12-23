@@ -15,10 +15,14 @@ class CreateProgramBantuansTable extends Migration
     {
         Schema::create('program_bantuans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_akhir');
+            $table->enum('sasaran', ['Penduduk Perorangan', 'Keluarga - KK', 'Rumah Tangga', 'Kelompok']);
             $table->string('nama_program');
             $table->string('keterangan');
-            $table->string('nik_penerima');
+            $table->enum('asal_dana', ['Pusat', 'Provinsi', 'Kab/Kota', 'Dana Desa', 'Lain-Lain']);
+            $table->enum('status', ['Aktif', 'Tidak Aktif']);
+            $table->string('no_penerima')->nullable();
             $table->timestamps();
         });
     }
