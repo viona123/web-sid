@@ -148,6 +148,27 @@ table.detail {
     margin-right: -65px;
 }
 
+.ikon-sosmed {
+    transition: all 0.7s;
+}
+
+.ikon-sosmed:hover {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.btn #wer{
+    border-color: #000000;
+    box-shadow: none;
+    
+
+}
+
+ .hihi:hover{
+   background-color: #0085FF;
+   color: #FFFFFF;
+}
+
 @keyframes muter {
     from {
         width: 42px;
