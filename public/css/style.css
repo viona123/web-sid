@@ -148,6 +148,14 @@ table.detail {
     margin-right: -65px;
 }
 
+.card-admin {
+    cursor: pointer;
+}
+
+.card-admin:hover {
+    opacity: 0.8;
+}
+
 @keyframes muter {
     from {
         width: 42px;
