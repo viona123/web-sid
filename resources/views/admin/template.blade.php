@@ -29,20 +29,22 @@
           <div class="list-group bg-dark">
             <h4 class="nav-header text-white ps-3">Menu Utama</h4>
             <hr class="bg-secondary">
-            <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-home me-1"></i> Home</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Identitas Desa</a>
-            <button class="btn btn-dark dropdown-toggle" id="wer"type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"><a class="nav-link text-white" href="#"><i class="fas fa-user-plus me-1"></i> Kependudukan</a></button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-    <div class="hhhh">
-    <li class="hihi"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}">Penduduk</a></li>
-    <li class="hihi"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}">Keluarga</a></li>
-    <li class="hihi"><a class="dropdown-item" href="#">Rumah tangga</a></li>
-    <li class="hihi"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}">Kelompok</a></li>
-</div>
-  </ul>
+            <a class="nav-link text-white" href="/admin?desa={{ $desa->id }}"><i class="fas fa-home me-1"></i> Home</a>
+            <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Info Desa</a>
+            <div class="dropdown hihi">
+              <button class="btn menu dropdown-toggle text-white" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> Kependudukan
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <li class="hihi"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}">Penduduk</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}">Keluarga</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/rumah-tangga?desa={{ $desa->id }}">Rumah tangga</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}">Kelompok</a></li>
+              </ul>
+            </div>
             <a class="nav-link text-white" href="#"><i class="fas fa-book-reader me-1"></i> Layanan Surat</a>
             <a class="nav-link text-white" href="#"><i class="far fa-clipboard me-1"></i> Buku Administrasi Desa</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-tint me-1"></i> Program Bantuan</a>
+            <a class="nav-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-tint me-1"></i> Program Bantuan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-globe-asia me-1"></i> Pemetaaan</a>
             <a class="nav-link text-white" href="#"><i class="far fa-envelope me-1"></i> SMS</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>

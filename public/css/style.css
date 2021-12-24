@@ -157,16 +157,21 @@ table.detail {
     transform-origin: center;
 }
 
-.btn #wer{
-    border-color: #000000;
+.btn.menu{
     box-shadow: none;
-    
-
+    outline: none;
 }
-
  .hihi:hover{
    background-color: #0085FF;
    color: #FFFFFF;
+ }
+
+.card-admin {
+    cursor: pointer;
+}
+
+.card-admin:hover {
+    opacity: 0.8;
 }
 
 @keyframes muter {

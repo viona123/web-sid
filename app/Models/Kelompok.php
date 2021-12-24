@@ -22,4 +22,8 @@ class Kelompok extends Model
     public function anggota() {
         return $this->hasMany(AnggotaKelompok::class, 'kode_kelompok', 'kode');
     }
+
+    public function bantuan() {
+        return $this->belongsToMany(PenerimaBantuan::class, 'kode_kelompok_penerima', 'kode');
+    }
 }
