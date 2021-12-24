@@ -36,15 +36,15 @@
                 <i class="fas fa-user"></i> Kependudukan
               </button>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                <li class="hihi"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}">Penduduk</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}">Keluarga</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/rumah-tangga?desa={{ $desa->id }}">Rumah tangga</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}">Kelompok</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}"><i class="fas fa-user"></i> Penduduk</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}"><i class="fas fa-user-friends"></i> Keluarga</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/rumah-tangga?desa={{ $desa->id }}"><i class="fas fa-venus-mars"></i> Rumah tangga</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}"><i class="fas fa-users"></i> Kelompok</a></li>
               </ul>
             </div>
             <a class="nav-link text-white" href="#"><i class="fas fa-book-reader me-1"></i> Layanan Surat</a>
             <a class="nav-link text-white" href="#"><i class="far fa-clipboard me-1"></i> Buku Administrasi Desa</a>
-            <a class="nav-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-tint me-1"></i> Program Bantuan</a>
+            <a class="nav-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-coins me-1"></i> Program Bantuan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-globe-asia me-1"></i> Pemetaaan</a>
             <a class="nav-link text-white" href="#"><i class="far fa-envelope me-1"></i> SMS</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-cog me-1"></i> Pengaturan</a>

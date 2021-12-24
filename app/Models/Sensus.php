@@ -20,6 +20,6 @@ class Sensus extends Model
     }
 
     public function bantuan() {
-        return $this->belongsTo(PenerimaBantuan::class, 'nik_penerima', 'nik');
+        return $this->hasMany(PenerimaBantuan::class, 'nik_penerima', 'nik');
     }
 }

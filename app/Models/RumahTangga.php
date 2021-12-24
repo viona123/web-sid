@@ -20,6 +20,6 @@ class RumahTangga extends Model
     }
 
     public function bantuan() {
-        return $this->belongsToMany(PenerimaBantuan::class, 'no_rt_penerima', 'no_rt');
+        return $this->hasMany(PenerimaBantuan::class, 'no_rt_penerima', 'no_rt');
     }
 }

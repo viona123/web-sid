@@ -12,18 +12,22 @@ class PenerimaBantuan extends Model
     protected $guarded = ['id'];
 
     public function penerimaPerorangan() {
-        return $this->hasOne(Sensus::class, 'nik', 'nik_penerima');
+        return $this->belongsTo(Sensus::class, 'nik_penerima', 'nik');
     }
 
     public function penerimaKeluarga() {
-        return $this->hasOne(Keluarga::class, 'Nomor_KK', 'no_kk_penerima');
+        return $this->belongsTo(Keluarga::class, 'no_kk_penerima', 'Nomor_KK');
     }
 
     public function penerimaRumahTangga() {
-        return $this->hasOne(RumahTangga::class, 'no_rt', 'no_rt_penerima');
+        return $this->belongsTo(RumahTangga::class, 'no_rt_penerima', 'no_rt');
     }
 
     public function penerimaKelompok() {
-        return $this->hasOne(Kelompok::class, 'kode', 'kode_kelompok_penerima');
+        return $this->belongsTo(Kelompok::class, 'kode_kelompok_penerima', 'kode');
+    }
+
+    public function bantuan() {
+        return $this->belongsTo(ProgramBantuan::class, 'bantuan_id');
     }
 }

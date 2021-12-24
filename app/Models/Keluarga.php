@@ -20,6 +20,6 @@ class Keluarga extends Model
     }
 
     public function bantuan() {
-        return $this->belongsToMany(PenerimaBantuan::class, 'no_kk_penerima', 'Nomor_KK');
+        return $this->hasMany(PenerimaBantuan::class, 'no_kk_penerima', 'Nomor_KK');
     }
 }
