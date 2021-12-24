@@ -89,7 +89,7 @@ class SensusController extends Controller
 	public function detail() {
 	    $penduduk = Sensus::find(request('sensus'));
 	    $desa = Desa::find(request('desa'));
-	    $bantuan = ProgramBantuan::where('nik_penerima', $penduduk->nik)->get();
+	    $bantuan = $penduduk->bantuan;
 	
 	    return view('admin.penduduk-detail', [
 	        'penduduk' => $penduduk,

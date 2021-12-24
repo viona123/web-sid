@@ -12,4 +12,8 @@ class ProgramBantuan extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function penerima() {
+        return $this->hasMany(PenerimaBantuan::class, 'bantuan_id');
+    }
 }

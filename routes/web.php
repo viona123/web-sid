@@ -15,6 +15,9 @@ use App\Models\Dusun;
 use App\Models\Sensus;
 use App\Models\Keluarga;
 use App\Models\Kelompok;
+use App\Models\RumahTangga;
+use App\Models\ProgramBantuan;
+use App\Models\PenerimaBantuan;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +42,14 @@ Route::get('/admin', function() {
     $sensus = Sensus::all();
     $keluarga = Keluarga::all();
     $kelompok = Kelompok::all();
+    $rumah_tangga = RumahTangga::all();
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
         'total_sensus' => $sensus->count(),
         'total_keluarga' => $keluarga->count(),
         'total_kelompok' => $kelompok->count(),
+        'total_rt' => $rumah_tangga->count(),
         'desa' => $desa
     ]);
 })->middleware('auth');
@@ -80,6 +85,172 @@ Route::get('/admin/kelompok/detail', [KelompokController::class, 'detail']);
 Route::post('/admin/kelompok/anggota/tambah', [KelompokController::class, 'tambahAnggota']);
 Route::get('/admin/kelompok/anggota/hapus', [KelompokController::class, 'hapusAnggota']);
 Route::post('/admin/kelompok/anggota/ubah', [KelompokController::class, 'ubahAnggota']);
+
+Route::get('/admin/rumah-tangga', function() {
+    $desa = Desa::find(request('desa'));
+    $semua_rt = RumahTangga::all();
+
+    return view('admin.rumah-tangga', [
+        'desa' => $desa,
+        'semua_rt' => $semua_rt
+    ]);
+});
+
+Route::post('/admin/rumah-tangga/tambah', function(Request $request) {
+    RumahTangga::create([
+        'no_rt' => $request->input('nomor_rt'),
+        'nik_kepala_rt' => $request->input('kepala_rt'),
+        'alamat' => $request->input('alamat'),
+        'dusun' => $request->input('dusun'),
+        'rw' => $request->input('rw'),
+        'rt' => $request->input('rt'),
+        'tanggal_terdaftar' => date('Y-m-d')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/rumah-tangga/hapus', function() {
+    $rt = RumahTangga::find(request('rt'));
+    $rt->delete();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/ubah', function(Request $request) {
+    $rt = RumahTangga::find(request('rt_id'));
+
+    $rt->no_rt = $request->input('nomor_rt');
+    $rt->nik_kepala_rt = $request->input('kepala_rt');
+    $rt->alamat = $request->input('alamat');
+    $rt->dusun = $request->input('dusun');
+    $rt->rt = $request->input('rt');
+    $rt->rw = $request->input('rw');
+
+    $rt->save();
+
+    return back();
+});
+
+Route::get('/admin/rumah-tangga/detail', function() {
+    $rt = RumahTangga::find(request('rt'));
+    $desa = Desa::find(request('desa'));
+    $anggota = $rt->anggota;
+
+    return view('admin.rumah-tangga-detail', [
+        'rumah_tangga' => $rt,
+        'desa' => $desa,
+        'anggota' => $anggota
+    ]);
+});
+
+Route::get('/admin/rumah-tangga/anggota/hapus', function() {
+    $anggotaRT = Sensus::find(request('sensus'));
+    $anggotaRT->no_rumah_tangga = 0;
+    $anggotaRT->save();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/anggota/tambah', function(Request $request) {
+    $sensus = Sensus::firstWhere('nik', $request->input('nik'));
+    $sensus->no_rumah_tangga = $request->input('no_rt');
+    $sensus->hubungan_keluarga = $request->input('hubungan_rt');
+    $sensus->save();
+
+    return back();
+});
+
+Route::post('/admin/rumah-tangga/anggota/ubah', function(Request $request) {
+    $sensus = Sensus::firstWhere('nik', $request->input('nik'));
+    $sensus->hubungan_keluarga = $request->input('hubungan_rt');
+    $sensus->save();
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan', function() {
+	$desa = Desa::find(request('desa'));
+	$semua_bantuan = ProgramBantuan::all();
+
+	return view('admin.program_bantuan.index', [
+		'desa' => $desa,
+		'semua_bantuan' => $semua_bantuan
+	]);
+});
+
+Route::post('/admin/program-bantuan/tambah', function(Request $request) {
+    ProgramBantuan::create([
+        'sasaran' => $request->input('sasaran'),
+        'nama_program' => $request->input('nama_program'),
+        'keterangan' => $request->input('keterangan'),
+        'asal_dana' => $request->input('asal_dana'),
+        'tanggal_mulai' => $request->input('tanggal_mulai'),
+        'tanggal_akhir' => $request->input('tanggal_akhir'),
+        'status' => $request->input('status')
+    ]);
+
+    return back();
+});
+
+Route::post('/admin/program-bantuan/ubah', function(Request $request) {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $bantuan->nama_program = $request->input('nama_program');
+    $bantuan->sasaran = $request->input('sasaran');
+    $bantuan->keterangan = $request->input('keterangan');
+    $bantuan->tanggal_mulai = $request->input('tanggal_mulai');
+    $bantuan->tanggal_akhir = $request->input('tanggal_akhir');
+    $bantuan->asal_dana = $request->input('asal_dana');
+    $bantuan->status = $request->input('status');
+    $bantuan->save();
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/hapus', function() {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $bantuan->delete();
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/detail', function() {
+    $bantuan = ProgramBantuan::find(request('bantuan'));
+    $desa = Desa::find(request('desa'));
+    $penerima = $bantuan->penerima;
+
+    $view = 'admin.program_bantuan.detail_perorangan';
+
+    if ($bantuan->sasaran == 'Keluarga - KK') {
+        $view = 'admin.program_bantuan.detail_keluarga';
+    } else if ($bantuan->sasaran == 'Rumah Tangga') {
+        $view = 'admin.program_bantuan.detail_rt';
+    } else if ($bantuan->sasaran == 'Kelompok') {
+        $view = 'admin.program_bantuan.detail_kelompok';
+    }
+
+    return view($view, [
+        'desa' => $desa,
+        'bantuan' => $bantuan,
+        'penerimaBantuan' => $penerima
+    ]);
+});
+
+Route::post('/admin/program-bantuan/penerima/tambah', function(Request $request) {
+    PenerimaBantuan::create([
+        request('fkey') => $request->input('fkey_value'),
+        'bantuan_id' => request('bantuan')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/program-bantuan/penerima/hapus', function(Request $request) {
+    $penerima = PenerimaBantuan::find(request('penerima'));
+    $penerima->delete();
+
+    return back();
+});
 
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);

@@ -20,6 +20,7 @@ class CreateSensusesTable extends Migration
             $table->string('nama');
             $table->string('no_kk');
             $table->string('no_kk_sebelumnya');
+            $table->string('no_rumah_tangga')->nullable();
             $table->string('hubungan_keluarga');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('agama');
