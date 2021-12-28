@@ -81,7 +81,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="ketua_kelompok" class="form-label">Ketua Kelompok</label>
+                <label for="ketua_kelompok" class="form-label">NIK Ketua Kelompok</label>
                 <input type="text" class="form-control" id="ketua_kelompok" name="ketua_kelompok">
             </div>
             <div class="mb-3">

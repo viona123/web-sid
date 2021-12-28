@@ -24,6 +24,6 @@ class Kelompok extends Model
     }
 
     public function bantuan() {
-        return $this->belongsToMany(PenerimaBantuan::class, 'kode_kelompok_penerima', 'kode');
+        return $this->hasMany(PenerimaBantuan::class, 'kode_kelompok_penerima', 'kode');
     }
 }

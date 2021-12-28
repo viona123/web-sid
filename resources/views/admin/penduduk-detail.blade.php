@@ -110,8 +110,8 @@
     </tr>
     @foreach ($bantuan as $bant)
     <tr>
-        <td>{{ $bant->nama_program }}</td>
-        <td>{{ $bant->keterangan }}</td>
+        <td>{{ $bant->bantuan->nama_program }}</td>
+        <td>{{ $bant->bantuan->keterangan }}</td>
     </tr>
     @endforeach
 </table>
