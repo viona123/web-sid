@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td width="30%">Kepala Rumah Tangga</td>
-        <td>: {{ $rumah_tangga->nik_kepala_rt }}</td>
+        <td>: {{ $rumah_tangga->kepala->nama }}</td>
     </tr>
     <tr>
         <td width="30%">Alamat</td>

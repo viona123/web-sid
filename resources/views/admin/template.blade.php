@@ -30,7 +30,7 @@
             <h4 class="nav-header text-white ps-3">Menu Utama</h4>
             <hr class="bg-secondary">
             <a class="nav-link text-white" href="/admin?desa={{ $desa->id }}"><i class="fas fa-home me-1"></i> Home</a>
-            <a class="nav-link text-white" href="#"><i class="fas fa-info me-1"></i> Info Desa</a>
+            <a class="nav-link text-white" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info me-1"></i> Info Desa</a>
             <div class="dropdown hihi">
               <button class="btn menu dropdown-toggle text-white" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user"></i> Kependudukan
@@ -52,6 +52,10 @@
         </div>
         <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll">
           @yield('content')
+
+          <footer>
+            Aplikasi SISKA 2022
+          </footer>
         </div>
       </div>
     </div>

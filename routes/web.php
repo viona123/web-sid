@@ -252,6 +252,30 @@ Route::get('/admin/program-bantuan/penerima/hapus', function(Request $request) {
     return back();
 });
 
+Route::get('/admin/identitas_desa', function() {
+    $desa = Desa::find(request('desa'));
+
+    return view('admin.identitas_desa', [
+        'desa' => $desa
+    ]);
+});
+
+Route::post('/admin/identitas_desa/ubah', function(Request $request) {
+    $desa = Desa::find(request('desa'));
+    $desa->nama = $request->input('nama');
+    $desa->kode_pos = $request->input('kode_pos');
+    $desa->nik_kepala = $request->input('nik_kepala');
+    $desa->alamat_kantor = $request->input('alamat_kantor');
+    $desa->email = $request->input('alamat_email');
+    $desa->no_telp = $request->input('no_telp');
+    $desa->website = $request->input('website');
+    $desa->nama_camat = $request->input('nama_camat');
+    $desa->nip_camat = $request->input('nip_camat');
+    $desa->save();
+
+    return back();
+});
+
 Route::get('/login/penduduk', [LoginController::class, 'loginPendudukTampilan'])->name('login-penduduk');
 Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);

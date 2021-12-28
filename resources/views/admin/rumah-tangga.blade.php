@@ -52,7 +52,7 @@
 	            <td>{{ $rumah_tangga->no_rt }}</td>
 	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
 	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
-	            <td>5</td>
+	            <td>{{ $rumah_tangga->anggota->count() }}</td>
 	            <td>{{ $rumah_tangga->alamat }}</td>
 	            <td>{{ $rumah_tangga->dusun }}</td>
 	            <td>{{ $rumah_tangga->rw }}</td>
