@@ -22,4 +22,8 @@ class Sensus extends Model
     public function bantuan() {
         return $this->hasMany(PenerimaBantuan::class, 'nik_penerima', 'nik');
     }
+
+    public function staffDesa() {
+        return $this->hasOne(StaffDesa::class, 'nik_staff', 'nik');
+    }
 }

@@ -18,6 +18,7 @@ use App\Models\Kelompok;
 use App\Models\RumahTangga;
 use App\Models\ProgramBantuan;
 use App\Models\PenerimaBantuan;
+use App\Models\StaffDesa;
 
 /*
 |--------------------------------------------------------------------------
@@ -272,6 +273,65 @@ Route::post('/admin/identitas_desa/ubah', function(Request $request) {
     $desa->nama_camat = $request->input('nama_camat');
     $desa->nip_camat = $request->input('nip_camat');
     $desa->save();
+
+    return back();
+});
+
+Route::get('/admin/pengurus_desa', function() {
+    $desa = Desa::find(request('desa'));
+    $pengurus = StaffDesa::all();
+
+    return view('admin.pengurus_desa', [
+        'desa' => $desa,
+        'pengurus' => $pengurus
+    ]);
+});
+
+Route::get('/admin/pengurus_desa/ubah-status', function() {
+    $staff = StaffDesa::find(request('staff'));
+    $staff->status = trim(request('value'));
+    $staff->save();
+
+    return back();
+});
+
+Route::get('/admin/pengurus_desa/hapus', function() {
+    $staff = StaffDesa::find(request('staff'));
+    $staff->delete();
+
+    return back();
+});
+
+Route::post('/admin/pengurus_desa/tambah', function(Request $request) {
+    StaffDesa::create([
+        'nik_staff' => $request->input('nik_pegawai'),
+        'nipd' => $request->input('nipd'),
+        'nip' => $request->input('nip'),
+        'no_sk_pengangkatan' => $request->input('no_sk_pengangkatan'),
+        'no_sk_pemberhentian' => $request->input('no_sk_pemberhentian'),
+        'tanggal_sk_pengangkatan' => $request->input('tanggal_sk_pengangkatan'),
+        'tanggal_sk_pemberhentian' => $request->input('tanggal_sk_pemberhentian'),
+        'status' => $request->input('status'),
+        'jabatan' => $request->input('jabatan'),
+        'periode_jabatan' => $request->input('periode_jabatan')
+    ]);
+
+    return back();
+});
+
+Route::post('/admin/pengurus_desa/ubah', function(Request $request) {
+    $staff = StaffDesa::find(request('staff'));
+    $staff->nik_staff = $request->input('nik_pegawai');
+    $staff->nipd = $request->input('nipd');
+    $staff->nip = $request->input('nip');
+    $staff->no_sk_pengangkatan = $request->input('no_sk_pengangkatan');
+    $staff->no_sk_pemberhentian = $request->input('no_sk_pemberhentian');
+    $staff->tanggal_sk_pengangkatan = $request->input('tanggal_sk_pengangkatan');
+    $staff->tanggal_sk_pemberhentian = $request->input('tanggal_sk_pemberhentian');
+    $staff->status = $request->input('status');
+    $staff->jabatan = $request->input('jabatan');
+    $staff->periode_jabatan = $request->input('periode_jabatan');
+    $staff->save();
 
     return back();
 });
