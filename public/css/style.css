@@ -103,6 +103,7 @@
 
  html{
 	position: relative;
+	font-size: 12px;
 }
 
 .dropdown-item:hover {
@@ -134,18 +135,21 @@ table.detail {
     border-spacing: 1rem;
 }
 
-.nav-link:hover{
+.menu-link {
+	line-height: 4rem;
+	vertical-align: middle;
+	padding-left: 1rem;
+}
+
+.menu-link:hover{
     background-color: #0085FF;
-    transition: 0,3s;
+    transition: 0.3s;
 }
 .hehe{
-    margin-left: 10px;
-    width: 195px;
-    height: 195px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    margin-right: -2rem;
+    width: 20vw;
+    height: 20vw;
     animation: muter 4s ease;
-    margin-right: -65px;
 }
 
 .ikon-sosmed {
@@ -157,9 +161,11 @@ table.detail {
     transform-origin: center;
 }
 
-.btn.menu{
+.menu{
     box-shadow: none;
     outline: none;
+	width: 100%;
+	text-align: left;
 }
  .hihi:hover{
    background-color: #0085FF;
@@ -174,6 +180,16 @@ table.detail {
     opacity: 0.8;
 }
 
+nav {
+	z-index: 2;
+}
+
+.menu-bar {
+	display: none;
+	position: fixed;
+	z-index: 2;
+}
+
 footer {
     padding: 1rem;
     border-top: 1px solid #909090;
@@ -182,14 +198,24 @@ footer {
 
 @keyframes muter {
     from {
-        width: 42px;
-        height: 60px;
+        width: 2rem;
+        height: 2rem;
     }
 
     to {
-        width: 195px;
-        height: 195px;
+        width: 20vw;
+        height: 20vw;
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+@media screen and (min-width: 768px) {
+	.menu-bar {
+		display: initial;
+		position: relative;
+	}
+	.menu-bar-toggler {
+		display: none;
+	}
 }
