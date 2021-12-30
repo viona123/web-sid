@@ -89,7 +89,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Anggota Kelompok</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/kelompok/anggota/tambah" method="post">
+      <form action="/admin/kelompok/anggota/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <input type="hidden" value="{{ $kelompok->kode }}" name="kode_kelompok">

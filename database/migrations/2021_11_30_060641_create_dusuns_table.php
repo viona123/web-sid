@@ -15,6 +15,7 @@ class CreateDusunsTable extends Migration
     {
         Schema::create('dusuns', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('nama');
             $table->string('kepala_dusun');
             $table->integer('jumlah_rw')->default(0);

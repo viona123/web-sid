@@ -22,4 +22,8 @@ class RumahTangga extends Model
     public function bantuan() {
         return $this->hasMany(PenerimaBantuan::class, 'no_rt_penerima', 'no_rt');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }

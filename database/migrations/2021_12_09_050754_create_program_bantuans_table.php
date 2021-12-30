@@ -15,6 +15,7 @@ class CreateProgramBantuansTable extends Migration
     {
         Schema::create('program_bantuans', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->date('tanggal_mulai');
             $table->date('tanggal_akhir');
             $table->enum('sasaran', ['Penduduk Perorangan', 'Keluarga - KK', 'Rumah Tangga', 'Kelompok']);

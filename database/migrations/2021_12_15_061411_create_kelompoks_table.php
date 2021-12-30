@@ -15,6 +15,7 @@ class CreateKelompoksTable extends Migration
     {
         Schema::create('kelompoks', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('nama');
             $table->integer('kode');
             $table->string('nik_ketua');

@@ -15,6 +15,7 @@ class CreateKategoriKelompoksTable extends Migration
     {
         Schema::create('kategori_kelompoks', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('nama');
             $table->text('deskripsi');
             $table->timestamps();

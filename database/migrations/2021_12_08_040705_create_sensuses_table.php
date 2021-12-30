@@ -15,6 +15,7 @@ class CreateSensusesTable extends Migration
     {
         Schema::create('sensuses', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('nik')->unique();
             $table->enum('status_dasar', ['HIDUP', 'MATI', 'PINDAH', 'HILANG']);
             $table->string('nama');

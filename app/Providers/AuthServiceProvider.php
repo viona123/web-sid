@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use App\Models\Desa;
+use App\Models\User;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +28,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('access-admin', function(User $user, Desa $desa) {
+            return $user->id_desa === $desa->id;
+        });
     }
 }

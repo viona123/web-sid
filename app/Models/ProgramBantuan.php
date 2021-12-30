@@ -16,4 +16,8 @@ class ProgramBantuan extends Model
     public function penerima() {
         return $this->hasMany(PenerimaBantuan::class, 'bantuan_id');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }

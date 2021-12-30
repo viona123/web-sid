@@ -14,4 +14,8 @@ class StaffDesa extends Model
     public function sensus() {
         return $this->belongsTo(Sensus::class, 'nik_staff', 'nik');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }

@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td width="30%">Kepala Desa</td>
-        <td>: {{ $desa->nik_kepala }}</td>
+        <td>: {{ $desa->kepala->nama }}</td>
     </tr>
     <tr>
         <td width="30%">Alamat Kantor Desa</td>

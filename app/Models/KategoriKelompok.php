@@ -14,4 +14,8 @@ class KategoriKelompok extends Model
     public function kelompok() {
         return $this->hasMany(Kelompok::class, 'kategori_id');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }

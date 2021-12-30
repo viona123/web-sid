@@ -68,7 +68,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Data Keluarga</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/keluarga/tambah" method="post">
+      <form action="/admin/keluarga/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">

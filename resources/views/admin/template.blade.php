@@ -43,7 +43,14 @@
               </ul>
             </div>
             <a class="nav-link text-white" href="#"><i class="fas fa-book-reader me-1"></i> Layanan Surat</a>
-            <a class="nav-link text-white" href="#"><i class="far fa-clipboard me-1"></i> Buku Administrasi Desa</a>
+            <div class="dropdown hihi">
+              <button class="btn menu dropdown-toggle text-white" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-clipboard"></i> Buku Administrasi
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <li class="hihi"><a class="dropdown-item" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users"></i> Pengurus Desa</a></li>
+              </ul>
+            </div>
             <a class="nav-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-coins me-1"></i> Program Bantuan</a>
             <a class="nav-link text-white" href="#"><i class="fas fa-globe-asia me-1"></i> Pemetaaan</a>
             <a class="nav-link text-white" href="#"><i class="far fa-envelope me-1"></i> SMS</a>

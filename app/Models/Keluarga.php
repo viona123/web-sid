@@ -22,4 +22,8 @@ class Keluarga extends Model
     public function bantuan() {
         return $this->hasMany(PenerimaBantuan::class, 'no_kk_penerima', 'Nomor_KK');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }
