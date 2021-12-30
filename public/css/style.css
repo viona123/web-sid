@@ -193,12 +193,3 @@ footer {
         transform: rotate(360deg);
     }
 }
-
-@media screen and (max-width: 480px) {
-    .menu {
-        display: none;
-    }
-    .main {
-        left: 0;
-    }
-}
