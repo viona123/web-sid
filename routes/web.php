@@ -44,11 +44,11 @@ Route::get('/admin', function() {
         abort(403);
     }
 
-    $dusuns = Dusun::all();
-    $sensus = Sensus::all();
-    $keluarga = Keluarga::all();
-    $kelompok = Kelompok::all();
-    $rumah_tangga = RumahTangga::all();
+    $dusuns = $desa->dusun;
+    $sensus = $desa->sensus;
+    $keluarga = $desa->keluarga;
+    $kelompok = $desa->kelompok;
+    $rumah_tangga = $desa->rumahTangga;
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
@@ -193,7 +193,7 @@ Route::get('/admin/program-bantuan', function() {
         abort(403);
     }
 
-	$semua_bantuan = ProgramBantuan::all();
+	$semua_bantuan = $desa->programBantuan;
 
 	return view('admin.program_bantuan.index', [
 		'desa' => $desa,
