@@ -31,11 +31,23 @@ class DusunController extends Controller
 	public function tambah(Request $request) {
 	    $nama = $request->input('nama-dusun');
 	    $kepala = $request->input('kepala-dusun');
+		$rw = $request->input('jumlah-rw');
+		$rt = $request->input('jumlah-rt');
+		$kk = $request->input('jumlah-kk');
+		$lp = $request->input('jumlah-lp');
+		$l = $request->input('jumlah-l');
+		$p = $request->input('jumlah-p');
 	
 	    Dusun::create([
 			'id_desa' => request('desa'),
 	        'nama' => $nama,
-	        'kepala_dusun' => $kepala
+	        'kepala_dusun' => $kepala,
+			'jumlah_rw' => $rw,
+			'jumlah_rt' => $rt,
+			'jumlah_kk' => $kk,
+			'jumlah_lp' => $lp,
+			'jumlah_l' => $l,
+			'jumlah_p' => $p
 	    ]);
 	
 	    return back();

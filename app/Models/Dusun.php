@@ -14,4 +14,8 @@ class Dusun extends Model
     public function desa() {
         return $this->belongsTo(Desa::class, 'id_desa');
     }
+
+    public function kepala() {
+        return $this->belongsTo(Sensus::class, 'kepala_dusun', 'nik');
+    }
 }

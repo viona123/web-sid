@@ -13,7 +13,7 @@
 <div style="overflow-x: auto;">
 	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed;">
         <colgroup>
-            <col span="1" style="min-width: 2rem">
+            <col span="1" style="width: 4rem">
             <col span="1" style="width: 14rem">
             <col span="1" style="width: 10rem">
             <col span="1" style="width: 10rem">
@@ -55,7 +55,7 @@
 	                </div>
 	            </td>
 	            <td>{{ $dusun->nama }}</td>
-	            <td>{{ $dusun->kepala_dusun }}</td>
+	            <td>{{ $dusun->kepala->nama }}</td>
 	            <td>{{ $dusun->jumlah_rw }}</td>
 	            <td>{{ $dusun->jumlah_rt }}</td>
 	            <td>{{ $dusun->jumlah_kk }}</td>
@@ -86,6 +86,31 @@
                 <label for="kepala-dusun" class="form-label">Kepala Dusun</label>
                 <input type="text" class="form-control" id="kepala-dusun" name="kepala-dusun">
             </div>
+            
+            <div class="mb-3">
+                <label for="jumlah-rw" class="form-label">Jumlah RW</label>
+                <input type="number" class="form-control" id="jumlah-rw" name="jumlah-rw">
+            </div>
+            <div class="mb-3">
+                <label for="jumlah-rt" class="form-label">Jumlah RT</label>
+                <input type="number" class="form-control" id="jumlah-rt" name="jumlah-rt">
+            </div>
+            <div class="mb-3">
+                <label for="jumlah-kk" class="form-label">Jumlah KK</label>
+                <input type="number" class="form-control" id="jumlah-kk" name="jumlah-kk">
+            </div>
+            <div class="mb-3">
+                <label for="jumlah-lp" class="form-label">Jumlah LP</label>
+                <input type="number" class="form-control" id="jumlah-lp" name="jumlah-lp">
+            </div>
+            <div class="mb-3">
+                <label for="jumlah-l" class="form-label">Jumlah L</label>
+                <input type="number" class="form-control" id="jumlah-l" name="jumlah-l">
+            </div>
+            <div class="mb-3">
+                <label for="jumlah-p" class="form-label">Jumlah P</label>
+                <input type="number" class="form-control" id="jumlah-p" name="jumlah-p">
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -115,28 +140,28 @@
                 <input type="text" class="form-control" id="kepala-dusun-edit" name="kepala-dusun">
             </div>
             <div class="mb-3">
-                <label for="jumlah-rw" class="form-label">Jumlah RW</label>
-                <input type="number" class="form-control" id="jumlah-rw" name="jumlah-rw">
+                <label for="jumlah-rw-edit" class="form-label">Jumlah RW</label>
+                <input type="number" class="form-control" id="jumlah-rw-edit" name="jumlah-rw">
             </div>
             <div class="mb-3">
-                <label for="jumlah-rt" class="form-label">Jumlah RT</label>
-                <input type="number" class="form-control" id="jumlah-rt" name="jumlah-rt">
+                <label for="jumlah-rt-edit" class="form-label">Jumlah RT</label>
+                <input type="number" class="form-control" id="jumlah-rt-edit" name="jumlah-rt">
             </div>
             <div class="mb-3">
-                <label for="jumlah-kk" class="form-label">Jumlah KK</label>
-                <input type="number" class="form-control" id="jumlah-kk" name="jumlah-kk">
+                <label for="jumlah-kk-edit" class="form-label">Jumlah KK</label>
+                <input type="number" class="form-control" id="jumlah-kk-edit" name="jumlah-kk">
             </div>
             <div class="mb-3">
-                <label for="jumlah-lp" class="form-label">Jumlah LP</label>
-                <input type="number" class="form-control" id="jumlah-lp" name="jumlah-lp">
+                <label for="jumlah-lp-edit" class="form-label">Jumlah LP</label>
+                <input type="number" class="form-control" id="jumlah-lp-edit" name="jumlah-lp">
             </div>
             <div class="mb-3">
-                <label for="jumlah-l" class="form-label">Jumlah L</label>
-                <input type="number" class="form-control" id="jumlah-l" name="jumlah-l">
+                <label for="jumlah-l-edit" class="form-label">Jumlah L</label>
+                <input type="number" class="form-control" id="jumlah-l-edit" name="jumlah-l">
             </div>
             <div class="mb-3">
-                <label for="jumlah-p" class="form-label">Jumlah P</label>
-                <input type="number" class="form-control" id="jumlah-p" name="jumlah-p">
+                <label for="jumlah-p-edit" class="form-label">Jumlah P</label>
+                <input type="number" class="form-control" id="jumlah-p-edit" name="jumlah-p">
             </div>
         </div>
         <div class="modal-footer">
@@ -160,12 +185,12 @@
         const 
             nama = document.getElementById('nama-dusun-edit'),
             kdusun = document.getElementById('kepala-dusun-edit'),
-            rw = document.getElementById('jumlah-rw'),
-            rt = document.getElementById('jumlah-rt'),
-            kk = document.getElementById('jumlah-kk'),
-            lp = document.getElementById('jumlah-lp'),
-            l = document.getElementById('jumlah-l'),
-            p = document.getElementById('jumlah-p');
+            rw = document.getElementById('jumlah-rw-edit'),
+            rt = document.getElementById('jumlah-rt-edit'),
+            kk = document.getElementById('jumlah-kk-edit'),
+            lp = document.getElementById('jumlah-lp-edit'),
+            l = document.getElementById('jumlah-l-edit'),
+            p = document.getElementById('jumlah-p-edit');
 
         nama.value = data[0].substring(data[0].indexOf('=') + 1);
         kdusun.value = data[1].substring(data[1].indexOf('=') + 1);
