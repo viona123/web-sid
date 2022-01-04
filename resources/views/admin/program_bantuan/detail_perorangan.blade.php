@@ -86,7 +86,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Penerima</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/program-bantuan/penerima/tambah?bantuan={{ $bantuan->id }}&fkey=nik_penerima" method="post">
+      <form action="/admin/program-bantuan/penerima/tambah?bantuan={{ $bantuan->id }}&fkey=nik_penerima&desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
