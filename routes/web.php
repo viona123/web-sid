@@ -39,11 +39,16 @@ Route::get('/tentang', function() {
 });
 Route::get('/admin', function() {
     $desa = Desa::find(request('desa'));
-    $dusuns = Dusun::all();
-    $sensus = Sensus::all();
-    $keluarga = Keluarga::all();
-    $kelompok = Kelompok::all();
-    $rumah_tangga = RumahTangga::all();
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
+    $dusuns = $desa->dusun;
+    $sensus = $desa->sensus;
+    $keluarga = $desa->keluarga;
+    $kelompok = $desa->kelompok;
+    $rumah_tangga = $desa->rumahTangga;
 
     return view('admin.index', [
         'total_dusun' => $dusuns->count(),
@@ -89,6 +94,11 @@ Route::post('/admin/kelompok/anggota/ubah', [KelompokController::class, 'ubahAng
 
 Route::get('/admin/rumah-tangga', function() {
     $desa = Desa::find(request('desa'));
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
     $semua_rt = RumahTangga::all();
 
     return view('admin.rumah-tangga', [
@@ -99,6 +109,7 @@ Route::get('/admin/rumah-tangga', function() {
 
 Route::post('/admin/rumah-tangga/tambah', function(Request $request) {
     RumahTangga::create([
+        'id_desa' => request('desa'),
         'no_rt' => $request->input('nomor_rt'),
         'nik_kepala_rt' => $request->input('kepala_rt'),
         'alamat' => $request->input('alamat'),
@@ -136,6 +147,11 @@ Route::post('/admin/rumah-tangga/ubah', function(Request $request) {
 Route::get('/admin/rumah-tangga/detail', function() {
     $rt = RumahTangga::find(request('rt'));
     $desa = Desa::find(request('desa'));
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
     $anggota = $rt->anggota;
 
     return view('admin.rumah-tangga-detail', [
@@ -172,7 +188,12 @@ Route::post('/admin/rumah-tangga/anggota/ubah', function(Request $request) {
 
 Route::get('/admin/program-bantuan', function() {
 	$desa = Desa::find(request('desa'));
-	$semua_bantuan = ProgramBantuan::all();
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
+	$semua_bantuan = $desa->programBantuan;
 
 	return view('admin.program_bantuan.index', [
 		'desa' => $desa,
@@ -182,6 +203,7 @@ Route::get('/admin/program-bantuan', function() {
 
 Route::post('/admin/program-bantuan/tambah', function(Request $request) {
     ProgramBantuan::create([
+        'id_desa' => request('desa'),
         'sasaran' => $request->input('sasaran'),
         'nama_program' => $request->input('nama_program'),
         'keterangan' => $request->input('keterangan'),
@@ -218,6 +240,11 @@ Route::get('/admin/program-bantuan/hapus', function() {
 Route::get('/admin/program-bantuan/detail', function() {
     $bantuan = ProgramBantuan::find(request('bantuan'));
     $desa = Desa::find(request('desa'));
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
     $penerima = $bantuan->penerima;
 
     $view = 'admin.program_bantuan.detail_perorangan';
@@ -239,6 +266,7 @@ Route::get('/admin/program-bantuan/detail', function() {
 
 Route::post('/admin/program-bantuan/penerima/tambah', function(Request $request) {
     PenerimaBantuan::create([
+        'id_desa' => request('desa'),
         request('fkey') => $request->input('fkey_value'),
         'bantuan_id' => request('bantuan')
     ]);
@@ -255,6 +283,10 @@ Route::get('/admin/program-bantuan/penerima/hapus', function(Request $request) {
 
 Route::get('/admin/identitas_desa', function() {
     $desa = Desa::find(request('desa'));
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
 
     return view('admin.identitas_desa', [
         'desa' => $desa
@@ -279,7 +311,12 @@ Route::post('/admin/identitas_desa/ubah', function(Request $request) {
 
 Route::get('/admin/pengurus_desa', function() {
     $desa = Desa::find(request('desa'));
-    $pengurus = StaffDesa::all();
+
+    if (! Gate::allows('access-admin', $desa)) {
+        abort(403);
+    }
+
+    $pengurus = $desa->pengurus;
 
     return view('admin.pengurus_desa', [
         'desa' => $desa,
@@ -304,6 +341,7 @@ Route::get('/admin/pengurus_desa/hapus', function() {
 
 Route::post('/admin/pengurus_desa/tambah', function(Request $request) {
     StaffDesa::create([
+        'id_desa' => request('desa'),
         'nik_staff' => $request->input('nik_pegawai'),
         'nipd' => $request->input('nipd'),
         'nip' => $request->input('nip'),

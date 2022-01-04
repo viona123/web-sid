@@ -15,6 +15,7 @@ class CreateStaffDesasTable extends Migration
     {
         Schema::create('staff_desas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('nik_staff');
             $table->string('nipd')->nullable();
             $table->string('nip')->nullable();

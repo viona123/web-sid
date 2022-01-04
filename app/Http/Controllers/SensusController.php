@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Http\Request;
 use App\Models\Sensus;
 use App\Models\Desa;
@@ -14,8 +16,12 @@ class SensusController extends Controller
 	}
 	
 	public function index() {
-	    $semua_penduduk = Sensus::all();
 	    $desa = Desa::find(request('desa'));
+		$semua_penduduk = $desa->sensus;
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
 	
 	    return view('admin.penduduk', [
 	        'semua_penduduk' => $semua_penduduk,
@@ -50,6 +56,7 @@ class SensusController extends Controller
 	    $now = date('Y-m-d');
 	
 	    Sensus::create([
+			'id_desa' => request('desa'),
 	        'status_dasar' => $status_dasar,
 	        'nama' => $nama_lengkap,
 	        'nik' => $nik,
@@ -89,6 +96,11 @@ class SensusController extends Controller
 	public function detail() {
 	    $penduduk = Sensus::find(request('sensus'));
 	    $desa = Desa::find(request('desa'));
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
+
 	    $bantuan = $penduduk->bantuan;
 	
 	    return view('admin.penduduk-detail', [

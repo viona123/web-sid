@@ -81,7 +81,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Aparat Pemerintahan Desa</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/pengurus_desa/tambah" method="post">
+      <form action="/admin/pengurus_desa/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">

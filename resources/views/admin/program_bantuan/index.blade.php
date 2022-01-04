@@ -60,7 +60,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah data Program Bantuan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/program-bantuan/tambah" method="post">
+      <form action="/admin/program-bantuan/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">

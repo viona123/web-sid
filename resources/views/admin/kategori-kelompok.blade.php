@@ -46,7 +46,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah data kategori Kelompok</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/kelompok/kategori/tambah" method="post">
+      <form action="/admin/kelompok/kategori/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">

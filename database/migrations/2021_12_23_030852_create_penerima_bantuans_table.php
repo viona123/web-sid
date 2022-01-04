@@ -15,6 +15,7 @@ class CreatePenerimaBantuansTable extends Migration
     {
         Schema::create('penerima_bantuans', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->integer('bantuan_id');
             $table->string('nik_penerima')->nullable();
             $table->string('no_kk_penerima')->nullable();

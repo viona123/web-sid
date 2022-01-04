@@ -15,6 +15,7 @@ class CreateRumahTanggasTable extends Migration
     {
         Schema::create('rumah_tanggas', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_desa');
             $table->string('no_rt');
             $table->string('nik_kepala_rt');
             $table->string('alamat');

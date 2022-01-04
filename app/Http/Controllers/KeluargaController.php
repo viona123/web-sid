@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Http\Request;
 use App\Models\Keluarga;
 use App\Models\Desa;
@@ -13,8 +15,12 @@ class KeluargaController extends Controller
 	}
 
     public function index() {
-	    $keluarga = Keluarga::all();
 	    $desa = Desa::find(request('desa'));
+		$keluarga = $desa->keluarga;
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
 	
 	    return view('admin.keluarga', [
 	        'keluarga' => $keluarga,
@@ -32,6 +38,7 @@ class KeluargaController extends Controller
 	    $rw = $request->input('rw');
 	
 	    Keluarga::create([
+			'id_desa' => request('desa'),
 	        'Nomor_KK' => $nomor_kk,
 	        'kepala_keluarga' => $kepala_keluarga,
 	        'Jumlah_Anggota_Keluarga' => $jumlah_anggota,
@@ -73,6 +80,10 @@ class KeluargaController extends Controller
 	    $keluarga = Keluarga::find(request('keluarga'));
 	    $anggota = $keluarga->anggota;
 	    $desa = Desa::find(request('desa'));
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
 	
 	    return view('admin.keluarga-detail', [
 	        'keluarga' => $keluarga,

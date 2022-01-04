@@ -75,7 +75,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Anggota Rumah Tangga</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/rumah-tangga/anggota/tambah" method="post">
+      <form action="/admin/rumah-tangga/anggota/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <input type="hidden" value="{{ $rumah_tangga->no_rt }}" name="no_rt">

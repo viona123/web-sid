@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Http\Request;
 use App\Models\Desa;
 use App\Models\Kelompok;
@@ -16,8 +18,13 @@ class KelompokController extends Controller
 
 	public function index() {
 	    $desa = Desa::find(request('desa'));
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
+
 	    $kategori_kelompok = KategoriKelompok::all();
-	    $kelompok = Kelompok::all();
+	    $kelompok = $desa->kelompok;
 	
 	    return view('admin.kelompok', [
 	        'desa' => $desa,
@@ -28,6 +35,7 @@ class KelompokController extends Controller
 
 	public function tambah(Request $request) {
 	    Kelompok::create([
+			'id_desa' => request('desa'),
 	        'nama' => $request->input('nama_kelompok'),
 	        'kode' => $request->input('kode_kelompok'),
 	        'nik_ketua' => $request->input('ketua_kelompok'),
@@ -68,6 +76,11 @@ class KelompokController extends Controller
 	public function detail() {
 	    $kelompok = Kelompok::find(request('kelompok'));
 	    $desa = Desa::find(request('desa'));
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
+
 	    $anggota = $kelompok->anggota;
 	
 	    return view('admin.kelompok-detail', [
@@ -79,7 +92,12 @@ class KelompokController extends Controller
 
 	public function indexKategori() {
 	    $desa = Desa::find(request('desa'));
-	    $kategori_kelompok = KategoriKelompok::all();
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
+
+	    $kategori_kelompok = $desa->kategoriKelompok;
 	
 	    return view('admin.kategori-kelompok', [
 	        'desa' => $desa,
@@ -89,6 +107,7 @@ class KelompokController extends Controller
 
 	public function tambahKategori(Request $request) {
 	    KategoriKelompok::create([
+			'id_desa' => request('desa'),
 	        'nama' => $request->input('nama_kategori'),
 	        'deskripsi' => $request->input('deskripsi_kategori')
 	    ]);

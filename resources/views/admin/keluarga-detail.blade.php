@@ -72,7 +72,7 @@
         <h5 class="modal-title" id="tambah-data-label">Tambah Anggota Keluarga</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/keluarga/anggota/tambah" method="post">
+      <form action="/admin/keluarga/anggota/tambah?desa={{ $desa->id }}" method="post">
       @csrf
         <div class="modal-body">
             <input type="hidden" value="{{ $keluarga->Nomor_KK }}" name="no_kk">

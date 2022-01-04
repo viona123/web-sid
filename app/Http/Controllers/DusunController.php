@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
+
 use Illuminate\Http\Request;
 use App\Models\Dusun;
 use App\Models\Desa;
@@ -13,8 +15,12 @@ class DusunController extends Controller
 	}
 
 	public function index() {
-	    $semua_dusun = Dusun::all();
 	    $desa = Desa::find(request('desa'));
+		$semua_dusun = $desa->dusun;
+
+		if (! Gate::allows('access-admin', $desa)) {
+			abort(403);
+		}
 	
 	    return view('admin.dusun', [
 	        'semua_dusun' => $semua_dusun,
@@ -27,6 +33,7 @@ class DusunController extends Controller
 	    $kepala = $request->input('kepala-dusun');
 	
 	    Dusun::create([
+			'id_desa' => request('desa'),
 	        'nama' => $nama,
 	        'kepala_dusun' => $kepala
 	    ]);

@@ -30,4 +30,8 @@ class PenerimaBantuan extends Model
     public function bantuan() {
         return $this->belongsTo(ProgramBantuan::class, 'bantuan_id');
     }
+
+    public function desa() {
+        return $this->belongsTo(Desa::class, 'id_desa');
+    }
 }
