@@ -136,7 +136,7 @@ table.detail {
 }
 
 .menu-link {
-	line-height: 4rem;
+	line-height: 3rem;
 	vertical-align: middle;
 	padding-left: 1rem;
 }
@@ -181,7 +181,7 @@ table.detail {
 }
 
 nav {
-	z-index: 2;
+	z-index: 3;
 }
 
 .menu-bar {
