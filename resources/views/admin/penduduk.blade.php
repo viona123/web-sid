@@ -129,7 +129,18 @@
             </div>
             <div class="mb-3">
                 <label for="hubungan_keluarga" class="form-label">Hubungan Dalam Keluarga</label>
-                <input type="text" class="form-control" id="hubungan_keluarga" name="hubungan_keluarga">
+                <select class="form-control" id="hubungan_keluarga" name="hubungan_keluarga">
+                    <option value="KEPALA KELUARGA">KEPALA KELUARGA</option>
+                    <option value="SUAMI">SUAMI</option>
+                    <option value="ISTRI">ISTRI</option>
+                    <option value="ANAK">ANAK</option>
+                    <option value="MENANTU">MENANTU</option>
+                    <option value="CUCU">CUCU</option>
+                    <option value="MERTUA">MERTUA</option>
+                    <option value="FAMILI">FAMILI</option>
+                    <option value="PEMBANTU">PEMBANTU</option>
+                    <option value="LAINNYA">LAINNYA</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Jenis Kelamin</label><br>
@@ -164,11 +175,41 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_kk">Pendidikan Dalam KK</label>
-                <input type="text" class="form-control" name="pendidikan_kk" id="pendidikan_kk">
+                <select class="form-control" name="pendidikan_kk" id="pendidikan_kk">
+                    <option value="TIDAK/BELUM SEKOLAH">TIDAK/BELUM SEKOLAH</option>
+                    <option value="BELUM TAMAT SD/SEDERAJAT">BELUM TAMAT SD/SEDERAJAT</option>
+                    <option value="TAMAT SD/SEDERAJAT">TAMAT SD/SEDERAJAT</option>
+                    <option value="SLTP/SEDERAJAT">SLTP/SEDERAJAT</option>
+                    <option value="SLTA/SEDERAJAT">SLTA/SEDERAJAT</option>
+                    <option value="DIPLOMA I/II">DIPLOMA I/II</option>
+                    <option value="AKADEMI/DIPLOMA III/S. MUDA">AKADEMI/DIPLOMA III/S. MUDA</option>
+                    <option value="DIPLOMA IV/STRATA I">DIPLOMA IV/STRATA I</option>
+                    <option value="STRATA II">STRATA II</option>
+                    <option value="STRATA III">STRATA III</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_ditempuh">Pendidikan yang sedang ditempuh</label>
-                <input type="text" class="form-control" name="pendidikan_ditempuh" id="pendidikan_ditempuh">
+                <select class="form-control" name="pendidikan_ditempuh" id="pendidikan_ditempuh">
+                    <option value="BELUM MASUK TK/KELOMPOK BERMAIN">BELUM MASUK TK/KELOMPOK BERMAIN</option>
+                    <option value="SEDANG TK/KELOMPOK BERMAIN">SEDANG TK/KELOMPOK BERMAIN</option>
+                    <option value="TIDAK PERNAH SEKOLAH">TIDAK PERNAH SEKOLAH</option>
+                    <option value="SEDANG SD/SEDERAJAT">SEDANG SD/SEDERAJAT</option>
+                    <option value="TIDAK TAMAT SD/SEDERAJAT">TIDAK TAMAT SD/SEDERAJAT</option>
+                    <option value="SEDANG SLTP/SEDERAJAT">SEDANG SLTP/SEDERAJAT</option>
+                    <option value="SEDANG SLTA/SEDERAJAT">SEDANG SLTA/SEDERAJAT</option>
+                    <option value="SEDANG D-1/SEDERAJAT">SEDANG D-1/SEDERAJAT</option>
+                    <option value="SEDANG D-2/SEDERAJAT">SEDANG D-2/SEDERAJAT</option>
+                    <option value="SEDANG D-3/SEDERAJAT">SEDANG D-3/SEDERAJAT</option>
+                    <option value="SEDANG S-1/SEDERAJAT">SEDANG S-1/SEDERAJAT</option>
+                    <option value="SEDANG S-2/SEDERAJAT">SEDANG S-2/SEDERAJAT</option>
+                    <option value="SEDANG S-3/SEDERAJAT">SEDANG S-3/SEDERAJAT</option>
+                    <option value="SEDANG SLB A/SEDERAJAT">SEDANG SLB A/SEDERAJAT</option>
+                    <option value="SEDANG SLB B/SEDERAJAT">SEDANG SLB B/SEDERAJAT</option>
+                    <option value="SEDANG SLB C/SEDERAJAT">SEDANG SLB C/SEDERAJAT</option>
+                    <option value="TIDAK DAPAT MEMBACA DAN MENULIS HURUF LATIN/ARAB">TIDAK DAPAT MEMBACA DAN MENULIS HURUF LATIN/ARAB</option>
+                    <option value="TIDAK SEDANG SEKOLAH">TIDAK SEDANG SEKOLAH</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="no_telp">Nomor Telepon</label>
@@ -195,8 +236,13 @@
                 <input type="text" class="form-control" id="pekerjaan" name="pekerjaan">
             </div>
             <div class="mb-3">
-                <label for="kawin" class="form-label">Kawin</label>
-                <input type="text" class="form-control" id="kawin" name="kawin">
+                <label for="kawin" class="form-label">Status Perkawinan</label>
+                <select class="form-control" id="kawin" name="kawin">
+                    <option value="BELUM KAWIN">BELUM KAWIN</option>
+                    <option value="KAWIN">KAWIN</option>
+                    <option value="CERAI HIDUP">CERAI HIDUP</option>
+                    <option value="CERAI MATI">CERAI MATI</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="tanggal_perkawinan">Tanggal Perkawinan</label>
@@ -257,7 +303,18 @@
             </div>
             <div class="mb-3">
                 <label for="hubungan_keluarga_edit" class="form-label">Hubungan Dalam Keluarga</label>
-                <input type="text" class="form-control" id="hubungan_keluarga_edit" name="hubungan_keluarga">
+                <select class="form-control" id="hubungan_keluarga_edit" name="hubungan_keluarga">
+                    <option value="KEPALA KELUARGA">KEPALA KELUARGA</option>
+                    <option value="SUAMI">SUAMI</option>
+                    <option value="ISTRI">ISTRI</option>
+                    <option value="ANAK">ANAK</option>
+                    <option value="MENANTU">MENANTU</option>
+                    <option value="CUCU">CUCU</option>
+                    <option value="MERTUA">MERTUA</option>
+                    <option value="FAMILI">FAMILI</option>
+                    <option value="PEMBANTU">PEMBANTU</option>
+                    <option value="LAINNYA">LAINNYA</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Jenis Kelamin</label><br>
@@ -292,11 +349,41 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_kk_edit">Pendidikan Dalam KK</label>
-                <input type="text" class="form-control" name="pendidikan_kk" id="pendidikan_kk_edit">
+                <select class="form-control" name="pendidikan_kk" id="pendidikan_kk_edit">
+                    <option value="TIDAK/BELUM SEKOLAH">TIDAK/BELUM SEKOLAH</option>
+                    <option value="BELUM TAMAT SD/SEDERAJAT">BELUM TAMAT SD/SEDERAJAT</option>
+                    <option value="TAMAT SD/SEDERAJAT">TAMAT SD/SEDERAJAT</option>
+                    <option value="SLTP/SEDERAJAT">SLTP/SEDERAJAT</option>
+                    <option value="SLTA/SEDERAJAT">SLTA/SEDERAJAT</option>
+                    <option value="DIPLOMA I/II">DIPLOMA I/II</option>
+                    <option value="AKADEMI/DIPLOMA III/S. MUDA">AKADEMI/DIPLOMA III/S. MUDA</option>
+                    <option value="DIPLOMA IV/STRATA I">DIPLOMA IV/STRATA I</option>
+                    <option value="STRATA II">STRATA II</option>
+                    <option value="STRATA III">STRATA III</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_ditempuh_edit">Pendidikan yang sedang ditempuh</label>
-                <input type="text" class="form-control" name="pendidikan_ditempuh" id="pendidikan_ditempuh_edit">
+                <select class="form-control" name="pendidikan_ditempuh" id="pendidikan_ditempuh_edit">
+                    <option value="BELUM MASUK TK/KELOMPOK BERMAIN">BELUM MASUK TK/KELOMPOK BERMAIN</option>
+                    <option value="SEDANG TK/KELOMPOK BERMAIN">SEDANG TK/KELOMPOK BERMAIN</option>
+                    <option value="TIDAK PERNAH SEKOLAH">TIDAK PERNAH SEKOLAH</option>
+                    <option value="SEDANG SD/SEDERAJAT">SEDANG SD/SEDERAJAT</option>
+                    <option value="TIDAK TAMAT SD/SEDERAJAT">TIDAK TAMAT SD/SEDERAJAT</option>
+                    <option value="SEDANG SLTP/SEDERAJAT">SEDANG SLTP/SEDERAJAT</option>
+                    <option value="SEDANG SLTA/SEDERAJAT">SEDANG SLTA/SEDERAJAT</option>
+                    <option value="SEDANG D-1/SEDERAJAT">SEDANG D-1/SEDERAJAT</option>
+                    <option value="SEDANG D-2/SEDERAJAT">SEDANG D-2/SEDERAJAT</option>
+                    <option value="SEDANG D-3/SEDERAJAT">SEDANG D-3/SEDERAJAT</option>
+                    <option value="SEDANG S-1/SEDERAJAT">SEDANG S-1/SEDERAJAT</option>
+                    <option value="SEDANG S-2/SEDERAJAT">SEDANG S-2/SEDERAJAT</option>
+                    <option value="SEDANG S-3/SEDERAJAT">SEDANG S-3/SEDERAJAT</option>
+                    <option value="SEDANG SLB A/SEDERAJAT">SEDANG SLB A/SEDERAJAT</option>
+                    <option value="SEDANG SLB B/SEDERAJAT">SEDANG SLB B/SEDERAJAT</option>
+                    <option value="SEDANG SLB C/SEDERAJAT">SEDANG SLB C/SEDERAJAT</option>
+                    <option value="TIDAK DAPAT MEMBACA DAN MENULIS HURUF LATIN/ARAB">TIDAK DAPAT MEMBACA DAN MENULIS HURUF LATIN/ARAB</option>
+                    <option value="TIDAK SEDANG SEKOLAH">TIDAK SEDANG SEKOLAH</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="no_telp_edit">Nomor Telepon</label>
@@ -324,7 +411,12 @@
             </div>
             <div class="mb-3">
                 <label for="kawin_edit" class="form-label">Kawin</label>
-                <input type="text" class="form-control" id="kawin_edit" name="kawin">
+                <select class="form-control" id="kawin_edit" name="kawin">
+                    <option value="BELUM KAWIN">BELUM KAWIN</option>
+                    <option value="KAWIN">KAWIN</option>
+                    <option value="CERAI HIDUP">CERAI HIDUP</option>
+                    <option value="CERAI MATI">CERAI MATI</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="tanggal_perkawinan_edit">Tanggal Perkawinan</label>
@@ -360,7 +452,7 @@
             }
         }
 
-        console.log(data);
+        console.log(fields);
     }
 </script>
 @endsection
