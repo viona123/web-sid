@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Models\Keluarga;
 use App\Models\Desa;
+use App\Models\Sensus;
 
 class KeluargaController extends Controller
 {
