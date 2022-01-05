@@ -124,6 +124,7 @@ class KelompokController extends Controller
 
 	public function tambahAnggota(Request $request) {
 	    AnggotaKelompok::create([
+			'id_desa' => request('desa'),
 	        'kode_kelompok' => $request->input('kode_kelompok'),
 	        'nik_anggota' => $request->input('nik'),
 	        'jabatan' => $request->input('jabatan'),

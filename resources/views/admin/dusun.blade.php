@@ -83,7 +83,7 @@
                 <input type="text" class="form-control" id="nama-dusun" name="nama-dusun">
             </div>
             <div class="mb-3">
-                <label for="kepala-dusun" class="form-label">Kepala Dusun</label>
+                <label for="kepala-dusun" class="form-label">NIK Kepala Dusun</label>
                 <input type="text" class="form-control" id="kepala-dusun" name="kepala-dusun">
             </div>
             
@@ -136,7 +136,7 @@
                 <input type="text" class="form-control" id="nama-dusun-edit" name="nama-dusun">
             </div>
             <div class="mb-3">
-                <label for="kepala-dusun-edit" class="form-label">Kepala Dusun</label>
+                <label for="kepala-dusun-edit" class="form-label">NIK Kepala Dusun</label>
                 <input type="text" class="form-control" id="kepala-dusun-edit" name="kepala-dusun">
             </div>
             <div class="mb-3">

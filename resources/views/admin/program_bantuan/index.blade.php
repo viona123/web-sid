@@ -66,7 +66,6 @@
             <div class="mb-3">
                 <label for="sasaran" class="form-label">Sasaran</label>
                 <select class="form-control" id="sasaran" name="sasaran">
-                    <option value="0">--PILIH SASARAN--</option>
                     <option value="Penduduk Perorangan">Penduduk Perorangan</option>
                     <option value="Keluarga - KK">Keluarga - KK</option>
                     <option value="Rumah Tangga">Rumah Tangga</option>
@@ -128,7 +127,6 @@
             <div class="mb-3">
                 <label for="sasaran-edit" class="form-label">Sasaran</label>
                 <select class="form-control" id="sasaran-edit" name="sasaran">
-                    <option value="0">--PILIH SASARAN--</option>
                     <option value="Penduduk Perorangan">Penduduk Perorangan</option>
                     <option value="Keluarga - KK">Keluarga - KK</option>
                     <option value="Rumah Tangga">Rumah Tangga</option>

@@ -18,6 +18,7 @@ class SensusController extends Controller
 	public function index() {
 	    $desa = Desa::find(request('desa'));
 		$semua_penduduk = $desa->sensus;
+		$dusun = $desa->dusun;
 
 		if (! Gate::allows('access-admin', $desa)) {
 			abort(403);
@@ -25,6 +26,7 @@ class SensusController extends Controller
 	
 	    return view('admin.penduduk', [
 	        'semua_penduduk' => $semua_penduduk,
+			'dusun' => $dusun,
 	        'desa' => $desa
 	    ]);
 	}

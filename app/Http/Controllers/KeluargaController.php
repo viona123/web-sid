@@ -18,6 +18,7 @@ class KeluargaController extends Controller
     public function index() {
 	    $desa = Desa::find(request('desa'));
 		$keluarga = $desa->keluarga;
+		$dusun = $desa->dusun;
 
 		if (! Gate::allows('access-admin', $desa)) {
 			abort(403);
@@ -25,14 +26,14 @@ class KeluargaController extends Controller
 	
 	    return view('admin.keluarga', [
 	        'keluarga' => $keluarga,
-	        'desa' => $desa
+	        'desa' => $desa,
+			'dusun' => $dusun
 	    ]);
 	}
 
 	public function tambah(Request $request) {
 	    $nomor_kk = $request->input('nomor_kk');
 	    $kepala_keluarga = $request->input('kepala_keluarga');
-	    $jumlah_anggota = $request->input('jumlah_anggota');
 	    $alamat = $request->input('alamat');
 	    $dusun = $request->input('dusun');
 	    $rt = $request->input('rt');
@@ -42,7 +43,6 @@ class KeluargaController extends Controller
 			'id_desa' => request('desa'),
 	        'Nomor_KK' => $nomor_kk,
 	        'kepala_keluarga' => $kepala_keluarga,
-	        'Jumlah_Anggota_Keluarga' => $jumlah_anggota,
 	        'NIK' => $kepala_keluarga,
 	        'Alamat' => $alamat,
 	        'Dusun' => $dusun,

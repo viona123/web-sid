@@ -225,7 +225,11 @@
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun" name="dusun">
+                <select class="form-control" id="dusun" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="umur" class="form-label">Umur</label>
@@ -399,7 +403,11 @@
             </div>
             <div class="mb-3">
                 <label for="dusun_edit" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun_edit" name="dusun">
+                <select class="form-control" id="dusun_edit" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="umur_edit" class="form-label">Umur</label>

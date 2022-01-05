@@ -83,16 +83,16 @@
                 <input type="number" class="form-control" id="kepala-rt" name="kepala_rt">
             </div>
             <div class="mb-3">
-                <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
-                <input type="number" class="form-control" id="jumlah-anggota" name="jumlah_anggota">
-            </div>
-            <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
                 <input type="text" class="form-control" id="alamat" name="alamat">
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun" name="dusun">
+                <select class="form-control" id="dusun" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>
@@ -123,31 +123,31 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="nomor-rt" class="form-label">Nomor Rumah Tangga</label>
+                <label for="nomor-rt-edit" class="form-label">Nomor Rumah Tangga</label>
                 <input type="number" class="form-control" id="nomor-rt-edit" name="nomor_rt">
             </div>
             <div class="mb-3">
-                <label for="kepala-rt" class="form-label">NIK Kepala Keluarga</label>
+                <label for="kepala-rt-edit" class="form-label">NIK Kepala Keluarga</label>
                 <input type="number" class="form-control" id="kepala-rt-edit" name="kepala_rt">
             </div>
             <div class="mb-3">
-                <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
-                <input type="number" class="form-control" id="jumlah-anggota" name="jumlah_anggota">
-            </div>
-            <div class="mb-3">
-                <label for="alamat" class="form-label">Alamat</label>
+                <label for="alamat-edit" class="form-label">Alamat</label>
                 <input type="text" class="form-control" id="alamat-edit" name="alamat">
             </div>
             <div class="mb-3">
-                <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun-edit" name="dusun">
+                <label for="dusun-edit" class="form-label">Dusun</label>
+                <select class="form-control" id="dusun-edit" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
-                <label for="rt" class="form-label">RT</label>
+                <label for="rt-edit" class="form-label">RT</label>
                 <input type="number" class="form-control" id="rt-edit" name="rt">
             </div>
             <div class="mb-3">
-                <label for="rw" class="form-label">RW</label>
+                <label for="rw-edit" class="form-label">RW</label>
                 <input type="number" class="form-control" id="rw-edit" name="rw">
             </div>
         </div>

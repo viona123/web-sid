@@ -44,13 +44,13 @@
 	            <td>{{ $keluarga->id }}</td>
 	            <td>
                 <a class="btn btn-primary btn-aksi" href="/admin/keluarga/detail?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-list"></i></a> 
-                <button onclick="edit(this)" data-fields="nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&jumlah-anggota={{ $keluarga->Jumlah_Anggota_Keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-keluarga-id="{{ $keluarga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+                <button onclick="edit(this)" data-fields="nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-keluarga-id="{{ $keluarga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
 	                <a onclick="return confirm('Hapus data keluarga {{ $keluarga->kepala->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/hapus?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-trash-alt"></i></a>
 	            </td>
 	            <td>{{ $keluarga->Nomor_KK }}</td>
 	            <td>{{ $keluarga->kepala->nama }}</td>
 	            <td>{{ $keluarga->NIK }}</td>
-	            <td>{{ $keluarga->Jumlah_Anggota_Keluarga }}</td>
+	            <td>{{ $keluarga->anggota->count() }}</td>
 	            <td>{{ $keluarga->Alamat}}</td>
 	            <td>{{ $keluarga->Dusun }}</td>
 	            <td>{{ $keluarga->RW }}</td>
@@ -80,16 +80,16 @@
                 <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga">
             </div>
             <div class="mb-3">
-                <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
-                <input type="number" class="form-control" id="jumlah-anggota" name="jumlah_anggota">
-            </div>
-            <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
                 <input type="text" class="form-control" id="alamat" name="alamat">
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun" name="dusun">
+                <select class="form-control" id="dusun" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>
@@ -128,16 +128,16 @@
                 <input type="number" class="form-control" id="kepala-keluarga-edit" name="kepala_keluarga">
             </div>
             <div class="mb-3">
-                <label for="jumlah-anggota" class="form-label">Jumlah Anggota</label>
-                <input type="number" class="form-control" id="jumlah-anggota-edit" name="jumlah_anggota">
-            </div>
-            <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
                 <input type="text" class="form-control" id="alamat-edit" name="alamat">
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
-                <input type="text" class="form-control" id="dusun-edit" name="dusun">
+                <select class="form-control" id="dusun-edit" name="dusun">
+                    @foreach($dusun as $ds)
+                    <option value="{{ $ds->nama }}">{{ $ds->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>

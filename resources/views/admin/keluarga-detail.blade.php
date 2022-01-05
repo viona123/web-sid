@@ -121,8 +121,19 @@
                 <input type="text" class="form-control" id="nama-ubah" name="nama-ubah" disabled>
             </div>
             <div class="mb-3">
-                <label for="hubungan_keluarga" class="form-label">Hubungan Dalam Keluarga</label>
-                <input type="text" class="form-control" id="hubungan_keluarga-ubah" name="hubungan_keluarga">
+                <label for="hubungan_keluarga-ubah" class="form-label">Hubungan Dalam Keluarga</label>
+                <select class="form-control" id="hubungan_keluarga-ubah" name="hubungan_keluarga">
+                    <option value="KEPALA KELUARGA">KEPALA KELUARGA</option>
+                    <option value="SUAMI">SUAMI</option>
+                    <option value="ISTRI">ISTRI</option>
+                    <option value="ANAK">ANAK</option>
+                    <option value="MENANTU">MENANTU</option>
+                    <option value="CUCU">CUCU</option>
+                    <option value="MERTUA">MERTUA</option>
+                    <option value="FAMILI">FAMILI</option>
+                    <option value="PEMBANTU">PEMBANTU</option>
+                    <option value="LAINNYA">LAINNYA</option>
+                </select>
             </div>
         </div>
         <div class="modal-footer">
