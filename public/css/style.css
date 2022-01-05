@@ -147,8 +147,8 @@ table.detail {
 }
 .hehe{
     margin-right: -2rem;
-    width: 20vw;
-    height: 20vw;
+    width: 14vw;
+    height: 14vw;
     animation: muter 4s ease;
 }
 
@@ -203,8 +203,8 @@ footer {
     }
 
     to {
-        width: 20vw;
-        height: 20vw;
+        width: 14vw;
+        height: 14vw;
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
