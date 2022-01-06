@@ -48,7 +48,7 @@
                 <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
                 @endforeach
             </select>
-            <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
+           <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
         </form>
     </body>
 </html>
