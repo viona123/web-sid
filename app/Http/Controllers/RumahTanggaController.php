@@ -60,6 +60,9 @@ class RumahTanggaController extends Controller
 
     public function hapus() {
         $rt = RumahTangga::find(request('rt'));
+        foreach ($rt->anggota as $anggota) {
+            $anggota->delete();
+        }
         $rt->delete();
     
         return back();

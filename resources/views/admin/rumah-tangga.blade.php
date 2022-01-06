@@ -47,10 +47,10 @@
 	            <td>
                     <a class="btn btn-primary btn-aksi" href="/admin/rumah-tangga/detail?desa={{ $desa->id }}&rt={{ $rumah_tangga->id }}"><i class="fas fa-list"></i></a> 
                     <button onclick="edit(this)" data-fields="nomor-rt={{ $rumah_tangga->no_rt }}&kepala-rt={{ $rumah_tangga->nik_kepala_rt }}&alamat={{ $rumah_tangga->alamat }}&dusun={{ $rumah_tangga->dusun }}&rt={{ $rumah_tangga->rt }}&rw={{ $rumah_tangga->rw }}" data-rt-id="{{ $rumah_tangga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
-                    <a onclick="return confirm('Hapus data rumah tangga {{ $rumah_tangga->nik_kepala_rt }} ?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/hapus?rt={{ $rumah_tangga->id }}"><i class="fas fa-trash-alt"></i></a>
+                    <a onclick="return confirm('Hapus data rumah tangga {{ $rumah_tangga->kepala->nama }} ?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/hapus?rt={{ $rumah_tangga->id }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
 	            <td>{{ $rumah_tangga->no_rt }}</td>
-	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
+	            <td>{{ $rumah_tangga->kepala->nama }}</td>
 	            <td>{{ $rumah_tangga->nik_kepala_rt }}</td>
 	            <td>{{ $rumah_tangga->anggota->count() }}</td>
 	            <td>{{ $rumah_tangga->alamat }}</td>

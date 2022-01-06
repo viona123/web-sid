@@ -19,7 +19,6 @@ class CreateSensusesTable extends Migration
             $table->string('nik')->unique();
             $table->enum('status_dasar', ['HIDUP', 'MATI', 'PINDAH', 'HILANG']);
             $table->string('nama');
-            $table->string('no_rumah_tangga')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('agama');
             $table->enum('status_penduduk', ['TETAP', 'TIDAK TETAP']);
