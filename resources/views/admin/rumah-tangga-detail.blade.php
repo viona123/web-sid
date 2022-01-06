@@ -49,19 +49,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($anggota as $sensus)
+            @foreach ($anggota as $anggotaRT)
             <tr>
-                <td>{{ $sensus->id }}</td>
+                <td>{{ $anggotaRT->id }}</td>
                 <td>
-                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="nik={{ $sensus->nik }}&nama={{ $sensus->nama }}&hubungan_rt={{ $sensus->hubungan_keluarga }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
-                    <a onclick="return confirm('Hapus {{ $sensus->nama }} dari rumah tangga ini?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/anggota/hapus?sensus={{ $sensus->id }}"><i class="fas fa-times"></i></a>
+                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="id={{ $anggotaRT->id }}&nama={{ $anggotaRT->sensus->nama }}&hubungan_rt={{ $anggotaRT->hubungan_rt }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
+                    <a onclick="return confirm('Hapus {{ $anggotaRT->sensus->nama }} dari rumah tangga ini?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/anggota/hapus?anggotaRT={{ $anggotaRT->id }}"><i class="fas fa-times"></i></a>
                 </td>
-                <td>{{ $sensus->no_kk }}</td>
-                <td>{{ $sensus->nik }}</td>
-                <td>{{ $sensus->nama }}</td>
-                <td>{{ $sensus->ttl }}</td>
-                <td>{{ $sensus->jenis_kelamin }}</td>
-                <td>{{ $sensus->hubungan_keluarga }}</td>
+                <td>{{ $anggotaRT->sensus->anggotaKeluarga->no_kk }}</td>
+                <td>{{ $anggotaRT->sensus->nik }}</td>
+                <td>{{ $anggotaRT->sensus->nama }}</td>
+                <td>{{ $anggotaRT->sensus->ttl }}</td>
+                <td>{{ $anggotaRT->sensus->jenis_kelamin }}</td>
+                <td>{{ $anggotaRT->hubungan_rt }}</td>
             </tr>
             @endforeach
         </tbody>
@@ -85,7 +85,10 @@
             </div>
             <div class="mb-3">
                 <label for="hubungan_rt" class="form-label">Hubungan Dalam Rumah Tangga</label>
-                <input type="text" class="form-control" id="hubungan_rt" name="hubungan_rt">
+                <select class="form-control" id="hubungan_rt" name="hubungan_rt">
+                    <option value="KEPALA RUMAH TANGGA">KEPALA RUMAH TANGGA</option>
+                    <option value="ANGGOTA">ANGGOTA</option>
+                </select>
             </div>
         </div>
         <div class="modal-footer">
@@ -107,14 +110,17 @@
       <form action="/admin/rumah-tangga/anggota/ubah" method="post">
       @csrf
         <div class="modal-body">
-            <input type="hidden" class="form-control" id="nik-ubah" name="nik">
+            <input type="hidden" class="form-control" id="id-ubah" name="anggota">
             <div class="mb-3">
                 <label for="nama-ubah" class="form-label">Nama</label>
                 <input type="text" class="form-control" id="nama-ubah" name="nama-ubah" disabled>
             </div>
             <div class="mb-3">
-                <label for="hubungan_rt" class="form-label">Hubungan Dalam Rumah Tangga</label>
-                <input type="text" class="form-control" id="hubungan_rt-ubah" name="hubungan_rt">
+                <label for="hubungan_rt-ubah" class="form-label">Hubungan Dalam Rumah Tangga</label>
+                <select class="form-control" id="hubungan_rt-ubah" name="hubungan_rt">
+                    <option value="KEPALA RUMAH TANGGA">KEPALA RUMAH TANGGA</option>
+                    <option value="ANGGOTA">ANGGOTA</option>
+                </select>
             </div>
         </div>
         <div class="modal-footer">

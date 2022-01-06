@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Sensus;
 use App\Models\Desa;
 use App\Models\ProgramBantuan;
+use App\Models\AnggotaKeluarga;
+use App\Models\Keluarga;
 
 class SensusController extends Controller
 {
@@ -62,35 +64,42 @@ class SensusController extends Controller
 	        'status_dasar' => $status_dasar,
 	        'nama' => $nama_lengkap,
 	        'nik' => $nik,
-	        'no_kk' => $no_kk,
-	        'no_kk_sebelumnya' => $no_kk_sebelum,
-	        'hubungan_keluarga' => $hubungan_keluarga,
 	        'jenis_kelamin' => $jenis_kelamin,
 	        'agama' => $agama,
 	        'status_penduduk' => $status_penduduk,
 	        'ttl' => $ttl,
 	        'umur' => $umur,
-	        'anak_ke' => $anak_ke,
-	        'pendidikan_kk' => $pendidikan_kk,
 	        'pendidikan_ditempuh' => $pendidikan_ditempuh,
 	        'pekerjaan' => $pekerjaan,
-	        'nik_ayah' => $nik_ayah,
-	        'nik_ibu' => $nik_ibu,
 	        'no_telp' => $no_telp,
 	        'alamat_email' => $alamat_email,
 	        'alamat' => $alamat,
 	        'dusun' => $dusun,
-	        'status_kawin' => $kawin,
-	        'tanggal_perkawinan' => $tanggal_perkawinan,
 	        'tanggal_terdaftar' => $now
 	    ]);
+
+		AnggotaKeluarga::create([
+			'id_desa' => request('desa'),
+			'nik_anggota' => $nik,
+			'no_kk' => $no_kk,
+	        'no_kk_sebelumnya' => $no_kk_sebelum,
+	        'hubungan_keluarga' => $hubungan_keluarga,
+	        'anak_ke' => $anak_ke,
+	        'pendidikan' => $pendidikan_kk,
+	        'nik_ayah' => $nik_ayah,
+	        'nik_ibu' => $nik_ibu,
+	        'status_kawin' => $kawin,
+	        'tanggal_perkawinan' => $tanggal_perkawinan,
+		]);
 	
 	    return back();
 	}
 
 	public function hapus() {
 	    $sensus_hapus = Sensus::find(request('sensus'));
+		$ak_hapus = $sensus_hapus->anggotaKeluarga;
 	    $sensus_hapus->delete();
+		$ak_hapus->delete();
 	
 	    return back();
 	}
@@ -114,21 +123,16 @@ class SensusController extends Controller
 
 	public function ubah(Request $request) {
 	    $penduduk = Sensus::find(request('sensus'));
+
+		$anggotaKeluarga = new AnggotaKeluarga();
 	
 	    $penduduk->status_dasar = $request->input('status_dasar');
 	    $penduduk->nik = $request->input('nik');
-	    $penduduk->no_kk = $request->input('no_kk');
-	    $penduduk->no_kk_sebelumnya = $request->input('no_kk_sebelumnya');
 	    $penduduk->nama = $request->input('nama_lengkap');
-	    $penduduk->nik_ayah = $request->input('nik_ayah');
-	    $penduduk->nik_ibu = $request->input('nik_ibu');
-	    $penduduk->hubungan_keluarga = $request->input('hubungan_keluarga');
 	    $penduduk->jenis_kelamin = $request->input('jenis_kelamin');
 	    $penduduk->agama = $request->input('agama');
 	    $penduduk->status_penduduk = $request->input('status_penduduk');
 	    $penduduk->ttl = $request->input('ttl');
-	    $penduduk->anak_ke = $request->input('anak_ke');
-	    $penduduk->pendidikan_kk = $request->input('pendidikan_kk');
 	    $penduduk->pendidikan_ditempuh = $request->input('pendidikan_ditempuh');
 	    $penduduk->no_telp = $request->input('no_telp');
 	    $penduduk->alamat_email = $request->input('alamat_email');
@@ -136,9 +140,19 @@ class SensusController extends Controller
 	    $penduduk->dusun = $request->input('dusun');
 	    $penduduk->umur = $request->input('umur');
 	    $penduduk->pekerjaan = $request->input('pekerjaan');
-	    $penduduk->status_kawin = $request->input('kawin');
-	    $penduduk->tanggal_perkawinan = $request->input('tanggal_perkawinan');
-	
+
+		$penduduk->anggotaKeluarga()->updateOrCreate(['nik_anggota' => $penduduk->nik], [
+			'no_kk' => $request->input('no_kk'),
+	    	'no_kk_sebelumnya' => $request->input('no_kk_sebelumnya'),
+			'nik_ayah' => $request->input('nik_ayah'),
+	    	'nik_ibu' => $request->input('nik_ibu'),
+			'anak_ke' => $request->input('anak_ke'),
+	    	'pendidikan_kk' => $request->input('pendidikan_kk'),
+			'status_kawin' => $request->input('kawin'),
+	    	'tanggal_perkawinan' => $request->input('tanggal_perkawinan'),
+			'hubungan_keluarga' => $request->input('hubungan_keluarga')
+		]);
+	    
 	    $penduduk->save();
 	
 	    return back();

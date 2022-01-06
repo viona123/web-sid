@@ -16,7 +16,7 @@ class RumahTangga extends Model
     }
 
     public function anggota() {
-        return $this->hasMany(Sensus::class, 'no_rumah_tangga', 'no_rt');
+        return $this->hasMany(AnggotaRumahTangga::class, 'no_rt', 'no_rt');
     }
 
     public function bantuan() {

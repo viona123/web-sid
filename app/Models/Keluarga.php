@@ -16,7 +16,7 @@ class Keluarga extends Model
     }
 
     public function anggota() {
-        return $this->hasMany(Sensus::class, 'no_kk', 'Nomor_KK');
+        return $this->hasMany(AnggotaKeluarga::class, 'no_kk', 'Nomor_KK');
     }
 
     public function bantuan() {

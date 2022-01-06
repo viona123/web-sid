@@ -58,8 +58,8 @@
                         <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Pilih Aksi</button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="/admin/penduduk/detail?desa={{ $desa->id }}&sensus={{ $penduduk->id }}"><i class="fas fa-th-list d-inline-block me-2"></i> Lihat detail Biodata Penduduk</a></li>
-                            <li><a onclick="edit(this)" class="dropdown-item" data-fields="status_dasar={{ $penduduk->status_dasar }}&nik={{ $penduduk->nik }}&no_kk={{ $penduduk->no_kk }}&no_kk_sebelumnya={{ $penduduk->no_kk_sebelumnya }}&nama_lengkap={{ $penduduk->nama }}&nik_ayah={{ $penduduk->nik_ayah }}&nik_ibu={{ $penduduk->nik_ibu }}&hubungan_keluarga={{ $penduduk->hubungan_keluarga }}&jenis_kelamin={{ $penduduk->jenis_kelamin }}&agama={{ $penduduk->agama }}&status_penduduk={{ $penduduk->status_penduduk }}&ttl={{ $penduduk->ttl }}&anak_ke={{ $penduduk->anak_ke }}&pendidikan_kk={{ $penduduk->pendidikan_kk }}&pendidikan_ditempuh={{ $penduduk->pendidikan_ditempuh }}&no_telp={{ $penduduk->no_telp }}&alamat_email={{ $penduduk->alamat_email }}&alamat={{ $penduduk->alamat }}&dusun={{ $penduduk->dusun }}&umur={{ $penduduk->umur }}&pekerjaan={{ $penduduk->pekerjaan }}&kawin={{ $penduduk->status_kawin }}&tanggal_perkawinan={{ $penduduk->tanggal_perkawinan }}" data-sensus-id="{{ $penduduk->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
-                            <li><a onclick="return confirm('Hapus data sensus ini?')" class="dropdown-item" href="/admin/{{ $desa->id }}/penduduk/hapus/{{ $penduduk->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
+                            <li><a onclick="edit(this)" class="dropdown-item" data-fields="status_dasar={{ $penduduk->status_dasar }}&nik={{ $penduduk->nik }}&no_kk={{ $penduduk->anggotaKeluarga->no_kk }}&no_kk_sebelumnya={{ $penduduk->anggotaKeluarga->no_kk_sebelumnya }}&nama_lengkap={{ $penduduk->nama }}&nik_ayah={{ $penduduk->anggotaKeluarga->nik_ayah }}&nik_ibu={{ $penduduk->anggotaKeluarga->nik_ibu }}&hubungan_keluarga={{ $penduduk->anggotaKeluarga->hubungan_keluarga }}&jenis_kelamin={{ $penduduk->jenis_kelamin }}&agama={{ $penduduk->agama }}&status_penduduk={{ $penduduk->status_penduduk }}&ttl={{ $penduduk->ttl }}&anak_ke={{ $penduduk->anggotaKeluarga->anak_ke }}&pendidikan_kk={{ $penduduk->anggotaKeluarga->pendidikan }}&pendidikan_ditempuh={{ $penduduk->pendidikan_ditempuh }}&no_telp={{ $penduduk->no_telp }}&alamat_email={{ $penduduk->alamat_email }}&alamat={{ $penduduk->alamat }}&dusun={{ $penduduk->dusun }}&umur={{ $penduduk->umur }}&pekerjaan={{ $penduduk->pekerjaan }}&kawin={{ $penduduk->anggotaKeluarga->status_kawin }}&tanggal_perkawinan={{ $penduduk->anggotaKeluarga->tanggal_perkawinan }}" data-sensus-id="{{ $penduduk->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit d-inline-block me-2"></i> Ubah Biodata</a></li>
+                            <li><a onclick="return confirm('Hapus data sensus {{ $penduduk->nama }}?')" class="dropdown-item" href="/admin/penduduk/hapus?sensus={{ $penduduk->id }}&desa={{ $desa->id }}"><i class="fas fa-trash d-inline-block me-2"></i> Hapus</a></li>
                         </ul>
                     </div>
                 </td>
@@ -68,15 +68,15 @@
                 </td>
                 <td>{{ $penduduk->nik }}</td>
                 <td>{{ $penduduk->nama }}</td>
-                <td>{{ $penduduk->no_kk }}</td>
-                <td>{{ $penduduk->nik_ayah }}</td>
-                <td>{{ $penduduk->nik_ibu }}</td>
+                <td>{{ $penduduk->anggotaKeluarga->no_kk }}</td>
+                <td>{{ $penduduk->anggotaKeluarga->nik_ayah }}</td>
+                <td>{{ $penduduk->anggotaKeluarga->nik_ibu }}</td>
                 <td>{{ $penduduk->alamat }}</td>
                 <td>{{ $penduduk->dusun }}</td>
-                <td>{{ $penduduk->pendidikan_kk }}</td>
+                <td>{{ $penduduk->anggotaKeluarga->pendidikan }}</td>
                 <td>{{ $penduduk->umur }}</td>
                 <td>{{ $penduduk->pekerjaan }}</td>
-                <td>{{ $penduduk->status_kawin}}</td>
+                <td>{{ $penduduk->anggotaKeluarga->status_kawin}}</td>
                 <td>{{ $penduduk->tanggal_terdaftar }}</td>
             </tr>
             @endforeach

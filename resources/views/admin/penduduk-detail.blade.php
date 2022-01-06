@@ -16,15 +16,15 @@
     </tr>
     <tr>
         <td width="30%">NO. KARTU KELUARGA</td>
-        <td>: {{ $penduduk->no_kk }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->no_kk }}</td>
     </tr>
     <tr>
         <td width="30%">NO. KARTU KELUARGA SEBELUMNYA</td>
-        <td>: {{ $penduduk->no_kk_sebelumnya }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->no_kk_sebelumnya }}</td>
     </tr>
     <tr>
         <td width="30%">HUBUNGAN DALAM KELUARGA</td>
-        <td>: {{ $penduduk->hubungan_keluarga }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->hubungan_keluarga }}</td>
     </tr>
     <tr>
         <td width="30%">JENIS KELAMIN</td>
@@ -47,14 +47,14 @@
     </tr>
     <tr>
         <td width="30%">KELAHIRAN ANAK KE</td>
-        <td>: {{ $penduduk->anak_ke }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->anak_ke }}</td>
     </tr>
     <tr style="background-color: #DEDEDE">
         <td colspan="2"><strong>PENDIDIKAN DAN PEKERJAAN</strong></td>
     </tr>
     <tr>
         <td width="30%">PENDIDIKAN DALAM KK</td>
-        <td>: {{ $penduduk->pendidikan_kk }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->pendidikan }}</td>
     </tr>
     <tr>
         <td width="30%">PENDIDIKAN YANG SEDANG DITEMPUH</td>
@@ -69,11 +69,11 @@
     </tr>
     <tr>
         <td width="30%">NIK AYAH</td>
-        <td>: {{ $penduduk->nik_ayah }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->nik_ayah }}</td>
     </tr>
     <tr>
         <td width="30%">NIK IBU</td>
-        <td>: {{ $penduduk->nik_ibu }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->nik_ibu }}</td>
     </tr>
     <tr style="background-color: #DEDEDE">
         <td colspan="2"><strong>ALAMAT</strong></td>
@@ -99,11 +99,11 @@
     </tr>
     <tr>
         <td width="30%">STATUS KAWIN</td>
-        <td>: {{ $penduduk->status_kawin }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->status_kawin }}</td>
     </tr>
     <tr>
         <td width="30%">TANGGAL PERKAWINAN</td>
-        <td>: {{ $penduduk->tanggal_perkawinan }}</td>
+        <td>: {{ $penduduk->anggotaKeluarga->tanggal_perkawinan }}</td>
     </tr>
     <tr style="background-color: #DEDEDE">
         <td colspan="2"><strong>PROGRAM BANTUAN</strong></td>

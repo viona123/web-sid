@@ -15,6 +15,14 @@ class Sensus extends Model
         return $this->belongsTo(Keluarga::class, 'kepala_keluarga', 'nik');
     }
 
+    public function anggotaKeluarga() {
+        return $this->hasOne(AnggotaKeluarga::class, 'nik_anggota', 'nik');
+    }
+
+    public function anggotaRT() {
+        return $this->hasOne(AnggotaRumahTangga::class, 'nik_anggota', 'nik');
+    }
+
     public function rumahTangga() {
         return $this->belongsTo(RumahTangga::class, 'no_rt', 'no_rumah_tangga');
     }

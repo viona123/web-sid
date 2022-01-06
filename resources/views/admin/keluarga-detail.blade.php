@@ -47,18 +47,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($anggota as $sensus)
+            @foreach ($anggota as $anggotaKeluarga)
             <tr>
-                <td>{{ $sensus->id }}</td>
+                <td>{{ $anggotaKeluarga->id }}</td>
                 <td>
-                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="nik={{ $sensus->nik }}&nama={{ $sensus->nama }}&hubungan_keluarga={{ $sensus->hubungan_keluarga }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
-                    <a onclick="return confirm('Hapus {{ $sensus->nama }} dari keluarga ini?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/anggota/hapus?sensus={{ $sensus->id }}"><i class="fas fa-times"></i></a>
+                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="nik={{ $anggotaKeluarga->sensus->nik }}&nama={{ $anggotaKeluarga->sensus->nama }}&hubungan_keluarga={{ $anggotaKeluarga->hubungan_keluarga }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
+                    <a onclick="return confirm('Hapus {{ $anggotaKeluarga->sensus->nama }} dari keluarga ini?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/anggota/hapus?anggota={{ $anggotaKeluarga->id }}"><i class="fas fa-times"></i></a>
                 </td>
-                <td>{{ $sensus->nik }}</td>
-                <td>{{ $sensus->nama }}</td>
-                <td>{{ $sensus->ttl }}</td>
-                <td>{{ $sensus->jenis_kelamin }}</td>
-                <td>{{ $sensus->hubungan_keluarga }}</td>
+                <td>{{ $anggotaKeluarga->sensus->nik }}</td>
+                <td>{{ $anggotaKeluarga->sensus->nama }}</td>
+                <td>{{ $anggotaKeluarga->sensus->ttl }}</td>
+                <td>{{ $anggotaKeluarga->sensus->jenis_kelamin }}</td>
+                <td>{{ $anggotaKeluarga->hubungan_keluarga }}</td>
             </tr>
             @endforeach
         </tbody>

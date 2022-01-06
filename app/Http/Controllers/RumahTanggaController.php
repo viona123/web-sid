@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\RumahTangga;
+use App\Models\AnggotaRumahTangga;
 use App\Models\Desa;
 use App\Models\Sensus;
 
@@ -82,25 +83,26 @@ class RumahTanggaController extends Controller
     }
 
     public function hapusAnggota() {
-        $anggotaRT = Sensus::find(request('sensus'));
-        $anggotaRT->no_rumah_tangga = 0;
-        $anggotaRT->save();
+        $anggotaRT = AnggotaRumahTangga::find(request('anggotaRT'));
+        $anggotaRT->delete();
     
         return back();
     }
 
     public function tambahAnggota(Request $request) {
-        $sensus = Sensus::firstWhere('nik', $request->input('nik'));
-        $sensus->no_rumah_tangga = $request->input('no_rt');
-        $sensus->hubungan_keluarga = $request->input('hubungan_rt');
-        $sensus->save();
+        AnggotaRumahTangga::create([
+            'id_desa' => request('desa'),
+            'no_rt' => request('no_rt'),
+            'hubungan_rt' => request('hubungan_rt'),
+            'nik_anggota' => request('nik')
+        ]);
     
         return back();
     }
 
     public function ubahAnggota(Request $request) {
-        $sensus = Sensus::firstWhere('nik', $request->input('nik'));
-        $sensus->hubungan_keluarga = $request->input('hubungan_rt');
+        $sensus = AnggotaRumahTangga::find($request->input('anggota'));
+        $sensus->hubungan_rt = $request->input('hubungan_rt');
         $sensus->save();
     
         return back();

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Keluarga;
 use App\Models\Desa;
 use App\Models\Sensus;
+use App\Models\AnggotaKeluarga;
 
 class KeluargaController extends Controller
 {
@@ -66,7 +67,6 @@ class KeluargaController extends Controller
 	    $keluarga->Nomor_KK = $request->input('nomor_kk');
 	    $keluarga->kepala_keluarga = $request->input('kepala_keluarga');
 	    $keluarga->NIK = $request->input('kepala_keluarga');
-	    $keluarga->Jumlah_Anggota_Keluarga = $request->input('jumlah_anggota');
 	    $keluarga->Alamat = $request->input('alamat');
 	    $keluarga->Dusun = $request->input('dusun');
 	    $keluarga->RT = $request->input('rt');
@@ -94,24 +94,24 @@ class KeluargaController extends Controller
 	}
 
 	public function tambahAnggota(Request $request) {
-	    $anggota_baru = Sensus::firstWhere('nik', $request->input('nik') );
-	    $anggota_baru->no_kk = $request->input('no_kk');
-	    $anggota_baru->hubungan_keluarga = $request->input('hubungan_keluarga');
-	    $anggota_baru->save();
+	    $anggota_baru = AnggotaKeluarga::firstWhere('nik_anggota', $request->input('nik') );
+		$keluarga = Keluarga::firstWhere('Nomor_KK', $request->input('no_kk'));
+		$anggota_baru->keluarga()->associate($keluarga);
+		$anggota_baru->save();
 	
 	    return back();
 	}
 
 	public function hapusAnggota() {
-	    $anggota = Sensus::find(request('sensus'));
-	    $anggota->no_kk = '';
+	    $anggota = AnggotaKeluarga::find(request('anggota'));
+		$anggota->no_kk = '0';
 	    $anggota->save();
 	
 	    return back();
 	}
 
 	public function ubahAnggota(Request $request) {
-	    $anggota = Sensus::firstWhere('nik', $request->input('nik'));
+	    $anggota = AnggotaKeluarga::firstWhere('nik_anggota', $request->input('nik'));
 	    $anggota->hubungan_keluarga = $request->input('hubungan_keluarga');
 	    $anggota->save();
 	
