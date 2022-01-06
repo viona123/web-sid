@@ -44,7 +44,7 @@
               </ul>
             </div>
             <a class="menu-link text-white" href="#"><i class="fas fa-book-reader fa-fw me-1"></i> Layanan Surat</a>
-            <a class="menu-link text-white" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> Pengurus Desa</a>
+            <a class="menu-link text-white" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-gavel fa-fw me-1"></i> Pengurus Desa</a>
             <a class="menu-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-coins fa-fw me-1"></i> Program Bantuan</a>
             <a class="menu-link text-white" href="#"><i class="fas fa-globe-asia fa-fw me-1"></i> Pemetaaan</a>
             <a class="menu-link text-white" href="#"><i class="far fa-envelope fa-fw me-1"></i> SMS</a>
