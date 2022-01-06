@@ -208,6 +208,7 @@ footer {
     z-index: 4;
     color: #FFFFFF;
     text-decoration: none;
+	display: none;
 }
 .toggle::before{
     font-family: fontAwesome;
@@ -249,4 +250,7 @@ footer {
     .menu-bar.tutup .teks {
         display: none;
     }
+	.toggle {
+		display: initial;
+	}
 }
