@@ -19,7 +19,6 @@ class CreateKeluargasTable extends Migration
             $table->string('Nomor_KK');
             $table->string('kepala_keluarga');
             $table->string('NIK');
-            $table->integer('Jumlah_Anggota_Keluarga');
             $table->string('Alamat');
             $table->string('Dusun');
             $table->integer('RW');

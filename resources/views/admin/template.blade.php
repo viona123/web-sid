@@ -74,11 +74,12 @@
 		function toggleMenu(toggler) {
 			if (!menuOpen) {
 				menuBar.style.display = "initial";
+				menuBar.style.animation = "menu-bar-in 0.4s ease-out forwards";
 				menuOpen = true;
 				toggler.classList.remove('fa-bars');
 				toggler.classList.add('fa-times');
 			} else {
-				menuBar.style.display = "none";
+				menuBar.style.animation = "menu-bar-out 0.4s ease-in forwards";
 				menuOpen = false;
 				toggler.classList.remove('fa-times');
 				toggler.classList.add('fa-bars');
