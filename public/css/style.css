@@ -208,6 +208,7 @@ footer {
     z-index: 4;
     color: #FFFFFF;
     padding: 10px;
+    display: none;
 }
 .toggle i {
     display: inline-block;
