@@ -79,7 +79,7 @@
      text-align: center;
  }
  #submit-btn {
-      
+     background: #0085FF;
      border: none;
      border-radius: 21px;
      cursor: pointer;
@@ -195,6 +195,7 @@ footer {
     border-top: 1px solid #909090;
     margin-top: 3rem;
 }
+
 .toggle{
     position: absolute;
     top: calc(50vh - 50px);
@@ -211,7 +212,6 @@ footer {
 	display: none;
 }
 .toggle::before{
-    font-family: fontAwesome;
     width: 100%;
     height: 100%;
     line-height: 30px;
@@ -259,7 +259,6 @@ footer {
 	.menu-bar {
 		display: initial;
 		position: relative;
-        transition: all 0.7s;
 	}
 	.menu-bar-toggler {
 		display: none;
