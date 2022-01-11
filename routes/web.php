@@ -129,6 +129,13 @@ Route::post('/login/penduduk', [LoginController::class, 'loginPenduduk']);
 Route::post('/login/admin', [LoginController::class, 'loginAdmin']);
 Route::get('/login/admin', [LoginController::class, 'loginAdminTampilan'])->name('login-admin');
 
+Route::get('/admin/peta', function() {
+    $desa = Desa::find(request('desa'));
+    return view('admin.peta', [
+        'desa' => $desa
+    ]);
+});
+
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
     return view('daftar', [
