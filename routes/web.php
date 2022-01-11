@@ -135,6 +135,16 @@ Route::get('/admin/peta', function() {
         'desa' => $desa
     ]);
 });
+Route::post('/admin/peta/ubah', function(Request $request) {
+    $desa = Desa::find(request('desa'));
+    $longitude = $request->input('lokasi-longitude');
+    $latitude = $request->input('lokasi-latitude');
+
+    $desa->lokasi = $longitude . ',' . $latitude;
+    $desa->save();
+
+    return back();
+});
 
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');

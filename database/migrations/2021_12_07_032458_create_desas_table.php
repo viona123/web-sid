@@ -30,6 +30,7 @@ class CreateDesasTable extends Migration
             $table->integer('kode_kabupaten');
             $table->string('nama_provinsi');
             $table->integer('kode_provinsi');
+            $table->string('lokasi')->nullable();
             $table->timestamps();
         });
     }
