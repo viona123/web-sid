@@ -50,6 +50,19 @@
         })
     });
 
+    const marker = new ol.Feature({
+        geometry: new ol.geom.Point(
+            ol.proj.fromLonLat([<?= $desa->lokasi ?>])
+        ),
+    });
+    const vectorSource = new ol.source.Vector({
+        features: [marker]
+    });
+    const markerVectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+    });
+    map.addLayer(markerVectorLayer);
+
     function ubah(element) {
         const target = document.querySelector(element.getAttribute('data-toggle-display'));
         target.classList.toggle("d-none");
@@ -76,9 +89,15 @@
                 lokasiLatitude.value = coords.latitude;
 
                 map.getView().setCenter(ol.proj.fromLonLat([coords.longitude, coords.latitude]));
+                marker.setGeometry(new ol.geom.Point(
+                    ol.proj.fromLonLat([coords.longitude, coords.latitude])
+                ));
             });
         } else {
             map.getView().setCenter(ol.proj.fromLonLat([lokasiLongitude.value, lokasiLatitude.value]));
+            marker.setGeometry(new ol.geom.Point(
+                ol.proj.fromLonLat([lokasiLongitude.value, lokasiLatitude.value])
+            ));
         }
     }
 </script>
