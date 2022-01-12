@@ -27,8 +27,8 @@
 
 <h5 class="mt-4">Daftar Penerima</h5>
 <button class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus"></i> Tambah Penerima</button>
-<div style="overflow-x: auto">
-    <table width="100%" class="table table-secondary ms-3" style="table-layout: fixed">
+<div style="overflow-x: auto" class="ms-3>
+    <table width="100%" class="table table-secondary" style="table-layout: fixed">
         <colgroup>
             <col span="1" style="width: 3rem">
             <col span="1" style="width: 8rem">
