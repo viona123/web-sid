@@ -37,7 +37,7 @@
                 <i class="fas fa-info fa-fw me-1"></i> <span class="teks">Info Desa</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="background-color: #000000">
-                <li class="hihi"><a class="dropdown-item" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info fa-fw me-1"></i> Info Desa</a></li>
+                <li class="hihi"><a class="dropdown-item" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info fa-fw me-1"></i> Identitas Desa</a></li>
                 <li class="hihi"><a class="dropdown-item" href="/admin/wilayah_desa?desa={{ $desa->id }}"><i class="fas fa-map fa-fw me-1"></i> Wilayah Administratif</a></li>
                 <li class="hihi"><a class="dropdown-item" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> <span class="teks">Pengurus Desa</span></a><li>
               </ul>
