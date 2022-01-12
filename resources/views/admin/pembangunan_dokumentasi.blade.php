@@ -51,7 +51,7 @@
             <tr>
                 <td>{{ $dok->id }}</td>
                 <td>
-                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
+                    <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit"></i></a>
                     <a onclick="return confirm('Hapus data dokumentasi ini?')" class="btn btn-danger btn-aksi" href="/admin/pembangunan/dokumentasi/hapus?dok={{ $dok->id }}"><i class="fas fa-times"></i></a>
                 </td>
                 <td>{{ $dok->persentase }}</td>
@@ -61,5 +61,33 @@
             @endforeach
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="tambah-data" tabindex="-1" aria-labelledby="tambah-data-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambah-data-label">Tambah Data Dokumentasi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/pembangunan/dokumentasi/tambah?desa={{ $desa->id }}&pembangunan={{ $pembangunan->id }}" method="post">
+      @csrf
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="persentase" class="form-label">Persentase</label>
+                <input type="number" class="form-control" id="persentase" name="persentase">
+            </div>
+            <div class="mb-3">
+                <label for="keterangan" class="form-label">Keterangan</label>
+                <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    </div>
+  </div>
 </div>
 @endsection

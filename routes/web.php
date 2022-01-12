@@ -24,6 +24,7 @@ use App\Models\ProgramBantuan;
 use App\Models\PenerimaBantuan;
 use App\Models\StaffDesa;
 use App\Models\Pembangunan;
+use App\Models\DokumentasiPembangunan;
 
 /*
 |--------------------------------------------------------------------------
@@ -213,6 +214,18 @@ Route::get('/admin/pembangunan/dokumentasi', function() {
         'pembangunan' => $pembangunan,
         'dokumentasi' => $dokumentasi
     ]);
+});
+
+Route::post('/admin/pembangunan/dokumentasi/tambah', function(Request $request) {
+    DokumentasiPembangunan::create([
+        'persentase' => $request->input('persentase'),
+        'keterangan' => $request->input('keterangan'),
+        'id_desa' => request('desa'),
+        'id_pembangunan' => request('pembangunan'),
+        'tanggal_rekam' => date('Y-m-d')
+    ]);
+
+    return back();
 });
 
 Route::get('/daftar', function(Request $request) {
