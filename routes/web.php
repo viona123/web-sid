@@ -23,6 +23,7 @@ use App\Models\RumahTangga;
 use App\Models\ProgramBantuan;
 use App\Models\PenerimaBantuan;
 use App\Models\StaffDesa;
+use App\Models\Pembangunan;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +143,62 @@ Route::post('/admin/peta/ubah', function(Request $request) {
 
     $desa->lokasi = $longitude . ',' . $latitude;
     $desa->save();
+
+    return back();
+});
+
+Route::get('/admin/pembangunan', function() {
+    $desa = Desa::find(request('desa'));
+    $semuaPembangunan = $desa->pembangunan;
+
+    return view('admin.pembangunan', [
+        'desa' => $desa,
+        'semuaPembangunan' => $semuaPembangunan
+    ]);
+});
+
+Route::post('/admin/pembangunan/tambah', function(Request $request) {
+    Pembangunan::create([
+        'id_desa' => request('desa'),
+        'sumber_dana' => $request->input('sumber_dana'),
+        'nama' => $request->input('nama_kegiatan'),
+        'volume' => $request->input('volume'),
+        'tahun_anggaran' => $request->input('tahun_anggaran'),
+        'anggaran' => $request->input('anggaran'),
+        'pelaksana' => $request->input('pelaksana'),
+        'lokasi' => $request->input('lokasi'),
+        'keterangan' => $request->input('keterangan')
+    ]);
+
+    return back();
+});
+
+Route::get('/admin/pembangunan/ubah-status', function() {
+    $pembangunan = Pembangunan::find(request('pembangunan'));
+    $pembangunan->status = request('value');
+    $pembangunan->save();
+
+    return back();
+});
+
+Route::get('/admin/pembangunan/hapus', function() {
+    $pembangunan = Pembangunan::find(request('pembangunan'));
+    $pembangunan->delete();
+
+    return back();
+});
+
+Route::post('/admin/pembangunan/ubah', function(Request $request) {
+    $pembangunan = Pembangunan::find(request('pembangunan'));
+    $pembangunan->sumber_dana = $request->input('sumber_dana');
+    $pembangunan->nama = $request->input('nama_kegiatan');
+    $pembangunan->volume = $request->input('volume');
+    $pembangunan->tahun_anggaran = $request->input('tahun_anggaran');
+    $pembangunan->anggaran = $request->input('anggaran');
+    $pembangunan->pelaksana = $request->input('pelaksana');
+    $pembangunan->lokasi = $request->input('lokasi');
+    $pembangunan->keterangan = $request->input('keterangan');
+    $pembangunan->save();
 
     return back();
 });

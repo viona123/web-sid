@@ -52,4 +52,8 @@ class Desa extends Model
     public function rumahTangga() {
         return $this->hasMany(RumahTangga::class, 'id_desa');
     }
+
+    public function pembangunan() {
+        return $this->hasMany(Pembangunan::class, 'id_desa');
+    }
 }
