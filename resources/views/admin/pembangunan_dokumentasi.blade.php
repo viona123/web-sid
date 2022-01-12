@@ -25,8 +25,8 @@
     </tr>
 </table>
 
-<h5 class="mt-4">Daftar Anggota Rumah Tangga</h5>
-<button class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus"></i> Tambah Anggota Rumah Tangga</button>
+<h5 class="mt-4">Daftar Dokumentasi Pembangunan</h5>
+<button class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus"></i> Tambah Data</button>
 <div style="overflow-x: auto">
     <table width="100%" class="table table-secondary ms-3" style="table-layout: fixed">
         <colgroup>
