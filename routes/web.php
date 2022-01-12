@@ -237,6 +237,13 @@ Route::post('/admin/pembangunan/dokumentasi/ubah', function(Request $request) {
     return back();
 });
 
+Route::get('/admin/pembangunan/dokumentasi/hapus', function() {
+    $dokumentasi = DokumentasiPembangunan::find(request('dok'));
+    $dokumentasi->delete();
+
+    return back();
+});
+
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
     return view('daftar', [
