@@ -3,8 +3,8 @@
 @section('title', 'Program Pembangunan Desa')
 
 @section('content')
-<h3>Wilayah Administrasi Dusun</h3><hr class="bg-primary">
-<button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Dusun</button>
+<h3>Program Pembangunan</h3><hr class="bg-primary">
+<button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data</button>
 
 <div style="overflow-x: auto;">
 	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed;">
