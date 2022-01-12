@@ -46,7 +46,7 @@
 	                <button onclick="edit(this)" data-fields="sumber_dana={{ $pembangunan->sumber_dana }}&nama_kegiatan={{ $pembangunan->nama }}&anggaran={{ $pembangunan->anggaran }}&volume={{ $pembangunan->volume }}&tahun_anggaran={{ $pembangunan->tahun_anggaran }}&pelaksana={{ $pembangunan->pelaksana }}&lokasi={{ $pembangunan->lokasi }}&keterangan={{ $pembangunan->keterangan }}" data-pembangunan-id="{{ $pembangunan->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data pembangunan {{ $pembangunan->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/pembangunan/hapus?desa={{ $desa->id }}&pembangunan={{ $pembangunan->id }}"><i class="fas fa-trash-alt"></i></a>
                     <a href="/admin/pembangunan/ubah-status?pembangunan={{ $pembangunan->id }}&value=@if ($pembangunan->status == 'Aktif') Tidak Aktif @else Aktif @endif" class="btn btn-dark btn-aksi"><i class="fas @if ($pembangunan->status == 'Aktif') fa-lock-open @else fa-lock @endif"></i></a>
-	                <a class="btn btn-primary btn-aksi" href="/admin/pembangunan/detail?desa={{ $desa->id }}&rt={{ $pembangunan->id }}"><i class="fas fa-list"></i></a> 
+	                <a class="btn btn-primary btn-aksi" href="/admin/pembangunan/dokumentasi?desa={{ $desa->id }}&pembangunan={{ $pembangunan->id }}"><i class="fas fa-list"></i></a> 
 	            </td>
 	            <td>{{ $pembangunan->nama }}</td>
 	            <td>{{ $pembangunan->sumber_dana }}</td>

@@ -203,6 +203,18 @@ Route::post('/admin/pembangunan/ubah', function(Request $request) {
     return back();
 });
 
+Route::get('/admin/pembangunan/dokumentasi', function() {
+    $desa = Desa::find(request('desa'));
+    $pembangunan = Pembangunan::find(request('pembangunan'));
+    $dokumentasi = $pembangunan->dokumentasi;
+
+    return view('admin.pembangunan_dokumentasi', [
+        'desa' => $desa,
+        'pembangunan' => $pembangunan,
+        'dokumentasi' => $dokumentasi
+    ]);
+});
+
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
     return view('daftar', [

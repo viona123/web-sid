@@ -14,4 +14,8 @@ class Pembangunan extends Model
     public function desa() {
         return $this->belongsTo(Desa::class, 'id_desa');
     }
+
+    public function dokumentasi() {
+        return $this->hasMany(DokumentasiPembangunan::class, 'id_pembangunan');
+    }
 }
