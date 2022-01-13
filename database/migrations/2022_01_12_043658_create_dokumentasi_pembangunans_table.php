@@ -18,7 +18,7 @@ class CreateDokumentasiPembangunansTable extends Migration
             $table->integer('id_desa');
             $table->integer('id_pembangunan');
             $table->integer('persentase');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->date('tanggal_rekam');
             $table->timestamps();
         });

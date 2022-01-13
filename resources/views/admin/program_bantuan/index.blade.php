@@ -74,7 +74,7 @@
             </div>
             <div class="mb-3">
                 <label for="nama_program" class="form-label">Nama Program</label>
-                <input type="text" class="form-control" id="nama_program" name="nama_program">
+                <input type="text" class="form-control" id="nama_program" name="nama_program" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan" class="form-label">Keterangan</label>
@@ -83,7 +83,6 @@
             <div class="mb-3">
                 <label for="asal_dana" class="form-label">Asal Dana</label>
                 <select class="form-control" id="asal_dana" name="asal_dana">
-                    <option value="0">--PILIH ASAL DANA--</option>
                     <option value="Pusat">Pusat</option>
                     <option value="Provinsi">Provinsi</option>
                     <option value="Kab/Kota">Kab/Kota</option>
@@ -93,9 +92,9 @@
             </div>
             <div class="mb-3">
                 <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai">
+                <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required>
                 <label for="tanggal_akhir" class="form-label">Tanggal Akhir</label>
-                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir">
+                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir" required>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
@@ -135,7 +134,7 @@
             </div>
             <div class="mb-3">
                 <label for="nama_program-edit" class="form-label">Nama Program</label>
-                <input type="text" class="form-control" id="nama_program-edit" name="nama_program">
+                <input type="text" class="form-control" id="nama_program-edit" name="nama_program" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan-edit" class="form-label">Keterangan</label>
@@ -144,7 +143,6 @@
             <div class="mb-3">
                 <label for="asal_dana-edit" class="form-label">Asal Dana</label>
                 <select class="form-control" id="asal_dana-edit" name="asal_dana">
-                    <option value="0">--PILIH ASAL DANA--</option>
                     <option value="Pusat">Pusat</option>
                     <option value="Provinsi">Provinsi</option>
                     <option value="Kab/Kota">Kab/Kota</option>
@@ -154,9 +152,9 @@
             </div>
             <div class="mb-3">
                 <label for="tanggal_mulai-edit" class="form-label">Tanggal Mulai</label>
-                <input type="date" class="form-control" id="tanggal_mulai-edit" name="tanggal_mulai">
+                <input type="date" class="form-control" id="tanggal_mulai-edit" name="tanggal_mulai" required>
                 <label for="tanggal_akhir-edit" class="form-label">Tanggal Akhir</label>
-                <input type="date" class="form-control" id="tanggal_akhir-edit" name="tanggal_akhir">
+                <input type="date" class="form-control" id="tanggal_akhir-edit" name="tanggal_akhir" required>
             </div>
             <div class="mb-3">
                 <label for="status-edit" class="form-label">Status</label>

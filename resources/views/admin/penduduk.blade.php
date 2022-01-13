@@ -105,27 +105,27 @@
             </div>
             <div class="mb-3">
                 <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="nik" name="nik">
+                <input type="number" class="form-control" id="nik" name="nik" required>
             </div>
             <div class="mb-3">
                 <label for="no_kk" class="form-label">Nomor Kartu Keluarga</label>
-                <input type="number" class="form-control" id="no_kk" name="no_kk">
+                <input type="number" class="form-control" id="no_kk" name="no_kk" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="no_kk_sebelumnya" class="form-label">Nomor Kartu Keluarga Sebelumnya</label>
-                <input type="number" class="form-control" id="no_kk_sebelumnya" name="no_kk_sebelumnya">
+                <input type="number" class="form-control" id="no_kk_sebelumnya" name="no_kk_sebelumnya" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
+                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
             </div>
             <div class="mb-3">
                 <label for="nik_ayah" class="form-label">NIK Ayah</label>
-                <input type="number" class="form-control" id="nik_ayah" name="nik_ayah">
+                <input type="number" class="form-control" id="nik_ayah" name="nik_ayah" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="nik_ibu" class="form-label">NIK Ibu</label>
-                <input type="number" class="form-control" id="nik_ibu" name="nik_ibu">
+                <input type="number" class="form-control" id="nik_ibu" name="nik_ibu" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="hubungan_keluarga" class="form-label">Hubungan Dalam Keluarga</label>
@@ -143,9 +143,11 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Jenis Kelamin</label><br>
-                <input type="radio" value="L" name="jenis_kelamin" id="laki_laki"> <label for="laki_laki">Laki-laki</label>
-                <input type="radio" value="P" name="jenis_kelamin" id="perempuan"> <label for="perempuan">Perempuan</label>
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
+                    <option value="L">LAKI-LAKI</option>
+                    <option value="P">PEREMPUAN</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="agama" class="form-label">Agama</label>
@@ -167,11 +169,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" class="form" for="ttl">Tempat Tanggal Lahir</label>
-                <input type="text" class="form-control" name="ttl" id="ttl">
+                <input type="text" class="form-control" name="ttl" id="ttl" placeholder="Contoh: Banyumas, 15-10-2006" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="anak_ke">Kelahiran Anak Ke</label>
-                <input type="number" class="form-control" name="anak_ke" id="anak_ke">
+                <input type="number" class="form-control" name="anak_ke" id="anak_ke" value="1" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_kk">Pendidikan Dalam KK</label>
@@ -213,15 +215,15 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="no_telp">Nomor Telepon</label>
-                <input type="tel" class="form-control" name="no_telp" id="no_telp">
+                <input type="tel" class="form-control" name="no_telp" id="no_telp" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="alamat_email">Alamat Email</label>
-                <input type="email" class="form-control" name="alamat_email" id="alamat_email">
+                <input type="email" class="form-control" name="alamat_email" id="alamat_email" required>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat">
+                <input type="text" class="form-control" id="alamat" name="alamat" required>
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
@@ -233,11 +235,11 @@
             </div>
             <div class="mb-3">
                 <label for="umur" class="form-label">Umur</label>
-                <input type="text" class="form-control" id="umur" name="umur">
+                <input type="text" class="form-control" id="umur" name="umur" required>
             </div>
             <div class="mb-3">
                 <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan">
+                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" required>
             </div>
             <div class="mb-3">
                 <label for="kawin" class="form-label">Status Perkawinan</label>
@@ -283,27 +285,27 @@
             </div>
             <div class="mb-3">
                 <label for="nik_edit" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="nik_edit" name="nik">
+                <input type="number" class="form-control" id="nik_edit" name="nik" required>
             </div>
             <div class="mb-3">
                 <label for="no_kk_edit" class="form-label">Nomor Kartu Keluarga</label>
-                <input type="number" class="form-control" id="no_kk_edit" name="no_kk">
+                <input type="number" class="form-control" id="no_kk_edit" name="no_kk" required>
             </div>
             <div class="mb-3">
                 <label for="no_kk_sebelumnya_edit" class="form-label">Nomor Kartu Keluarga Sebelumnya</label>
-                <input type="number" class="form-control" id="no_kk_sebelumnya_edit" name="no_kk_sebelumnya">
+                <input type="number" class="form-control" id="no_kk_sebelumnya_edit" name="no_kk_sebelumnya" required>
             </div>
             <div class="mb-3">
                 <label for="nama_lengkap_edit" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama_lengkap_edit" name="nama_lengkap">
+                <input type="text" class="form-control" id="nama_lengkap_edit" name="nama_lengkap" required>
             </div>
             <div class="mb-3">
                 <label for="nik_ayah_edit" class="form-label">NIK Ayah</label>
-                <input type="number" class="form-control" id="nik_ayah_edit" name="nik_ayah">
+                <input type="number" class="form-control" id="nik_ayah_edit" name="nik_ayah" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="nik_ibu_edit" class="form-label">NIK Ibu</label>
-                <input type="number" class="form-control" id="nik_ibu_edit" name="nik_ibu">
+                <input type="number" class="form-control" id="nik_ibu_edit" name="nik_ibu" value="0" required>
             </div>
             <div class="mb-3">
                 <label for="hubungan_keluarga_edit" class="form-label">Hubungan Dalam Keluarga</label>
@@ -321,9 +323,11 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Jenis Kelamin</label><br>
-                <input type="radio" value="L" name="jenis_kelamin" id="laki_laki_edit"> <label for="laki_laki">Laki-laki</label>
-                <input type="radio" value="P" name="jenis_kelamin" id="perempuan_edit"> <label for="perempuan">Perempuan</label>
+                <label for="jenis_kelamin_edit" class="form-label">Jenis Kelamin</label>
+                <select name="jenis_kelamin" id="jenis_kelamin_edit" class="form-select">
+                    <option value="L">LAKI-LAKI</option>
+                    <option value="P">PEREMPUAN</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="agama_edit" class="form-label">Agama</label>
@@ -345,11 +349,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" class="form" for="ttl_edit">Tempat Tanggal Lahir</label>
-                <input type="text" class="form-control" name="ttl" id="ttl_edit">
+                <input type="text" class="form-control" name="ttl" id="ttl_edit" placeholder="Contoh: Banyumas, 15-10-2006" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="anak_ke_edit">Kelahiran Anak Ke</label>
-                <input type="number" class="form-control" name="anak_ke" id="anak_ke_edit">
+                <input type="number" class="form-control" name="anak_ke" id="anak_ke_edit" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="pendidikan_kk_edit">Pendidikan Dalam KK</label>
@@ -391,15 +395,15 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="no_telp_edit">Nomor Telepon</label>
-                <input type="tel" class="form-control" name="no_telp" id="no_telp_edit">
+                <input type="tel" class="form-control" name="no_telp" id="no_telp_edit" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="alamat_email_edit">Alamat Email</label>
-                <input type="email" class="form-control" name="alamat_email" id="alamat_email_edit">
+                <input type="email" class="form-control" name="alamat_email" id="alamat_email_edit" required>
             </div>
             <div class="mb-3">
                 <label for="alamat_edit" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="alamat_edit" name="alamat">
+                <input type="text" class="form-control" id="alamat_edit" name="alamat" required>
             </div>
             <div class="mb-3">
                 <label for="dusun_edit" class="form-label">Dusun</label>
@@ -411,11 +415,11 @@
             </div>
             <div class="mb-3">
                 <label for="umur_edit" class="form-label">Umur</label>
-                <input type="text" class="form-control" id="umur_edit" name="umur">
+                <input type="text" class="form-control" id="umur_edit" name="umur" required>
             </div>
             <div class="mb-3">
                 <label for="pekerjaan_edit" class="form-label">Pekerjaan</label>
-                <input type="text" class="form-control" id="pekerjaan_edit" name="pekerjaan">
+                <input type="text" class="form-control" id="pekerjaan_edit" name="pekerjaan" required>
             </div>
             <div class="mb-3">
                 <label for="kawin_edit" class="form-label">Kawin</label>
@@ -450,14 +454,8 @@
 
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i].split('=');
-            if (field[0] !== 'jenis_kelamin') {
-                const fieldElement = document.getElementById(field[0] + '_edit');
-                fieldElement.value = field[1];
-            } else {
-                const kelamin = (field[1] == 'L') ? 'laki_laki' : 'perempuan';
-                const fieldKelamin = document.getElementById(kelamin + '_edit');
-                fieldKelamin.checked = true;
-            }
+            const fieldElement = document.getElementById(field[0] + '_edit');
+            fieldElement.value = field[1];
         }
 
         console.log(fields);

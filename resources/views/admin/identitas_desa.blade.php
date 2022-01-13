@@ -94,19 +94,19 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama-ubah" class="form-label">Nama Desa</label>
-                <input type="text" class="form-control" id="nama-ubah" name="nama" value="{{ $desa->nama }}">
+                <input type="text" class="form-control" id="nama-ubah" name="nama" value="{{ $desa->nama }}" required>
             </div>
             <div class="mb-3">
                 <label for="kode_pos" class="form-label">Kode Pos Desa</label>
-                <input type="text" class="form-control" id="kode_pos-ubah" name="kode_pos" value="{{ $desa->kode_pos }}">
+                <input type="text" class="form-control" id="kode_pos-ubah" name="kode_pos" value="{{ $desa->kode_pos }}" required>
             </div>
             <div class="mb-3">
                 <label for="nik_kepala" class="form-label">NIK Kepala Desa</label>
-                <input type="text" class="form-control" id="nik_kepala-ubah" name="nik_kepala" value="{{ $desa->nik_kepala }}">
+                <input type="text" class="form-control" id="nik_kepala-ubah" name="nik_kepala" value="{{ $desa->nik_kepala }}" required>
             </div>
             <div class="mb-3">
                 <label for="alamat_kantor" class="form-label">Alamat Kantor Desa</label>
-                <input type="text" class="form-control" id="alamat_kantor-ubah" name="alamat_kantor" value="{{ $desa->alamat_kantor }}">
+                <input type="text" class="form-control" id="alamat_kantor-ubah" name="alamat_kantor" value="{{ $desa->alamat_kantor }}" required>
             </div>
             <div class="mb-3">
                 <label for="alamat_email" class="form-label">Alamat Email Desa</label>
@@ -114,7 +114,7 @@
             </div>
             <div class="mb-3">
                 <label for="no_telp" class="form-label">Nomor Telepon Desa</label>
-                <input type="text" class="form-control" id="no_telp-ubah" name="no_telp" value="{{ $desa->no_telp }}">
+                <input type="text" class="form-control" id="no_telp-ubah" name="no_telp" value="{{ $desa->no_telp }}" required>
             </div>
             <div class="mb-3">
                 <label for="website" class="form-label">Website Desa</label>
@@ -130,7 +130,7 @@
             </div>
             <div class="mb-3">
                 <label for="nama_camat-ubah" class="form-label">Nama Camat</label>
-                <input type="text" class="form-control" id="nama_camat-ubah" name="nama_camat" value="{{ $desa->nama_camat }}">
+                <input type="text" class="form-control" id="nama_camat-ubah" name="nama_camat" value="{{ $desa->nama_camat }}" required>
             </div>
             <div class="mb-3">
                 <label for="nip-ubah" class="form-label">NIP Camat</label>

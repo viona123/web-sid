@@ -51,7 +51,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama_kategori" class="form-label">Nama Kategori</label>
-                <input type="text" class="form-control" id="nama_kategori" name="nama_kategori">
+                <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" required>
             </div>
             <div class="mb-3">
                 <label for="deskripsi_kategori" class="form-label">Deskripsi Kategori</label>

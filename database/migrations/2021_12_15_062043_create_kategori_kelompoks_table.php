@@ -17,7 +17,7 @@ class CreateKategoriKelompoksTable extends Migration
             $table->id();
             $table->integer('id_desa');
             $table->string('nama');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

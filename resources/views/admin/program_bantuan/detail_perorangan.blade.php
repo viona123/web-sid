@@ -27,7 +27,7 @@
 
 <h5 class="mt-4">Daftar Penerima</h5>
 <button class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus"></i> Tambah Penerima</button>
-<div style="overflow-x: auto" class="ms-3>
+<div style="overflow-x: auto" class="ms-3">
     <table width="100%" class="table table-secondary" style="table-layout: fixed">
         <colgroup>
             <col span="1" style="width: 3rem">
@@ -64,7 +64,7 @@
                     <a onclick="edit(this)" class="btn btn-warning btn-aksi" href="javascript:void(0)" data-fields="nik={{ $penerima->nik }}&nama={{ $penerima->nama }}&hubungan_keluarga={{ $penerima->hubungan_keluarga }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-link"></i></a>
                     <a onclick="return confirm('Hapus penerima {{ $penerima->penerimaPerorangan->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/program-bantuan/penerima/hapus?penerima={{ $penerima->id }}"><i class="fas fa-times"></i></a>
                 </td>
-                <td>{{ $penerima->penerimaPerorangan->no_kk }}</td>
+                <td>{{ $penerima->penerimaPerorangan->anggotaKeluarga->no_kk }}</td>
                 <td>{{ $penerima->penerimaPerorangan->nik }}</td>
                 <td>{{ $penerima->penerimaPerorangan->nama }}</td>
                 <td>{{ $penerima->id }}</td>
@@ -91,7 +91,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="fkey_value" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="fkey_value" name="fkey_value">
+                <input type="number" class="form-control" id="fkey_value" name="fkey_value" required>
             </div>
         </div>
         <div class="modal-footer">

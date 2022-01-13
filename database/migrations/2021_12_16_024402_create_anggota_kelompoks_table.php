@@ -19,7 +19,7 @@ class CreateAnggotaKelompoksTable extends Migration
             $table->integer('kode_kelompok');
             $table->string('nik_anggota');
             $table->string('jabatan');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

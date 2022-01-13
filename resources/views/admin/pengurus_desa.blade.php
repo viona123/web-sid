@@ -86,7 +86,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nik_pegawai" class="form-label">NIK Pegawai Desa</label>
-                <input type="number" class="form-control" id="nik_pegawai" name="nik_pegawai">
+                <input type="number" class="form-control" id="nik_pegawai" name="nik_pegawai" required>
             </div>
             <div class="mb-3">
                 <label for="nipd" class="form-label">NIPD</label>
@@ -98,27 +98,27 @@
             </div>
             <div class="mb-3">
                 <label for="no_sk_pengangkatan" class="form-label">Nomor SK Pengangkatan</label>
-                <input type="number" class="form-control" id="no_sk_pengangkatan" name="no_sk_pengangkatan">
+                <input type="number" class="form-control" id="no_sk_pengangkatan" name="no_sk_pengangkatan" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_sk_pengangkatan" class="form-label">Tanggal SK Pengangkatan</label>
-                <input type="date" class="form-control" id="tanggal_sk_pengangkatan" name="tanggal_sk_pengangkatan">
+                <input type="date" class="form-control" id="tanggal_sk_pengangkatan" name="tanggal_sk_pengangkatan" required>
             </div>
             <div class="mb-3">
                 <label for="no_sk_pemberhentian" class="form-label">Nomor SK Pemberhentian</label>
-                <input type="number" class="form-control" id="no_sk_pemberhentian" name="no_sk_pemberhentian">
+                <input type="number" class="form-control" id="no_sk_pemberhentian" name="no_sk_pemberhentian" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_sk_pengangkatan" class="form-label">Tanggal SK Pemberhentian</label>
-                <input type="date" class="form-control" id="tanggal_sk_pengangkatan" name="tanggal_sk_pemberhentian">
+                <input type="date" class="form-control" id="tanggal_sk_pengangkatan" name="tanggal_sk_pemberhentian" required>
             </div>
             <div class="mb-3">
                 <label for="jabatan" class="form-label">Jabatan</label>
-                <input type="text" class="form-control" id="jabatan" name="jabatan">
+                <input type="text" class="form-control" id="jabatan" name="jabatan" required>
             </div>
             <div class="mb-3">
                 <label for="periode_jabatan" class="form-label">Periode Jabatan</label>
-                <input type="text" class="form-control" id="periode_jabatan" name="periode_jabatan" placeholder="Contoh: 6 Tahun Periode Pertama (2015/2021)">
+                <input type="text" class="form-control" id="periode_jabatan" name="periode_jabatan" placeholder="Contoh: 6 Tahun Periode Pertama (2015/2021)" required>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status Pegawai Desa</label>
@@ -149,7 +149,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nik_pegawai-edit" class="form-label">NIK Pegawai Desa</label>
-                <input type="number" class="form-control" id="nik_pegawai-edit" name="nik_pegawai">
+                <input type="number" class="form-control" id="nik_pegawai-edit" name="nik_pegawai" required>
             </div>
             <div class="mb-3">
                 <label for="nipd-edit" class="form-label">NIPD</label>
@@ -161,27 +161,27 @@
             </div>
             <div class="mb-3">
                 <label for="no_sk_pengangkatan-edit" class="form-label">Nomor SK Pengangkatan</label>
-                <input type="number" class="form-control" id="no_sk_pengangkatan-edit" name="no_sk_pengangkatan">
+                <input type="number" class="form-control" id="no_sk_pengangkatan-edit" name="no_sk_pengangkatan" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_sk_pengangkatan-edit" class="form-label">Tanggal SK Pengangkatan</label>
-                <input type="date" class="form-control" id="tanggal_sk_pengangkatan-edit" name="tanggal_sk_pengangkatan">
+                <input type="date" class="form-control" id="tanggal_sk_pengangkatan-edit" name="tanggal_sk_pengangkatan" required>
             </div>
             <div class="mb-3">
                 <label for="no_sk_pemberhentian-edit" class="form-label">Nomor SK Pemberhentian</label>
-                <input type="number" class="form-control" id="no_sk_pemberhentian-edit" name="no_sk_pemberhentian">
+                <input type="number" class="form-control" id="no_sk_pemberhentian-edit" name="no_sk_pemberhentian" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_sk_pemberhentian-edit" class="form-label">Tanggal SK Pemberhentian</label>
-                <input type="date" class="form-control" id="tanggal_sk_pemberhentian-edit" name="tanggal_sk_pemberhentian">
+                <input type="date" class="form-control" id="tanggal_sk_pemberhentian-edit" name="tanggal_sk_pemberhentian" required>
             </div>
             <div class="mb-3">
                 <label for="jabatan-edit" class="form-label">Jabatan</label>
-                <input type="text" class="form-control" id="jabatan-edit" name="jabatan">
+                <input type="text" class="form-control" id="jabatan-edit" name="jabatan" required>
             </div>
             <div class="mb-3">
                 <label for="periode_jabatan-edit" class="form-label">Periode Jabatan</label>
-                <input type="text" class="form-control" id="periode_jabatan-edit" name="periode_jabatan" placeholder="Contoh: 6 Tahun Periode Pertama (2015/2021)">
+                <input type="text" class="form-control" id="periode_jabatan-edit" name="periode_jabatan" placeholder="Contoh: 6 Tahun Periode Pertama (2015/2021)" required>
             </div>
             <div class="mb-3">
                 <label for="status-edit" class="form-label">Status Pegawai Desa</label>

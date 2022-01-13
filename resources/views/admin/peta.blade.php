@@ -24,11 +24,11 @@
         @csrf
         <div>
             <label class="form-label" for="lokasi-longitude">Masukan longitude Lokasi</label>
-            <input class="form-control" type="number" id="lokasi-longitude" name="lokasi-longitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[0] : 0  }}>
+            <input class="form-control" type="number" id="lokasi-longitude" name="lokasi-longitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[0] : 0  }} required>
         </div>
         <div>
             <label class="form-label" for="lokasi-latitude">Masukan latitude Lokasi</label>
-            <input class="form-control" type="number" id="lokasi-latitude" name="lokasi-latitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[1] : 0 }}>
+            <input class="form-control" type="number" id="lokasi-latitude" name="lokasi-latitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[1] : 0 }} required>
         </div>
         <button class="btn btn-primary mt-4" type="submit">Simpan</button>
         <button class="btn btn-secondary mt-4" type="button" onclick="showLocation(false)">Lihat</button>

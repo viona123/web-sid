@@ -75,7 +75,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="persentase" class="form-label">Persentase</label>
-                <input type="number" class="form-control" id="persentase" name="persentase">
+                <input type="number" class="form-control" id="persentase" name="persentase" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan" class="form-label">Keterangan</label>
@@ -102,8 +102,8 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="persentase-edit" class="form-label">Persentase</label>
-                <input type="number" class="form-control" id="persentase-edit" name="persentase">
+                <label for="persentase-edit" class="form-label" required>Persentase</label>
+                <input type="number" class="form-control" id="persentase-edit" name="persentase" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan-edit" class="form-label">Keterangan</label>

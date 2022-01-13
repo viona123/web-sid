@@ -80,36 +80,36 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama-dusun" class="form-label">Nama Dusun</label>
-                <input type="text" class="form-control" id="nama-dusun" name="nama-dusun">
+                <input type="text" class="form-control" id="nama-dusun" name="nama-dusun" required>
             </div>
             <div class="mb-3">
                 <label for="kepala-dusun" class="form-label">NIK Kepala Dusun</label>
-                <input type="text" class="form-control" id="kepala-dusun" name="kepala-dusun">
+                <input type="text" class="form-control" id="kepala-dusun" name="kepala-dusun" required>
             </div>
             
             <div class="mb-3">
                 <label for="jumlah-rw" class="form-label">Jumlah RW</label>
-                <input type="number" class="form-control" id="jumlah-rw" name="jumlah-rw">
+                <input type="number" class="form-control" id="jumlah-rw" name="jumlah-rw" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-rt" class="form-label">Jumlah RT</label>
-                <input type="number" class="form-control" id="jumlah-rt" name="jumlah-rt">
+                <input type="number" class="form-control" id="jumlah-rt" name="jumlah-rt" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-kk" class="form-label">Jumlah KK</label>
-                <input type="number" class="form-control" id="jumlah-kk" name="jumlah-kk">
+                <input type="number" class="form-control" id="jumlah-kk" name="jumlah-kk" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-lp" class="form-label">Jumlah LP</label>
-                <input type="number" class="form-control" id="jumlah-lp" name="jumlah-lp">
+                <input type="number" class="form-control" id="jumlah-lp" name="jumlah-lp" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-l" class="form-label">Jumlah L</label>
-                <input type="number" class="form-control" id="jumlah-l" name="jumlah-l">
+                <input type="number" class="form-control" id="jumlah-l" name="jumlah-l" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-p" class="form-label">Jumlah P</label>
-                <input type="number" class="form-control" id="jumlah-p" name="jumlah-p">
+                <input type="number" class="form-control" id="jumlah-p" name="jumlah-p" required>
             </div>
         </div>
         <div class="modal-footer">
@@ -133,35 +133,35 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama-dusun-edit" class="form-label">Nama Dusun</label>
-                <input type="text" class="form-control" id="nama-dusun-edit" name="nama-dusun">
+                <input type="text" class="form-control" id="nama-dusun-edit" name="nama-dusun" required>
             </div>
             <div class="mb-3">
                 <label for="kepala-dusun-edit" class="form-label">NIK Kepala Dusun</label>
-                <input type="text" class="form-control" id="kepala-dusun-edit" name="kepala-dusun">
+                <input type="text" class="form-control" id="kepala-dusun-edit" name="kepala-dusun" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-rw-edit" class="form-label">Jumlah RW</label>
-                <input type="number" class="form-control" id="jumlah-rw-edit" name="jumlah-rw">
+                <input type="number" class="form-control" id="jumlah-rw-edit" name="jumlah-rw" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-rt-edit" class="form-label">Jumlah RT</label>
-                <input type="number" class="form-control" id="jumlah-rt-edit" name="jumlah-rt">
+                <input type="number" class="form-control" id="jumlah-rt-edit" name="jumlah-rt" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-kk-edit" class="form-label">Jumlah KK</label>
-                <input type="number" class="form-control" id="jumlah-kk-edit" name="jumlah-kk">
+                <input type="number" class="form-control" id="jumlah-kk-edit" name="jumlah-kk" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-lp-edit" class="form-label">Jumlah LP</label>
-                <input type="number" class="form-control" id="jumlah-lp-edit" name="jumlah-lp">
+                <input type="number" class="form-control" id="jumlah-lp-edit" name="jumlah-lp" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-l-edit" class="form-label">Jumlah L</label>
-                <input type="number" class="form-control" id="jumlah-l-edit" name="jumlah-l">
+                <input type="number" class="form-control" id="jumlah-l-edit" name="jumlah-l" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah-p-edit" class="form-label">Jumlah P</label>
-                <input type="number" class="form-control" id="jumlah-p-edit" name="jumlah-p">
+                <input type="number" class="form-control" id="jumlah-p-edit" name="jumlah-p" required>
             </div>
         </div>
         <div class="modal-footer">

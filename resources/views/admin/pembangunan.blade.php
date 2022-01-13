@@ -86,27 +86,27 @@
             </div>
             <div class="mb-3">
                 <label for="nama_kegiatan" class="form-label">Nama Kegiatan</label>
-                <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan">
+                <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" required>
             </div>
             <div class="mb-3">
                 <label for="volume" class="form-label">Volume</label>
-                <input type="number" class="form-control" id="volume" name="volume">
+                <input type="number" class="form-control" id="volume" name="volume" required>
             </div>
             <div class="mb-3">
                 <label for="tahun_anggaran" class="form-label">Tahun Anggaran</label>
-                <input type="number" class="form-control" id="tahun_anggaran" name="tahun_anggaran">
+                <input type="number" class="form-control" id="tahun_anggaran" name="tahun_anggaran" required>
             </div>
             <div class="mb-3">
                 <label for="anggaran" class="form-label">Anggaran</label>
-                <input type="number" class="form-control" id="anggaran" name="anggaran">
+                <input type="number" class="form-control" id="anggaran" name="anggaran" required>
             </div>
             <div class="mb-3">
                 <label for="pelaksana" class="form-label">Pelaksana Kegiatan</label>
-                <input type="text" class="form-control" id="pelaksana" name="pelaksana">
+                <input type="text" class="form-control" id="pelaksana" name="pelaksana" required>
             </div>
             <div class="mb-3">
                 <label for="lokasi" class="form-label">Lokasi Kegiatan</label>
-                <input type="text" class="form-control" id="lokasi" name="lokasi">
+                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan" class="form-label">Keterangan</label>
@@ -146,27 +146,27 @@
             </div>
             <div class="mb-3">
                 <label for="nama_kegiatan-ubah" class="form-label">Nama Kegiatan</label>
-                <input type="text" class="form-control" id="nama_kegiatan-ubah" name="nama_kegiatan">
+                <input type="text" class="form-control" id="nama_kegiatan-ubah" name="nama_kegiatan" required>
             </div>
             <div class="mb-3">
                 <label for="volume-ubah" class="form-label">Volume</label>
-                <input type="number" class="form-control" id="volume-ubah" name="volume">
+                <input type="number" class="form-control" id="volume-ubah" name="volume" required>
             </div>
             <div class="mb-3">
                 <label for="tahun_anggaran-ubah" class="form-label">Tahun Anggaran</label>
-                <input type="number" class="form-control" id="tahun_anggaran-ubah" name="tahun_anggaran">
+                <input type="number" class="form-control" id="tahun_anggaran-ubah" name="tahun_anggaran" required>
             </div>
             <div class="mb-3">
                 <label for="anggaran-ubah" class="form-label">Anggaran</label>
-                <input type="number" class="form-control" id="anggaran-ubah" name="anggaran">
+                <input type="number" class="form-control" id="anggaran-ubah" name="anggaran" required>
             </div>
             <div class="mb-3">
                 <label for="pelaksana-ubah" class="form-label">Pelaksana Kegiatan</label>
-                <input type="text" class="form-control" id="pelaksana-ubah" name="pelaksana">
+                <input type="text" class="form-control" id="pelaksana-ubah" name="pelaksana" required>
             </div>
             <div class="mb-3">
                 <label for="lokasi-ubah" class="form-label">Lokasi Kegiatan</label>
-                <input type="text" class="form-control" id="lokasi-ubah" name="lokasi">
+                <input type="text" class="form-control" id="lokasi-ubah" name="lokasi" required>
             </div>
             <div class="mb-3">
                 <label for="keterangan-ubah" class="form-label">Keterangan</label>

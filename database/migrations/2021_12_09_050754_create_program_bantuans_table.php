@@ -20,7 +20,7 @@ class CreateProgramBantuansTable extends Migration
             $table->date('tanggal_akhir');
             $table->enum('sasaran', ['Penduduk Perorangan', 'Keluarga - KK', 'Rumah Tangga', 'Kelompok']);
             $table->string('nama_program');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->enum('asal_dana', ['Pusat', 'Provinsi', 'Kab/Kota', 'Dana Desa', 'Lain-Lain']);
             $table->enum('status', ['Aktif', 'Tidak Aktif']);
             $table->string('no_penerima')->nullable();

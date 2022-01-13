@@ -20,7 +20,7 @@ class CreateKelompoksTable extends Migration
             $table->integer('kode');
             $table->string('nik_ketua');
             $table->string('kategori_id');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

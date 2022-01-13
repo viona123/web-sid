@@ -91,7 +91,7 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="fkey_value" class="form-label">Nomor Kartu Keluarga</label>
-                <input type="number" class="form-control" id="fkey_value" name="fkey_value">
+                <input type="number" class="form-control" id="fkey_value" name="fkey_value" required>
             </div>
         </div>
         <div class="modal-footer">

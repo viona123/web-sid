@@ -73,15 +73,15 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nomor-kk" class="form-label">Nomor Kartu Keluarga</label>
-                <input type="number" class="form-control" id="nomor-kk" name="nomor_kk">
+                <input type="number" class="form-control" id="nomor-kk" name="nomor_kk" required>
             </div>
             <div class="mb-3">
                 <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga">
+                <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga" required>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat">
+                <input type="text" class="form-control" id="alamat" name="alamat" required>
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
@@ -93,11 +93,11 @@
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>
-                <input type="number" class="form-control" id="rt" name="rt">
+                <input type="number" class="form-control" id="rt" name="rt" required>
             </div>
             <div class="mb-3">
                 <label for="rw" class="form-label">RW</label>
-                <input type="number" class="form-control" id="rw" name="rw">
+                <input type="number" class="form-control" id="rw" name="rw" required>
             </div>
         </div>
         <div class="modal-footer">
@@ -121,15 +121,15 @@
         <div class="modal-body">
         <div class="mb-3">
                 <label for="nomor-kk" class="form-label">Nomor Kartu Keluarga</label>
-                <input type="number" class="form-control" id="nomor-kk-edit" name="nomor_kk">
+                <input type="number" class="form-control" id="nomor-kk-edit" name="nomor_kk" required>
             </div>
             <div class="mb-3">
                 <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga-edit" name="kepala_keluarga">
+                <input type="number" class="form-control" id="kepala-keluarga-edit" name="kepala_keluarga" required>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
-                <input type="text" class="form-control" id="alamat-edit" name="alamat">
+                <input type="text" class="form-control" id="alamat-edit" name="alamat" required>
             </div>
             <div class="mb-3">
                 <label for="dusun" class="form-label">Dusun</label>
@@ -141,11 +141,11 @@
             </div>
             <div class="mb-3">
                 <label for="rt" class="form-label">RT</label>
-                <input type="number" class="form-control" id="rt-edit" name="rt">
+                <input type="number" class="form-control" id="rt-edit" name="rt" required>
             </div>
             <div class="mb-3">
                 <label for="rw" class="form-label">RW</label>
-                <input type="number" class="form-control" id="rw-edit" name="rw">
+                <input type="number" class="form-control" id="rw-edit" name="rw" required>
             </div>
         </div>
         <div class="modal-footer">

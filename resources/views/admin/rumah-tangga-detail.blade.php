@@ -81,7 +81,7 @@
             <input type="hidden" value="{{ $rumah_tangga->no_rt }}" name="no_rt">
             <div class="mb-3">
                 <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="nik" name="nik">
+                <input type="number" class="form-control" id="nik" name="nik" required>
             </div>
             <div class="mb-3">
                 <label for="hubungan_rt" class="form-label">Hubungan Dalam Rumah Tangga</label>

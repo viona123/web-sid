@@ -65,24 +65,23 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="nama_kelompok" class="form-label">Nama Kelompok</label>
-                <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok">
+                <input type="text" class="form-control" id="nama_kelompok" name="nama_kelompok" required>
             </div>
             <div class="mb-3">
                 <label for="kode_kelompok" class="form-label">Kode Kelompok</label>
-                <input type="number" class="form-control" id="kode_kelompok" name="kode_kelompok">
+                <input type="number" class="form-control" id="kode_kelompok" name="kode_kelompok" required>
             </div>
             <div class="mb-3">
                 <label for="kategori_kelompok" class="form-label">Kategori Kelompok</label>
                 <select name="kategori_kelompok" class="form-control" id="kategori_kelompok">
                 @foreach ($kategori_kelompok as $kategori)
-                    <option value="0">--PILIH KATEGORI--</option>
                     <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
                 @endforeach
                 </select>
             </div>
             <div class="mb-3">
                 <label for="ketua_kelompok" class="form-label">NIK Ketua Kelompok</label>
-                <input type="text" class="form-control" id="ketua_kelompok" name="ketua_kelompok">
+                <input type="text" class="form-control" id="ketua_kelompok" name="ketua_kelompok" required>
             </div>
             <div class="mb-3">
                 <label for="deskripsi_kelompok" class="form-label">Deskripsi Kelompok</label>

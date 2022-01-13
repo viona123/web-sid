@@ -23,7 +23,7 @@ class CreatePembangunansTable extends Migration
             $table->string('anggaran');
             $table->string('pelaksana');
             $table->string('lokasi');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->enum('status', ['Aktif', 'Tidak Aktif'])->default('Aktif');
             $table->timestamps();
         });

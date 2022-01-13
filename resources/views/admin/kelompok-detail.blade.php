@@ -95,12 +95,11 @@
             <input type="hidden" value="{{ $kelompok->kode }}" name="kode_kelompok">
             <div class="mb-3">
                 <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="nik" name="nik">
+                <input type="number" class="form-control" id="nik" name="nik" required>
             </div>
             <div class="mb-3">
                 <label for="jabatan" class="form-label">Jabatan</label>
                 <select class="form-control" id="jabatan" name="jabatan">
-                    <option value="0">--PILIH JABATAN--</option>
                     <option value="KETUA">KETUA</option>
                     <option value="WAKIL KETUA">WAKIL KETUA</option>
                     <option value="SEKRETARIS">SEKRETARIS</option>
