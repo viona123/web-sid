@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-dark position-sticky top-0" style="background-color: #339DFF">
       <div class="container-fluid">
-		<i class="fas fa-bars text-white menu-bar-toggler fa-fw" onclick="toggleMenu(this)"></i>
+		    <i class="fas fa-bars text-white menu-bar-toggler fa-fw" onclick="toggleMenu(this)"></i>
         <a class="navbar-brand" href="#">
           <img src="/images/logo.jpeg" width="30" height="24" class="d-inline-block">
           Siska
@@ -28,7 +28,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #000000">
-          <div class="list-group">
+          <div style="height: 90vh; overflow-y: auto">
             <h4 class="menu-header text-white ps-3 teks">Menu Utama</h4>
             <hr class="bg-secondary">
             <a class="menu-link text-white" href="/admin?desa={{ $desa->id }}"><i class="fas fa-home fa-fw me-1"></i> <span class="teks">Home</span></a>
@@ -37,9 +37,9 @@
                 <i class="fas fa-info fa-fw me-1"></i> <span class="teks">Info Desa</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="background-color: #000000">
-                <li class="hihi"><a class="dropdown-item" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info fa-fw me-1"></i> Identitas Desa</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/wilayah_desa?desa={{ $desa->id }}"><i class="fas fa-map fa-fw me-1"></i> Wilayah Administratif</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> <span class="teks">Pengurus Desa</span></a><li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info fa-fw me-1"></i> Identitas Desa</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/wilayah_desa?desa={{ $desa->id }}"><i class="fas fa-map fa-fw me-1"></i> Wilayah Administratif</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> <span class="teks">Pengurus Desa</span></a><li>
               </ul>
             </div>
             <div class="menu-link dropdown hihi">
@@ -47,10 +47,10 @@
                 <i class="fas fa-user fa-fw me-1"></i> <span class="teks">Kependudukan</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="background-color: #000000">
-                <li class="hihi"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}"><i class="fas fa-user fa-fw me-1"></i> Penduduk</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}"><i class="fas fa-user-friends fa-fw me-1"></i> Keluarga</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/rumah-tangga?desa={{ $desa->id }}"><i class="fas fa-venus-mars fa-fw me-1"></i> Rumah tangga</a></li>
-                <li class="hihi"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> Kelompok</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/penduduk?desa={{ $desa->id }}"><i class="fas fa-user fa-fw me-1"></i> Penduduk</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/keluarga?desa={{ $desa->id }}"><i class="fas fa-user-friends fa-fw me-1"></i> Keluarga</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/rumah-tangga?desa={{ $desa->id }}"><i class="fas fa-venus-mars fa-fw me-1"></i> Rumah tangga</a></li>
+                <li class="hihi menu-link"><a class="dropdown-item" href="/admin/kelompok?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> Kelompok</a></li>
               </ul>
             </div>
             <a class="menu-link text-white" href="#"><i class="fas fa-book-reader fa-fw me-1"></i> <span class="teks">Layanan Surat</span></a>

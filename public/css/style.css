@@ -136,9 +136,8 @@ table.detail {
 }
 
 .menu-link {
-	line-height: 3rem;
-	vertical-align: middle;
-	padding-left: 1rem;
+	padding: 1rem 0 1rem 1rem;
+    display: block;
 }
 
 .menu-link:hover{
