@@ -457,8 +457,6 @@
             const fieldElement = document.getElementById(field[0] + '_edit');
             fieldElement.value = field[1];
         }
-
-        console.log(fields);
     }
 </script>
 @endsection
