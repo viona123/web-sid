@@ -12,6 +12,7 @@ use App\Http\Controllers\RumahTanggaController;
 use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\IdentitasDesaController;
 use App\Http\Controllers\PengurusDesaController;
+use App\Http\Controllers\PembangunanController;
 
 use App\Models\Desa;
 use App\Models\Penduduk;
@@ -148,101 +149,16 @@ Route::post('/admin/peta/ubah', function(Request $request) {
     return back();
 });
 
-Route::get('/admin/pembangunan', function() {
-    $desa = Desa::find(request('desa'));
-    $semuaPembangunan = $desa->pembangunan;
+Route::get('/admin/pembangunan', [PembangunanController::class, 'index']);
+Route::post('/admin/pembangunan/tambah', [PembangunanController::class, 'tambah']);
+Route::get('/admin/pembangunan/ubah-status', [PembangunanController::class, 'ubahStatus']);
+Route::get('/admin/pembangunan/hapus', [PembangunanController::class, 'hapus']);
+Route::post('/admin/pembangunan/ubah', [PembangunanController::class, 'ubah']);
 
-    return view('admin.pembangunan', [
-        'desa' => $desa,
-        'semuaPembangunan' => $semuaPembangunan
-    ]);
-});
-
-Route::post('/admin/pembangunan/tambah', function(Request $request) {
-    Pembangunan::create([
-        'id_desa' => request('desa'),
-        'sumber_dana' => $request->input('sumber_dana'),
-        'nama' => $request->input('nama_kegiatan'),
-        'volume' => $request->input('volume'),
-        'tahun_anggaran' => $request->input('tahun_anggaran'),
-        'anggaran' => $request->input('anggaran'),
-        'pelaksana' => $request->input('pelaksana'),
-        'lokasi' => $request->input('lokasi'),
-        'keterangan' => $request->input('keterangan')
-    ]);
-
-    return back();
-});
-
-Route::get('/admin/pembangunan/ubah-status', function() {
-    $pembangunan = Pembangunan::find(request('pembangunan'));
-    $pembangunan->status = request('value');
-    $pembangunan->save();
-
-    return back();
-});
-
-Route::get('/admin/pembangunan/hapus', function() {
-    $pembangunan = Pembangunan::find(request('pembangunan'));
-    $pembangunan->delete();
-
-    return back();
-});
-
-Route::post('/admin/pembangunan/ubah', function(Request $request) {
-    $pembangunan = Pembangunan::find(request('pembangunan'));
-    $pembangunan->sumber_dana = $request->input('sumber_dana');
-    $pembangunan->nama = $request->input('nama_kegiatan');
-    $pembangunan->volume = $request->input('volume');
-    $pembangunan->tahun_anggaran = $request->input('tahun_anggaran');
-    $pembangunan->anggaran = $request->input('anggaran');
-    $pembangunan->pelaksana = $request->input('pelaksana');
-    $pembangunan->lokasi = $request->input('lokasi');
-    $pembangunan->keterangan = $request->input('keterangan');
-    $pembangunan->save();
-
-    return back();
-});
-
-Route::get('/admin/pembangunan/dokumentasi', function() {
-    $desa = Desa::find(request('desa'));
-    $pembangunan = Pembangunan::find(request('pembangunan'));
-    $dokumentasi = $pembangunan->dokumentasi;
-
-    return view('admin.pembangunan_dokumentasi', [
-        'desa' => $desa,
-        'pembangunan' => $pembangunan,
-        'dokumentasi' => $dokumentasi
-    ]);
-});
-
-Route::post('/admin/pembangunan/dokumentasi/tambah', function(Request $request) {
-    DokumentasiPembangunan::create([
-        'persentase' => $request->input('persentase'),
-        'keterangan' => $request->input('keterangan'),
-        'id_desa' => request('desa'),
-        'id_pembangunan' => request('pembangunan'),
-        'tanggal_rekam' => date('Y-m-d')
-    ]);
-
-    return back();
-});
-
-Route::post('/admin/pembangunan/dokumentasi/ubah', function(Request $request) {
-    $dokumentasi = DokumentasiPembangunan::find(request('pembangunan'));
-    $dokumentasi->persentase = $request->input('persentase');
-    $dokumentasi->keterangan = $request->input('keterangan');
-    $dokumentasi->save();
-
-    return back();
-});
-
-Route::get('/admin/pembangunan/dokumentasi/hapus', function() {
-    $dokumentasi = DokumentasiPembangunan::find(request('dok'));
-    $dokumentasi->delete();
-
-    return back();
-});
+Route::get('/admin/pembangunan/dokumentasi', [PembangunanController::class, 'dokumentasiIndex']);
+Route::post('/admin/pembangunan/dokumentasi/tambah', [PembangunanController::class, 'dokumentasiTambah']);
+Route::post('/admin/pembangunan/dokumentasi/ubah', [PembangunanController::class, 'dokumentasiUbah']);
+Route::get('/admin/pembangunan/dokumentasi/hapus', [PembangunanController::class, 'dokumentasiHapus']);
 
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
