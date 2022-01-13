@@ -99,6 +99,8 @@
                 ol.proj.fromLonLat([lokasiLongitude.value, lokasiLatitude.value])
             ));
         }
+
+        map.getView().setZoom(13);
     }
 </script>
 @endsection
