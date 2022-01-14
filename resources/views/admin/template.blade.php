@@ -36,7 +36,7 @@
               <a class="menu menu-link dropdown-toggle text-white" href="javascript:void(0)" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-info fa-fw me-1"></i> <span class="teks">Info Desa</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="background-color: #000000">
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/identitas_desa?desa={{ $desa->id }}"><i class="fas fa-info fa-fw me-1"></i> Identitas Desa</a></li>
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/wilayah_desa?desa={{ $desa->id }}"><i class="fas fa-map fa-fw me-1"></i> Wilayah Administratif</a></li>
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/pengurus_desa?desa={{ $desa->id }}"><i class="fas fa-users fa-fw me-1"></i> Pengurus Desa</a><li>
@@ -46,7 +46,7 @@
               <a class="menu menu-link dropdown-toggle text-white" href="javascript:void(0)" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user fa-fw me-1"></i> <span class="teks">Kependudukan</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2" style="background-color: #000000">
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/penduduk?desa={{ $desa->id }}"><i class="fas fa-user fa-fw me-1"></i> Penduduk</a></li>
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/keluarga?desa={{ $desa->id }}"><i class="fas fa-user-friends fa-fw me-1"></i> Keluarga</a></li>
                 <li class="hihi"><a class="dropdown-item menu-link" href="/admin/rumah-tangga?desa={{ $desa->id }}"><i class="fas fa-venus-mars fa-fw me-1"></i> Rumah tangga</a></li>
