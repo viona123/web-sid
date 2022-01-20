@@ -94,6 +94,7 @@ Route::get('/admin/kelompok/hapus', [KelompokController::class, 'hapus']);
 Route::post('/admin/kelompok/ubah', [KelompokController::class, 'ubah']);
 Route::get('/admin/kelompok/kategori', [KelompokController::class, 'indexKategori']);
 Route::post('/admin/kelompok/kategori/tambah', [KelompokController::class, 'tambahKategori']);
+Route::post('/admin/kelompok/kategori/ubah', [KelompokController::class, 'ubahKategori']);
 Route::get('/admin/kelompok/kategori/hapus', [KelompokController::class, 'hapusKategori']);
 Route::get('/admin/kelompok/detail', [KelompokController::class, 'detail']);
 Route::post('/admin/kelompok/anggota/tambah', [KelompokController::class, 'tambahAnggota']);

@@ -115,6 +115,15 @@ class KelompokController extends Controller
 	    return back();
 	}
 
+	public function ubahKategori(Request $request) {
+		$kategori = KategoriKelompok::find(request('kategori'));
+		$kategori->nama = $request->input('nama_kategori');
+		$kategori->deskripsi = $request->input('deskripsi_kategori');
+		$kategori->save();
+
+		return back();
+	}
+
 	public function hapusKategori() {
 	    $kategori = KategoriKelompok::find(request('kategori'));
 	    $kategori->delete();
