@@ -26,6 +26,7 @@ use App\Models\PenerimaBantuan;
 use App\Models\StaffDesa;
 use App\Models\Pembangunan;
 use App\Models\DokumentasiPembangunan;
+use App\Models\Keuangan;
 
 /*
 |--------------------------------------------------------------------------
@@ -159,6 +160,45 @@ Route::get('/admin/pembangunan/dokumentasi', [PembangunanController::class, 'dok
 Route::post('/admin/pembangunan/dokumentasi/tambah', [PembangunanController::class, 'dokumentasiTambah']);
 Route::post('/admin/pembangunan/dokumentasi/ubah', [PembangunanController::class, 'dokumentasiUbah']);
 Route::get('/admin/pembangunan/dokumentasi/hapus', [PembangunanController::class, 'dokumentasiHapus']);
+
+Route::get('/admin/keuangan', function() {
+    $desa = Desa::find(request('desa'));
+    $dataKeuangan = $desa->keuangan;
+
+    return view('admin.keuangan', [
+        'desa' => $desa,
+        'dataKeuangan' => $dataKeuangan
+    ]);
+});
+Route::post('/admin/keuangan/tambah', function(Request $request) {
+    Keuangan::create([
+        'id_desa' => request('desa'),
+        'tahun' => $request->input('tahun'),
+        'jenis' => $request->input('jenis'),
+        'kode' => $request->input('kode'),
+        'anggaran' => $request->input('anggaran'),
+        'realisasi' => $request->input('realisasi'),
+    ]);
+
+    return back();
+});
+Route::post('/admin/keuangan/ubah', function(Request $request) {
+    $keuangan = Keuangan::find(request('keuangan'));
+    $keuangan->tahun = $request->input('tahun');
+    $keuangan->jenis = $request->input('jenis');
+    $keuangan->kode = $request->input('kode');
+    $keuangan->anggaran = $request->input('anggaran');
+    $keuangan->realisasi = $request->input('realisasi');
+    $keuangan->save();
+
+    return back();
+});
+Route::get('/admin/keuangan/hapus', function() {
+    $keuangan = Keuangan::find(request('keuangan'));
+    $keuangan->delete();
+
+    return back();
+});
 
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
