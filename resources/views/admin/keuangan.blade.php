@@ -6,6 +6,29 @@
 <h3>Keuangan</h3><hr class="bg-primary">
 <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data</button>
 
+<table class="mt-3 detail col-md-6">
+    <tr>
+        <td width="30%">Jenis Anggaran</td>
+        <td>
+            <select class="form-control" id="jenis-filter" onchange="filterOnChange()">
+                <option value="4.PENDAPATAN">4. PENDAPATAN</option>
+                <option value="5.BELANJA" {{ request('j') === '5.BELANJA' ? 'selected' : '' }}>5. BELANJA</option>
+                <option value="6.PEMBIAYAAN" {{ request('j') === '6.PEMBIAYAAN' ? 'selected' : '' }}>6. PEMBIAYAAN</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td width="30%">Tahun</td>
+        <td>
+            <select class="form-control" id="tahun-filter" onchange="filterOnChange()">
+                @foreach ($tahun as $th)
+                <option value="{{ $th->tahun }}" {{ request('t') == $th->tahun ? 'selected' : '' }}>{{ $th->tahun }}</option>
+                @endforeach
+            </select>
+        </td>
+    </tr>
+</table>
+
 <div style="overflow-x: auto">
 	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed">
         <colgroup>
@@ -62,9 +85,9 @@
             <div class="mb-3">
                 <label for="jenis" class="form-label">Jenis Anggaran</label>
                 <select class="form-control" id="jenis" name="jenis" onchange="jenisOnChange(this)" data-target-kode="#kode">
-                    <option value="4. PENDAPATAN">4. PENDAPATAN</option>
-                    <option value="5. BELANJA">5. BELANJA</option>
-                    <option value="6. PEMBIAYAAN">6. PEMBIAYAAN</option>
+                    <option value="4.PENDAPATAN">4. PENDAPATAN</option>
+                    <option value="5.BELANJA">5. BELANJA</option>
+                    <option value="6.PEMBIAYAAN">6. PEMBIAYAAN</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -123,9 +146,9 @@
             <div class="mb-3">
                 <label for="jenis-edit" class="form-label">Jenis Anggaran</label>
                 <select class="form-control" id="jenis-edit" name="jenis" onchange="jenisOnChange(this)" data-target-kode="#kode-edit">
-                    <option value="4. PENDAPATAN">4. PENDAPATAN</option>
-                    <option value="5. BELANJA">5. BELANJA</option>
-                    <option value="6. PEMBIAYAAN">6. PEMBIAYAAN</option>
+                    <option value="4.PENDAPATAN">4. PENDAPATAN</option>
+                    <option value="5.BELANJA">5. BELANJA</option>
+                    <option value="6.PEMBIAYAAN">6. PEMBIAYAAN</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -169,7 +192,7 @@
 
 <script>
     const daftarKode = {
-        '4. PENDAPATAN': [
+        '4.PENDAPATAN': [
             '4.1.1. Hasil Usaha Desa',
             '4.1.2. Hasil Aset Desa',
             '4.1.3. Swadaya, Partisipasi dan Gotong Royong',
@@ -187,14 +210,14 @@
             '4.3.6. Bunga Bank',
             '4.3.9. Lain-lain Pendapatan desa Yang Sah'
         ],
-        '5. BELANJA': [
+        '5.BELANJA': [
             '00.0000.01 BIDANG PENYELENGGARAAN PEMERINTAHAN DESA',
             '00.0000.02 BIDANG PELAKSANAAN PEMBANGUNAN DESA',
             '00.0000.03 BIDANG PEMBINAAN KEMASYARAKATAN',
             '00.0000.04 BIDANG PEMBERDAYAAN MASYARAKAT',
             '00.0000.05 BIDANG PENANGGULANGAN BENCANA, DARURAT DAN MENDESAK DESA'
         ],
-        '6. PEMBIAYAAN': [
+        '6.PEMBIAYAAN': [
             '6.1.1. SILPA Tahun Sebelumnya',
             '6.1.2. Pencairan Dana Cadangan',
             '6.1.3. Hasil Penjualan Kekayaan Desa Yang Dipisahkan',
@@ -236,6 +259,12 @@
                 jenisOnChange(jenisEdit);
             }
         });
+    }
+
+    function filterOnChange() {
+        const jenisFilter = document.getElementById('jenis-filter');
+        const tahunFilter = document.getElementById('tahun-filter');
+        document.location.href = "/admin/keuangan?desa={{ $desa->id }}&j=" + jenisFilter.value + "&t=" + tahunFilter.value;
     }
 </script>
 @endsection

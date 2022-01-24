@@ -164,11 +164,23 @@ Route::get('/admin/pembangunan/dokumentasi/hapus', [PembangunanController::class
 
 Route::get('/admin/keuangan', function() {
     $desa = Desa::find(request('desa'));
-    $dataKeuangan = $desa->keuangan;
+    $tahun = $desa->keuangan()->select('tahun')->distinct()->get();
+    if (!request('t') && $tahun->count() != 0) {
+        $dataKeuangan = $desa->keuangan()
+                        ->where('jenis', request('j'))
+                        ->where('tahun', $tahun[0]->tahun)
+                        ->get();
+    } else {
+        $dataKeuangan = $desa->keuangan()
+                        ->where('jenis', request('j'))
+                        ->where('tahun', request('t'))
+                        ->get();
+    }
 
     return view('admin.keuangan', [
         'desa' => $desa,
-        'dataKeuangan' => $dataKeuangan
+        'dataKeuangan' => $dataKeuangan,
+        'tahun' => $tahun
     ]);
 });
 Route::post('/admin/keuangan/tambah', function(Request $request) {

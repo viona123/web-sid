@@ -57,7 +57,7 @@
             <a class="menu-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-coins fa-fw me-1"></i> <span class="teks">Program Bantuan</span></a>
             <a class="menu-link text-white" href="/admin/peta?desa={{ $desa->id }}"><i class="fas fa-globe-asia fa-fw me-1"></i> <span class="teks">Pemetaaan</span></a>
             <a class="menu-link text-white" href="/admin/pembangunan?desa={{ $desa->id }}"><i class="fas fa-university fa-fw me-1"></i> <span class="teks">Pembangunan</span></a>
-            <a class="menu-link text-white" href="/admin/keuangan?desa={{ $desa->id }}"><i class="fas fa-balance-scale fa-fw me-1"></i> <span class="teks">Keuangan</span></a>
+            <a class="menu-link text-white" href="/admin/keuangan?desa={{ $desa->id }}&j=4.PENDAPATAN"><i class="fas fa-balance-scale fa-fw me-1"></i> <span class="teks">Keuangan</span></a>
             <a class="menu-link text-white" href="#"><i class="far fa-envelope fa-fw me-1"></i> <span class="teks">SMS</span></a>
             <a class="menu-link text-white" href="#"><i class="fas fa-cog fa-fw me-1"></i> <span class="teks">Pengaturan</span></a>
           </div>
