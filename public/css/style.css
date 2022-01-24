@@ -122,7 +122,8 @@
 }
 
 .contact:hover {
-    background-color: #000000;
+    background-color: #5bacf8;
+    
     color: #FFFFFF;
 }
 
@@ -203,7 +204,7 @@ footer {
     cursor: pointer;
     border: 2px solid white;
     border-radius: 50%;
-    background: #000000;
+    background: #191970;
     z-index: 4;
     color: #FFFFFF;
     padding: 4px;

@@ -25,7 +25,7 @@
                 <a href="/admin/penduduk?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
-        <div class="card bg-success m-2 card-admin" style="width: 15rem;" onclick="javascript:document.location.href='/admin/keluarga?desa={{ $desa->id }}'">
+        <div class="card m-2 card-admin" style="width: 15rem; background-color: #57FEFF;" onclick="javascript:document.location.href='/admin/keluarga?desa={{ $desa->id }}'">
             <div class="card-body">
                 <div class="card-body-icon">
                     <i class="fas fa-users"></i>
