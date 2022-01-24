@@ -28,7 +28,7 @@
             <tr>
                 <td>{{ $kategori->id }}</td>
                 <td>
-                    <button href="javascript:void(0)" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+                    <button href="javascript:void(0)" onclick="edit(this)" class="btn btn-warning btn-aksi" data-fields="nama_kategori={{ $kategori->nama }}&deskripsi_kategori={{ $kategori->deskripsi }}" data-kategori-id="{{ $kategori->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data kategori {{ $kategori->nama }}?')" href="/admin/kelompok/kategori/hapus?kategori={{ $kategori->id }}" class="btn btn-danger btn-aksi"><i class="fas fa-trash"></i></a>
                 </td>
                 <td>{{ $kategori->nama }}</td>
@@ -66,4 +66,45 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="ubah-data" tabindex="-1" aria-labelledby="ubah-data-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ubah-data-label">Ubah data kategori Kelompok</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/kelompok/kategori/ubah?desa={{ $desa->id }}" method="post">
+      @csrf
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="nama_kategori-edit" class="form-label">Nama Kategori</label>
+                <input type="text" class="form-control" id="nama_kategori-edit" name="nama_kategori" required>
+            </div>
+            <div class="mb-3">
+                <label for="deskripsi_kategori-edit" class="form-label">Deskripsi Kategori</label>
+                <textarea type="text" class="form-control" id="deskripsi_kategori-edit" name="deskripsi_kategori"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    function edit(element) {
+        const formUbah = document.forms[1];
+        formUbah.action = '/admin/kelompok/kategori/ubah?kategori=' + element.getAttribute('data-kategori-id');
+        const fields = element.getAttribute('data-fields').split('&');
+        fields.forEach(function(field) {
+            field = field.split('=');
+            const fieldElem = document.getElementById(field[0] + '-edit');
+            fieldElem.value = field[1];
+        })
+    }
+</script>
 @endsection
