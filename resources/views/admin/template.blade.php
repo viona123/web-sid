@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #000000">
+        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #191970; ">
           <div style="height: 90vh; overflow-y: auto">
             <h4 class="menu-header text-white ps-3 teks">Menu Utama</h4>
             <hr class="bg-secondary">
@@ -57,7 +57,6 @@
             <a class="menu-link text-white" href="/admin/program-bantuan?desa={{ $desa->id }}"><i class="fas fa-coins fa-fw me-1"></i> <span class="teks">Program Bantuan</span></a>
             <a class="menu-link text-white" href="/admin/peta?desa={{ $desa->id }}"><i class="fas fa-globe-asia fa-fw me-1"></i> <span class="teks">Pemetaaan</span></a>
             <a class="menu-link text-white" href="/admin/pembangunan?desa={{ $desa->id }}"><i class="fas fa-university fa-fw me-1"></i> <span class="teks">Pembangunan</span></a>
-            <a class="menu-link text-white" href="#"><i class="far fa-envelope fa-fw me-1"></i> <span class="teks">SMS</span></a>
             <a class="menu-link text-white" href="#"><i class="fas fa-cog fa-fw me-1"></i> <span class="teks">Pengaturan</span></a>
           </div>
           <div class="toggle"><i onclick="resizeMenu(this)" class="fa fa-chevron-left"></i></div>
