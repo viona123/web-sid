@@ -49,9 +49,6 @@
 	        </tr>
 	    </thead>
 	    <tbody>
-            @php
-            $fmt = new NumberFormatter( 'id_ID', NumberFormatter::CURRENCY );
-            @endphp
             @foreach($dataKeuangan as $keuangan)
             <tr>
                 <td>{{ $keuangan->id }}</td>
@@ -60,8 +57,8 @@
                     <a onclick="return confirm('Hapus data keuangan ini?')" href="/admin/keuangan/hapus?keuangan={{ $keuangan->id }}" class="btn btn-danger btn-aksi"><i class="fas fa-trash"></i></a>
                 </td>
                 <td>{{ $keuangan->kode }}</td>
-                <td>{{ $fmt->formatCurrency($keuangan->anggaran, "IDR") }}</td>
-                <td>{{ $fmt->formatCurrency($keuangan->realisasi, "IDR") }}</td>
+                <td>{{ number_format($keuangan->anggaran, 2, ',', '.') }}</td>
+                <td>{{ number_format($keuangan->realisasi, 2, ',', '.') }}</td>
             </tr>
             @endforeach
 	    </tbody>

@@ -168,6 +168,8 @@ Route::post('/admin/keuangan/tambah', [KeuanganController::class, 'tambah']);
 Route::post('/admin/keuangan/ubah', [KeuanganController::class, 'ubah']);
 Route::get('/admin/keuangan/hapus', [KeuanganController::class, 'hapus']);
 
+Route::get('/admin/keuangan/laporan', [KeuanganController::class, 'laporanIndex']);
+
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
     return view('daftar', [
