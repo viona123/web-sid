@@ -13,6 +13,7 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\IdentitasDesaController;
 use App\Http\Controllers\PengurusDesaController;
 use App\Http\Controllers\PembangunanController;
+use App\Http\Controllers\KeuanganController;
 
 use App\Models\Desa;
 use App\Models\Penduduk;
@@ -162,56 +163,10 @@ Route::post('/admin/pembangunan/dokumentasi/tambah', [PembangunanController::cla
 Route::post('/admin/pembangunan/dokumentasi/ubah', [PembangunanController::class, 'dokumentasiUbah']);
 Route::get('/admin/pembangunan/dokumentasi/hapus', [PembangunanController::class, 'dokumentasiHapus']);
 
-Route::get('/admin/keuangan', function() {
-    $desa = Desa::find(request('desa'));
-    $tahun = $desa->keuangan()->select('tahun')->distinct()->get();
-    if (!request('t') && $tahun->count() != 0) {
-        $dataKeuangan = $desa->keuangan()
-                        ->where('jenis', request('j'))
-                        ->where('tahun', $tahun[0]->tahun)
-                        ->get();
-    } else {
-        $dataKeuangan = $desa->keuangan()
-                        ->where('jenis', request('j'))
-                        ->where('tahun', request('t'))
-                        ->get();
-    }
-
-    return view('admin.keuangan', [
-        'desa' => $desa,
-        'dataKeuangan' => $dataKeuangan,
-        'tahun' => $tahun
-    ]);
-});
-Route::post('/admin/keuangan/tambah', function(Request $request) {
-    Keuangan::create([
-        'id_desa' => request('desa'),
-        'tahun' => $request->input('tahun'),
-        'jenis' => $request->input('jenis'),
-        'kode' => $request->input('kode'),
-        'anggaran' => $request->input('anggaran'),
-        'realisasi' => $request->input('realisasi'),
-    ]);
-
-    return back();
-});
-Route::post('/admin/keuangan/ubah', function(Request $request) {
-    $keuangan = Keuangan::find(request('keuangan'));
-    $keuangan->tahun = $request->input('tahun');
-    $keuangan->jenis = $request->input('jenis');
-    $keuangan->kode = $request->input('kode');
-    $keuangan->anggaran = $request->input('anggaran');
-    $keuangan->realisasi = $request->input('realisasi');
-    $keuangan->save();
-
-    return back();
-});
-Route::get('/admin/keuangan/hapus', function() {
-    $keuangan = Keuangan::find(request('keuangan'));
-    $keuangan->delete();
-
-    return back();
-});
+Route::get('/admin/keuangan', [KeuanganController::class, 'index']);
+Route::post('/admin/keuangan/tambah', [KeuanganController::class, 'tambah']);
+Route::post('/admin/keuangan/ubah', [KeuanganController::class, 'ubah']);
+Route::get('/admin/keuangan/hapus', [KeuanganController::class, 'hapus']);
 
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
