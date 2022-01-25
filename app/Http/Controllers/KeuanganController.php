@@ -32,14 +32,25 @@ class KeuanganController extends Controller
 	}
 
 	function tambah(Request $request) {
-	    Keuangan::create([
-	        'id_desa' => request('desa'),
-	        'tahun' => $request->input('tahun'),
-	        'jenis' => $request->input('jenis'),
-	        'kode' => $request->input('kode'),
-	        'anggaran' => $request->input('anggaran'),
-	        'realisasi' => $request->input('realisasi'),
-	    ]);
+	    $keuangan = Keuangan::where([
+	    	['tahun', $request->input('tahun')],
+	    	['kode', $request->input('kode')]
+	    ])->first();
+
+	    if ($keuangan) {
+	    	$keuangan->anggaran += $request->input('anggaran');
+	    	$keuangan->realisasi += $request->input('realisasi');
+	    	$keuangan->save();
+	    } else {
+	    	Keuangan::create([
+		        'id_desa' => request('desa'),
+		        'tahun' => $request->input('tahun'),
+		        'jenis' => $request->input('jenis'),
+		        'kode' => $request->input('kode'),
+		        'anggaran' => $request->input('anggaran'),
+		        'realisasi' => $request->input('realisasi'),
+		    ]);
+	    }
 	
 	    return back();
 	}
@@ -79,20 +90,6 @@ class KeuanganController extends Controller
 				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%4%')->pluck('realisasi')->toArray())
 			]
 		];
-		/*
-			dd($dataPendapatan);
-			array:3 [▼
-				"4.1" => array:1 [▼
-					0 => "300000000"
-				]
-				"4.2" => array:1 [▼
-					0 => "0"
-				]
-				"4.3" => array:1 [▼
-					0 => "100000000"
-				]
-			]
-		*/
 		return view('admin.laporan_keuangan', [
 			'desa' => $desa,
 			'dataPendapatan' => $dataPendapatan
