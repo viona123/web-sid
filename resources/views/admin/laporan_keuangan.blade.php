@@ -36,28 +36,28 @@
                 <td>{{ number_format($dataPendapatan['anggaran']['4.1'], 2, ',', '.') }}</td>
                 <td>{{ number_format($dataPendapatan['realisasi']['4.1'], 2, ',', '.') }}</td>
                 <td>{{ number_format(abs($dataPendapatan['anggaran']['4.1'] - ($dataPendapatan['realisasi']['4.1'])), 2, ',', '.') }}</td>
-                <td>{{ number_format($dataPendapatan['realisasi']['4.1'] * 100 / $dataPendapatan['anggaran']['4.1'], 2, ',', '.') }}</td>
+                <td>{{ number_format($dataPendapatan['realisasi']['4.1'] * 100 / ($dataPendapatan['anggaran']['4.1'] ?: 1), 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>4.2. Pendapatan Transfer</td>
                 <td>{{ number_format($dataPendapatan['anggaran']['4.2'], 2, ',', '.') }}</td>
                 <td>{{ number_format($dataPendapatan['realisasi']['4.2'], 2, ',', '.') }}</td>
                 <td>{{ number_format(abs($dataPendapatan['anggaran']['4.2'] - ($dataPendapatan['realisasi']['4.2'])), 2, ',', '.') }}</td>
-                <td>{{ number_format($dataPendapatan['realisasi']['4.2'] * 100 / $dataPendapatan['anggaran']['4.2'], 2, ',', '.') }}</td>
+                <td>{{ number_format($dataPendapatan['realisasi']['4.2'] * 100 / ($dataPendapatan['anggaran']['4.2'] ?: 1), 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <td>4.3. Pendapatan Lain-lain</td>
                 <td>{{ number_format($dataPendapatan['anggaran']['4.3'], 2, ',', '.') }}</td>
                 <td>{{ number_format($dataPendapatan['realisasi']['4.3'], 2, ',', '.') }}</td>
                 <td>{{ number_format(abs($dataPendapatan['anggaran']['4.3'] - ($dataPendapatan['realisasi']['4.3'])), 2, ',', '.') }}</td>
-                <td>{{ number_format($dataPendapatan['realisasi']['4.3'] * 100 / $dataPendapatan['anggaran']['4.3'], 2, ',', '.') }}</td>
+                <td>{{ number_format($dataPendapatan['realisasi']['4.3'] * 100 / ($dataPendapatan['anggaran']['4.3'] ?: 1), 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <td class="text-center bg-warning"><strong>JUMLAH PENDAPATAN</strong></td>
                 <td class="bg-warning">{{ number_format($dataPendapatan['anggaran']['total'], 2, ',', '.') }}</td>
                 <td class="bg-warning">{{ number_format($dataPendapatan['realisasi']['total'], 2, ',', '.') }}</td>
                 <td class="bg-warning">{{ number_format(abs($dataPendapatan['anggaran']['total'] - ($dataPendapatan['realisasi']['total'])), 2, ',', '.') }}</td>
-                <td class="bg-warning">{{ number_format($dataPendapatan['realisasi']['total'] * 100 / $dataPendapatan['anggaran']['total'], 2, ',', '.') }}</td>
+                <td class="bg-warning">{{ number_format($dataPendapatan['realisasi']['total'] * 100 / ($dataPendapatan['anggaran']['total'] ?: 1), 2, ',', '.') }}</td>
             </tr>
             <tr>
                 <td><strong>5.BELANJA</strong></td>
