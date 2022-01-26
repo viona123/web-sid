@@ -5,8 +5,15 @@
 @section('content')
 <h3 class="w-75 text-center m-auto">
     LAPORAN REALISASI PELAKSANAAN ANGGARAN PENDAPATAN DAN BELANJA DESA PEMERINTAH DESA {{ strtoupper($desa->nama) }} <br/>
-    TAHUN ANGGARAN 2022
+    TAHUN ANGGARAN {{ request('t') }}
 </h3>
+
+<label for="tahun-filter" class="form-label mt-4">Pilih Tahun</label>
+<select class="form-control w-25" id="tahun-filter" onchange="filterOnChange()">
+    @foreach ($tahun as $th)
+    <option value="{{ $th->tahun }}" {{ request('t') == $th->tahun ? 'selected' : '' }}>{{ $th->tahun }}</option>
+    @endforeach
+</select>
 
 <div style="overflow-x: auto">
 	<table class="table table-secondary table-stripped mt-5" style="table-layout: fixed">
@@ -137,4 +144,11 @@
 	    </tbody>
 	</table>
 </div>
+
+<script>
+    function filterOnChange() {
+        const tahunFilter = document.getElementById('tahun-filter');
+        document.location.href = "/admin/keuangan/laporan?desa={{ $desa->id }}&t=" + tahunFilter.value;
+    }
+</script>
 @endsection

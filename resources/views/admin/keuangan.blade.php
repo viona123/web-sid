@@ -5,7 +5,7 @@
 @section('content')
 <h3>Keuangan</h3><hr class="bg-primary">
 <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#tambah-data"><i class="fas fa-plus d-inline-block me-2"></i> Tambah Data</button>
-<a class="btn btn-primary m-2" href="/admin/keuangan/laporan?desa={{ $desa->id }}"><i class="fas fa-bars d-inline-block me-2"></i> Laporan Keuangan</a>
+<a class="btn btn-primary m-2 {{ $dataKeuangan->count() ? '' : 'disabled' }}" href="/admin/keuangan/laporan?desa={{ $desa->id }}&t={{ $dataKeuangan->count() ? $tahun[0]->tahun : 'null' }}"><i class="fas fa-bars d-inline-block me-2"></i> Laporan Keuangan</a>
 
 <table class="mt-3 detail col-md-6">
     <tr>
