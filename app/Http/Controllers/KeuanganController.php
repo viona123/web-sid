@@ -81,18 +81,41 @@ class KeuanganController extends Controller
 				'4.1' => array_sum($desa->keuangan()->where('kode', 'like', '%4.1%')->pluck('anggaran')->toArray()),
 				'4.2' => array_sum($desa->keuangan()->where('kode', 'like', '%4.2%')->pluck('anggaran')->toArray()),
 				'4.3' => array_sum($desa->keuangan()->where('kode', 'like', '%4.3%')->pluck('anggaran')->toArray()),
-				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%4%')->pluck('anggaran')->toArray())
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%4%')->pluck('anggaran')->toArray()),
 			],
 			'realisasi' => [
 				'4.1' => array_sum($desa->keuangan()->where('kode', 'like', '%4.1%')->pluck('realisasi')->toArray()),
 				'4.2' => array_sum($desa->keuangan()->where('kode', 'like', '%4.2%')->pluck('realisasi')->toArray()),
 				'4.3' => array_sum($desa->keuangan()->where('kode', 'like', '%4.3%')->pluck('realisasi')->toArray()),
-				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%4%')->pluck('realisasi')->toArray())
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%4%')->pluck('realisasi')->toArray()),
 			]
 		];
+		$dataBelanja = [
+			'anggaran' => [
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '00.0000.%')->pluck('anggaran')->toArray())
+			],
+			'realisasi' => [
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '00.0000.%')->pluck('realisasi')->toArray())
+			]
+		];
+		$dataPembiayaan = [
+			'anggaran' => [
+				'6.1' => array_sum($desa->keuangan()->where('kode', 'like', '%6.1%')->pluck('anggaran')->toArray()),
+				'6.2' => array_sum($desa->keuangan()->where('kode', 'like', '%6.2%')->pluck('anggaran')->toArray()),
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%6%')->pluck('anggaran')->toArray())
+			],
+			'realisasi' => [
+				'6.1' => array_sum($desa->keuangan()->where('kode', 'like', '%6.1%')->pluck('realisasi')->toArray()),
+				'6.2' => array_sum($desa->keuangan()->where('kode', 'like', '%6.2%')->pluck('realisasi')->toArray()),
+				'total' => array_sum($desa->keuangan()->where('kode', 'like', '%6%')->pluck('realisasi')->toArray())
+			]
+		];
+
 		return view('admin.laporan_keuangan', [
 			'desa' => $desa,
-			'dataPendapatan' => $dataPendapatan
+			'dataPendapatan' => $dataPendapatan,
+			'dataBelanja' => $dataBelanja,
+			'dataPembiayaan' => $dataPembiayaan
 		]);
 	}
 }
