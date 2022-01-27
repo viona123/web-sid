@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #191970; ">
+        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #2B1B17; ">
           <div style="height: 90vh; overflow-y: auto">
             <h4 class="menu-header text-white ps-3 teks">Menu Utama</h4>
             <hr class="bg-secondary">
@@ -61,7 +61,7 @@
           </div>
           <div class="toggle"><i onclick="resizeMenu(this)" class="fa fa-chevron-left"></i></div>
         </div>
-        <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll">
+        <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll; background: url('https://i0.wp.com/p4.wallpaperbetter.com/wallpaper/1002/220/951/abstract-background-wallpaper-preview.j')">
           @yield('content')
 
           <footer>
