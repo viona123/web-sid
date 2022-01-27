@@ -46,7 +46,7 @@
 
     @yield('content')
 
-    <div class="container-fluid bg-primary">
+    <div class="container-fluid" style="background-color: #339DFF">
         <div class="row justify-content-evenly">
             <div class="col-md-5 d-flex justify-content-center">
                 <div class="m-4 text-center">

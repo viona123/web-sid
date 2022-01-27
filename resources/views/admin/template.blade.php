@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #191970; ">
+        <div class="col-md-2 pt-4 ps-0 menu-bar" style="height: 100vh; background-color: #404040; ">
           <div style="height: 90vh; overflow-y: auto">
 
             <h4 class="menu-header text-white ps-3 teks">Menu Utama</h4>
