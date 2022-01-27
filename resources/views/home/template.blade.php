@@ -66,7 +66,7 @@
                 <div class="m-4 text-center">
 	                <h2 class="mb-3 text-white">Kontak</h2>
 	                <a href="tel:+6283128339244" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none contact"><i class="fas fa-phone-alt"></i> 083128339244</a>
-	                <a href="mailto:siska.contact@gmail.com" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none contact"><i class="fas fa-envelope"></i> siska.contact@gmail.com</a>
+	                <a href="mailto:siska.contact.01@gmail.com" class="d-block border rounded-pill text-white p-3 m-2 text-decoration-none contact"><i class="fas fa-envelope"></i> siska.contact.01@gmail.com</a>
                 </div>
             </div>
         </div>
