@@ -65,7 +65,7 @@
           </div>
           <div class="toggle"><i onclick="resizeMenu(this)" class="fa fa-chevron-left"></i></div>
         </div>
-        <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll">
+        <div class="col-md-10 pt-4" style="height: 100vh; overflow-y: scroll; background: url('https://i0.wp.com/p4.wallpaperbetter.com/wallpaper/1002/220/951/abstract-background-wallpaper-preview.j')">
           @yield('content')
 
           <footer>

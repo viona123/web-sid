@@ -25,7 +25,7 @@
                 <a href="/admin/penduduk?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
-        <div class="card m-2 card-admin" style="width: 15rem; background-color: #57FEFF;" onclick="javascript:document.location.href='/admin/keluarga?desa={{ $desa->id }}'">
+        <div class="card m-2 card-admin" style="width: 15rem; background-color: #20B2AA;" onclick="javascript:document.location.href='/admin/keluarga?desa={{ $desa->id }}'">
             <div class="card-body">
                 <div class="card-body-icon">
                     <i class="fas fa-users"></i>
@@ -45,7 +45,7 @@
                 <a href="#" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
-        <div class="card bg-primary m-2 card-admin" style="width: 10em" onclick="javascript:document.location.href='/admin/kelompok?desa={{ $desa->id }}'">
+        <div class="card m-2 card-admin" style="width: 10em; background-color: #7D0541;" onclick="javascript:document.location.href='/admin/kelompok?desa={{ $desa->id }}'">
             <div class="card-body">
                 <div class="card-body-icon">
                     <i class="fas fa-user-friends"></i>
@@ -55,7 +55,7 @@
                 <a href="/admin/kelompok?desa={{ $desa->id }}" class="text-decoration-none"><p class="card-text text-white">Lihat Detail <i class="fas fa-angle-double-right"></i></p></a>
             </div>
         </div>
-        <div class="card bg-secondary m-2 card-admin" style="width: 10em;" onclick="javascript:document.location.href='/admin/rumah-tangga?desa={{ $desa->id }}'">
+        <div class="card m-2 card-admin" style="width: 10em; background-color: #493D26;" onclick="javascript:document.location.href='/admin/rumah-tangga?desa={{ $desa->id }}'">
             <div class="card-body">
                 <div class="card-body-icon">
                     <i class="fas fa-home"></i>
