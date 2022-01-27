@@ -13,6 +13,7 @@ use App\Http\Controllers\ProgramBantuanController;
 use App\Http\Controllers\IdentitasDesaController;
 use App\Http\Controllers\PengurusDesaController;
 use App\Http\Controllers\PembangunanController;
+use App\Http\Controllers\KeuanganController;
 
 use App\Models\Desa;
 use App\Models\Penduduk;
@@ -26,6 +27,7 @@ use App\Models\PenerimaBantuan;
 use App\Models\StaffDesa;
 use App\Models\Pembangunan;
 use App\Models\DokumentasiPembangunan;
+use App\Models\Keuangan;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +95,7 @@ Route::get('/admin/kelompok/hapus', [KelompokController::class, 'hapus']);
 Route::post('/admin/kelompok/ubah', [KelompokController::class, 'ubah']);
 Route::get('/admin/kelompok/kategori', [KelompokController::class, 'indexKategori']);
 Route::post('/admin/kelompok/kategori/tambah', [KelompokController::class, 'tambahKategori']);
+Route::post('/admin/kelompok/kategori/ubah', [KelompokController::class, 'ubahKategori']);
 Route::get('/admin/kelompok/kategori/hapus', [KelompokController::class, 'hapusKategori']);
 Route::get('/admin/kelompok/detail', [KelompokController::class, 'detail']);
 Route::post('/admin/kelompok/anggota/tambah', [KelompokController::class, 'tambahAnggota']);
@@ -159,6 +162,13 @@ Route::get('/admin/pembangunan/dokumentasi', [PembangunanController::class, 'dok
 Route::post('/admin/pembangunan/dokumentasi/tambah', [PembangunanController::class, 'dokumentasiTambah']);
 Route::post('/admin/pembangunan/dokumentasi/ubah', [PembangunanController::class, 'dokumentasiUbah']);
 Route::get('/admin/pembangunan/dokumentasi/hapus', [PembangunanController::class, 'dokumentasiHapus']);
+
+Route::get('/admin/keuangan', [KeuanganController::class, 'index']);
+Route::post('/admin/keuangan/tambah', [KeuanganController::class, 'tambah']);
+Route::post('/admin/keuangan/ubah', [KeuanganController::class, 'ubah']);
+Route::get('/admin/keuangan/hapus', [KeuanganController::class, 'hapus']);
+
+Route::get('/admin/keuangan/laporan', [KeuanganController::class, 'laporanIndex']);
 
 Route::get('/daftar', function(Request $request) {
     $status = $request->session()->get('status');
