@@ -24,8 +24,8 @@ class ImportRegions extends Seeder
             'database' => env('DB_DATABASE')
         ];
 
-        echo 'Import SQL from sql file '.$path.'';
+        echo "Import SQL from sql file ".$path."\n";
         exec("$mysqlBin\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $path");
-        echo 'Import SQL Success!';
+        echo "Import SQL Success!\n\n";
     }
 }
