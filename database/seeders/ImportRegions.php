@@ -14,11 +14,8 @@ class ImportRegions extends Seeder
      */
     public function run()
     {
-        $path1 = public_path('tbl_regions.sql');
-        $path2 = public_path('tbl_regions_bps.sql');
-        $sqlfile1 = DB::unprepared(file_get_contents($path1));
-        $sqlfile2 = DB::unprepared(file_get_contents($path2));
-
+        $path = public_path('tbl_regions.sql');
+        
         $mysqlBin = 'C:\xampp\mysql\bin';
         $db = [
             'username' => env('DB_USERNAME'),
@@ -27,12 +24,8 @@ class ImportRegions extends Seeder
             'database' => env('DB_DATABASE')
         ];
 
-        \Log::info('Import SQL from sql file '.$path1.'');
-        exec("$mysqlBin\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sqlfile1");
-        \Log::info('Import SQL Success!');
-
-        \Log::info('Import SQL from sql file '.$path1.'');
-        exec("$mysqlBin\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sqlfile2");
-        \Log::info('Import SQL Success!');
+        echo 'Import SQL from sql file '.$path.'';
+        exec("$mysqlBin\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $path");
+        echo 'Import SQL Success!';
     }
 }
