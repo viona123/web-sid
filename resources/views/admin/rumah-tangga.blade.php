@@ -46,7 +46,7 @@
 	            <td>{{ $rumah_tangga->id }}</td>
 	            <td>
                     <a class="btn btn-primary btn-aksi" href="/admin/rumah-tangga/detail?desa={{ $desa->id }}&rt={{ $rumah_tangga->id }}"><i class="fas fa-list"></i></a> 
-                    <button onclick="edit(this)" data-fields="nomor-rt={{ $rumah_tangga->no_rt }}&kepala-rt={{ $rumah_tangga->nik_kepala_rt }}&alamat={{ $rumah_tangga->alamat }}&dusun={{ $rumah_tangga->dusun }}&rt={{ $rumah_tangga->rt }}&rw={{ $rumah_tangga->rw }}" data-rt-id="{{ $rumah_tangga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+                    <button onclick="edit(this)" data-fields="nomor-rt={{ $rumah_tangga->no_rt }}&kepala-rt={{ $rumah_tangga->kepala->nama }} - {{ $rumah_tangga->nik_kepala_rt }}&alamat={{ $rumah_tangga->alamat }}&dusun={{ $rumah_tangga->dusun }}&rt={{ $rumah_tangga->rt }}&rw={{ $rumah_tangga->rw }}" data-rt-id="{{ $rumah_tangga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data rumah tangga {{ $rumah_tangga->kepala->nama }} ?')" class="btn btn-danger btn-aksi" href="/admin/rumah-tangga/hapus?rt={{ $rumah_tangga->id }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
 	            <td>{{ $rumah_tangga->no_rt }}</td>
@@ -79,8 +79,15 @@
                 <input type="number" class="form-control" id="nomor-rt" name="nomor_rt" required>
             </div>
             <div class="mb-3">
-                <label for="kepala-rt" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-rt" name="kepala_rt" required>
+                <label for="kepala-rt" class="form-label">Kepala Rumah Tangga</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-rt" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="kepala_rt" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
@@ -128,7 +135,14 @@
             </div>
             <div class="mb-3">
                 <label for="kepala-rt-edit" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-rt-edit" name="kepala_rt" required>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-rt-edit" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion-edit" name="kepala_rt" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion-edit">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="alamat-edit" class="form-label">Alamat</label>
@@ -171,6 +185,28 @@
             const fieldElem = document.getElementById(field[0] + '-edit');
             fieldElem.value = field[1];
         }
+    }
+
+    let sensus = [];
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
     }
 </script>
 @endsection

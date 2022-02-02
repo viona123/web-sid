@@ -65,6 +65,10 @@ class ProgramBantuanController extends Controller
     public function detail() {
         $bantuan = ProgramBantuan::find(request('bantuan'));
         $desa = Desa::find(request('desa'));
+        $sensus = $desa->sensus;
+        $keluarga = $desa->keluarga;
+        $rumahTangga = $desa->rumahTangga;
+        $kelompok = $desa->kelompok;
     
         if (! Gate::allows('access-admin', $desa)) {
             abort(403);
@@ -85,14 +89,18 @@ class ProgramBantuanController extends Controller
         return view($view, [
             'desa' => $desa,
             'bantuan' => $bantuan,
-            'penerimaBantuan' => $penerima
+            'penerimaBantuan' => $penerima,
+            'sensus' => $sensus,
+            'keluarga' => $keluarga,
+            'rumahTangga' => $rumahTangga,
+            'kelompok' => $kelompok
         ]);
     }
 
     public function tambahPenerima(Request $request) {
         PenerimaBantuan::create([
             'id_desa' => request('desa'),
-            request('fkey') => $request->input('fkey_value'),
+            request('fkey') => trim(explode('-', $request->input('fkey_value'))[1]),
             'bantuan_id' => request('bantuan')
         ]);
         

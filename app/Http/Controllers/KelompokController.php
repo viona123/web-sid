@@ -18,6 +18,7 @@ class KelompokController extends Controller
 
 	public function index() {
 	    $desa = Desa::find(request('desa'));
+		$sensus = $desa->sensus;
 
 		if (! Gate::allows('access-admin', $desa)) {
 			abort(403);
@@ -29,7 +30,8 @@ class KelompokController extends Controller
 	    return view('admin.kelompok', [
 	        'desa' => $desa,
 	        'kategori_kelompok' => $kategori_kelompok,
-	        'kelompoks' => $kelompok
+	        'kelompoks' => $kelompok,
+			'sensus' => $sensus
 	    ]);
 	}
 
@@ -38,7 +40,7 @@ class KelompokController extends Controller
 			'id_desa' => request('desa'),
 	        'nama' => $request->input('nama_kelompok'),
 	        'kode' => $request->input('kode_kelompok'),
-	        'nik_ketua' => $request->input('ketua_kelompok'),
+	        'nik_ketua' => trim(explode('-', $request->input('ketua_kelompok'))[1]),
 	        'kategori_id' => $request->input('kategori_kelompok'),
 	        'keterangan' => $request->input('deskripsi_kelompok')
 	    ]);
@@ -59,7 +61,7 @@ class KelompokController extends Controller
 	
 	    $kelompok->nama = $request->input('nama_kelompok');
 	    $kelompok->kategori_id = $request->input('kategori_kelompok');
-	    $kelompok->nik_ketua = $request->input('ketua_kelompok');
+	    $kelompok->nik_ketua = trim(explode('-', $request->input('ketua_kelompok'))[1]);
 	    $kelompok->kode = $request->input('kode_kelompok');
 	    $kelompok->keterangan = $request->input('deskripsi_kelompok');
 	
@@ -76,6 +78,7 @@ class KelompokController extends Controller
 	public function detail() {
 	    $kelompok = Kelompok::find(request('kelompok'));
 	    $desa = Desa::find(request('desa'));
+		$sensus = $desa->sensus;
 
 		if (! Gate::allows('access-admin', $desa)) {
 			abort(403);
@@ -86,7 +89,8 @@ class KelompokController extends Controller
 	    return view('admin.kelompok-detail', [
 	        'desa' => $desa,
 	        'kelompok' => $kelompok,
-	        'anggotas' => $anggota
+	        'anggotas' => $anggota,
+			'sensus' => $sensus
 	    ]);
 	}
 
@@ -135,7 +139,7 @@ class KelompokController extends Controller
 	    AnggotaKelompok::create([
 			'id_desa' => request('desa'),
 	        'kode_kelompok' => $request->input('kode_kelompok'),
-	        'nik_anggota' => $request->input('nik'),
+	        'nik_anggota' => trim(explode('-', $request->input('nik'))[1]),
 	        'jabatan' => $request->input('jabatan'),
 	        'keterangan' => $request->input('keterangan')
 	    ]);

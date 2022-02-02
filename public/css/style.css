@@ -220,6 +220,27 @@ footer {
     text-align: center;
 }
 
+.suggested-input .suggestion {
+    display: none;
+    list-style-type: none;
+    padding-left: 0;
+    border: 1px solid #000000;
+    max-height: 8rem;
+    box-shadow: 0 0 4px 2px #e3e3e3;
+    overflow: auto;
+}
+.suggested-input .suggestion li {
+    padding: 0.4rem;
+    cursor: pointer;
+    transition: all 300ms;
+}
+.suggested-input .suggestion li:hover {
+    background-color: #D3D3D3;
+}
+.suggested-input .suggestion li:focus {
+    border: 1px solid #909090;
+}
+
 @keyframes muter {
     from {
         width: 2rem;

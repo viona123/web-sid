@@ -91,7 +91,14 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="fkey_value" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="fkey_value" name="fkey_value" required>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="fkey_value" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="fkey_value" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li data-nik="{{ $penduduk->nik }}">{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -102,4 +109,28 @@
     </div>
   </div>
 </div>
+
+<script>
+    let sensus = [];
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
+    }
+</script>
 @endsection

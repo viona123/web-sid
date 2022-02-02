@@ -49,7 +49,7 @@
 	        <tr>
 	            <td>{{ $staff->id }}</td>
 	            <td>
-	                <button onclick="edit(this)" data-fields="nik_pegawai={{ $staff->sensus->nik }}&nipd={{ $staff->nipd }}&nip={{ $staff->nip }}&no_sk_pengangkatan={{ $staff->no_sk_pengangkatan }}&tanggal_sk_pengangkatan={{ $staff->tanggal_sk_pengangkatan }}&no_sk_pemberhentian={{ $staff->no_sk_pemberhentian }}&tanggal_sk_pemberhentian={{ $staff->tanggal_sk_pemberhentian }}&jabatan={{ $staff->jabatan }}&periode_jabatan={{ $staff->periode_jabatan }}&status={{ $staff->status }}" data-staff-id="{{ $staff->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+	                <button onclick="edit(this)" data-fields="nik_pegawai={{$staff->sensus->nama}} - {{ $staff->sensus->nik }}&nipd={{ $staff->nipd }}&nip={{ $staff->nip }}&no_sk_pengangkatan={{ $staff->no_sk_pengangkatan }}&tanggal_sk_pengangkatan={{ $staff->tanggal_sk_pengangkatan }}&no_sk_pemberhentian={{ $staff->no_sk_pemberhentian }}&tanggal_sk_pemberhentian={{ $staff->tanggal_sk_pemberhentian }}&jabatan={{ $staff->jabatan }}&periode_jabatan={{ $staff->periode_jabatan }}&status={{ $staff->status }}" data-staff-id="{{ $staff->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data staff {{ $staff->sensus->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/pengurus_desa/hapus?desa={{ $desa->id }}&staff={{ $staff->id }}"><i class="fas fa-trash-alt"></i></a>
 	                <a href="/admin/pengurus_desa/ubah-status?staff={{ $staff->id }}&value=@if ($staff->status == 'Aktif') Tidak Aktif @else Aktif @endif" class="btn btn-dark btn-aksi"><i class="fas @if ($staff->status == 'Aktif') fa-lock-open @else fa-lock @endif"></i></a>
 	            </td>
@@ -85,8 +85,15 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="nik_pegawai" class="form-label">NIK Pegawai Desa</label>
-                <input type="number" class="form-control" id="nik_pegawai" name="nik_pegawai" required>
+                <label for="nik_pegawai" class="form-label">Pegawai Desa</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="nik_pegawai" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="nik_pegawai" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="nipd" class="form-label">NIPD</label>
@@ -141,15 +148,22 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ubah-data-label">Tambah Aparat Pemerintahan Desa</h5>
+        <h5 class="modal-title" id="ubah-data-label">Ubah Data Aparat Pemerintahan Desa</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="/admin/pengurus_desa/ubah" method="post">
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="nik_pegawai-edit" class="form-label">NIK Pegawai Desa</label>
-                <input type="number" class="form-control" id="nik_pegawai-edit" name="nik_pegawai" required>
+                <label for="nik_pegawai-edit" class="form-label">Pegawai Desa</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="nik_pegawai-edit" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion-edit" name="nik_pegawai" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion-edit">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="nipd-edit" class="form-label">NIPD</label>
@@ -211,6 +225,28 @@
             const fieldElem = document.getElementById(field[0] + '-edit');
             fieldElem.value = field[1];
         }
+    }
+
+    let sensus = [];
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
     }
 </script>
 @endsection

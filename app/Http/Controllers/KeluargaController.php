@@ -18,6 +18,7 @@ class KeluargaController extends Controller
 
     public function index() {
 	    $desa = Desa::find(request('desa'));
+		$sensus = $desa->sensus;
 		$keluarga = $desa->keluarga;
 		$dusun = $desa->dusun;
 
@@ -28,13 +29,14 @@ class KeluargaController extends Controller
 	    return view('admin.keluarga', [
 	        'keluarga' => $keluarga,
 	        'desa' => $desa,
-			'dusun' => $dusun
+			'dusun' => $dusun,
+			'sensus' => $sensus
 	    ]);
 	}
 
 	public function tambah(Request $request) {
 	    $nomor_kk = $request->input('nomor_kk');
-	    $kepala_keluarga = $request->input('kepala_keluarga');
+	    $kepala_keluarga = trim(explode('-', $request->input('kepala_keluarga'))[1]);
 	    $alamat = $request->input('alamat');
 	    $dusun = $request->input('dusun');
 	    $rt = $request->input('rt');
@@ -65,8 +67,8 @@ class KeluargaController extends Controller
 	    $keluarga = Keluarga::find(request('keluarga'));
 	
 	    $keluarga->Nomor_KK = $request->input('nomor_kk');
-	    $keluarga->kepala_keluarga = $request->input('kepala_keluarga');
-	    $keluarga->NIK = $request->input('kepala_keluarga');
+	    $keluarga->kepala_keluarga = trim(explode('-', $request->input('kepala_keluarga'))[1]);
+	    $keluarga->NIK = trim(explode('-', $request->input('kepala_keluarga'))[1]);
 	    $keluarga->Alamat = $request->input('alamat');
 	    $keluarga->Dusun = $request->input('dusun');
 	    $keluarga->RT = $request->input('rt');
@@ -81,6 +83,7 @@ class KeluargaController extends Controller
 	    $keluarga = Keluarga::find(request('keluarga'));
 	    $anggota = $keluarga->anggota;
 	    $desa = Desa::find(request('desa'));
+		$sensus = $desa->sensus;
 
 		if (! Gate::allows('access-admin', $desa)) {
 			abort(403);
@@ -89,12 +92,13 @@ class KeluargaController extends Controller
 	    return view('admin.keluarga-detail', [
 	        'keluarga' => $keluarga,
 	        'anggota' => $anggota,
-	        'desa' => $desa
+	        'desa' => $desa,
+			'sensus' => $sensus
 	    ]);
 	}
 
 	public function tambahAnggota(Request $request) {
-	    $anggota_baru = AnggotaKeluarga::firstWhere('nik_anggota', $request->input('nik') );
+	    $anggota_baru = AnggotaKeluarga::firstWhere('nik_anggota', trim(explode('-', $request->input('nik'))[1]) );
 		$keluarga = Keluarga::firstWhere('Nomor_KK', $request->input('no_kk'));
 		$anggota_baru->keluarga()->associate($keluarga);
 		$anggota_baru->save();

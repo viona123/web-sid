@@ -44,7 +44,7 @@
 	        <tr>
 	            <td>{{ $dusun->id }}</td>
 	            <td>
-	                <button onclick="edit(this, )" data-fields="nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-dusun-id="{{ $dusun->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+	                <button onclick="edit(this)" data-fields="nama={{ $dusun->nama }}&kdusun={{ $dusun->kepala->nama }} - {{ $dusun->kepala_dusun }}&rw={{ $dusun->jumlah_rw }}&rt={{ $dusun->jumlah_rt }}&kk={{ $dusun->jumlah_kk }}&lp={{ $dusun->jumlah_lp }}&l={{ $dusun->jumlah_l }}&p={{ $dusun->jumlah_p }}" data-dusun-id="{{ $dusun->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
                     <a onclick="return confirm('Hapus data dusun {{ $dusun->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/wilayah_desa/hapus?desa={{ $desa->id }}&dusun={{ $dusun->id }}"><i class="fas fa-trash-alt"></i></a>
 	                <div class="dropdown d-inline-block">
 	                    <button class="btn btn-primary dropdown-toggle btn-aksi" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-arrow-circle-down d-inline-block me-2"></i> Peta</button>
@@ -83,8 +83,15 @@
                 <input type="text" class="form-control" id="nama-dusun" name="nama-dusun" required>
             </div>
             <div class="mb-3">
-                <label for="kepala-dusun" class="form-label">NIK Kepala Dusun</label>
-                <input type="text" class="form-control" id="kepala-dusun" name="kepala-dusun" required>
+                <label for="kepala-dusun" class="form-label">Kepala Dusun</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-dusun" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="kepala-dusun" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             
             <div class="mb-3">
@@ -136,8 +143,15 @@
                 <input type="text" class="form-control" id="nama-dusun-edit" name="nama-dusun" required>
             </div>
             <div class="mb-3">
-                <label for="kepala-dusun-edit" class="form-label">NIK Kepala Dusun</label>
-                <input type="text" class="form-control" id="kepala-dusun-edit" name="kepala-dusun" required>
+                <label for="kepala-dusun-edit" class="form-label">Kepala Dusun</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-dusun-edit" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion-edit" name="kepala-dusun" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion-edit">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="jumlah-rw-edit" class="form-label">Jumlah RW</label>
@@ -174,6 +188,8 @@
 </div>
 
 <script>
+    let sensus = [];
+
     function edit(element) {
         const formUbah = document.forms[1];
         const id = element.getAttribute('data-dusun-id');
@@ -200,6 +216,27 @@
         lp.value = data[5].substring(data[5].indexOf('=') + 1);
         l.value = data[6].substring(data[6].indexOf('=') + 1);
         p.value = data[7].substring(data[7].indexOf('=') + 1);
+    }
+
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
     }
 </script>
 

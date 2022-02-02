@@ -44,7 +44,7 @@
 	            <td>{{ $keluarga->id }}</td>
 	            <td>
                 <a class="btn btn-primary btn-aksi" href="/admin/keluarga/detail?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-list"></i></a> 
-                <button onclick="edit(this)" data-fields="nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala_keluarga }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-keluarga-id="{{ $keluarga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
+                <button onclick="edit(this)" data-fields="nomor-kk={{ $keluarga->Nomor_KK }}&kepala-keluarga={{ $keluarga->kepala->nama }} - {{ $keluarga->kepala->nik }}&alamat={{ $keluarga->Alamat }}&dusun={{ $keluarga->Dusun }}&rw={{ $keluarga->RW }}&rt={{ $keluarga->RT }}" data-keluarga-id="{{ $keluarga->id }}" data-bs-toggle="modal" data-bs-target="#ubah-data" class="btn btn-warning btn-aksi"><i class="fas fa-edit"></i></button>
 	                <a onclick="return confirm('Hapus data keluarga {{ $keluarga->kepala->nama }}?')" class="btn btn-danger btn-aksi" href="/admin/keluarga/hapus?desa={{ $desa->id }}&keluarga={{ $keluarga->id }}"><i class="fas fa-trash-alt"></i></a>
 	            </td>
 	            <td>{{ $keluarga->Nomor_KK }}</td>
@@ -76,8 +76,15 @@
                 <input type="number" class="form-control" id="nomor-kk" name="nomor_kk" required>
             </div>
             <div class="mb-3">
-                <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga" name="kepala_keluarga" required>
+                <label for="kepala-keluarga" class="form-label">Kepala Keluarga</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-keluarga" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="kepala_keluarga" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
@@ -124,8 +131,15 @@
                 <input type="number" class="form-control" id="nomor-kk-edit" name="nomor_kk" required>
             </div>
             <div class="mb-3">
-                <label for="kepala-keluarga" class="form-label">NIK Kepala Keluarga</label>
-                <input type="number" class="form-control" id="kepala-keluarga-edit" name="kepala_keluarga" required>
+                <label for="kepala-keluarga" class="form-label">Kepala Keluarga</label>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="kepala-keluarga-edit" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion-edit" name="kepala_keluarga" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion-edit">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
@@ -171,6 +185,28 @@
 
             fieldElement.value = field[1];
         }
+    }
+
+    let sensus = [];
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
     }
 </script>
 

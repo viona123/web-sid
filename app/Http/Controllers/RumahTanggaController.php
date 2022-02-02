@@ -14,6 +14,7 @@ class RumahTanggaController extends Controller
     public function index() {
         $desa = Desa::find(request('desa'));
         $dusun = $desa->dusun;
+        $sensus = $desa->sensus;
     
         if (! Gate::allows('access-admin', $desa)) {
             abort(403);
@@ -24,7 +25,8 @@ class RumahTanggaController extends Controller
         return view('admin.rumah-tangga', [
             'desa' => $desa,
             'semua_rt' => $semua_rt,
-            'dusun' => $dusun
+            'dusun' => $dusun,
+            'sensus' => $sensus
         ]);
     }
 
@@ -32,7 +34,7 @@ class RumahTanggaController extends Controller
         RumahTangga::create([
             'id_desa' => request('desa'),
             'no_rt' => $request->input('nomor_rt'),
-            'nik_kepala_rt' => $request->input('kepala_rt'),
+            'nik_kepala_rt' => trim(explode('-', $request->input('kepala_rt'))[1]),
             'alamat' => $request->input('alamat'),
             'dusun' => $request->input('dusun'),
             'rw' => $request->input('rw'),
@@ -47,7 +49,7 @@ class RumahTanggaController extends Controller
         $rt = RumahTangga::find(request('rt_id'));
     
         $rt->no_rt = $request->input('nomor_rt');
-        $rt->nik_kepala_rt = $request->input('kepala_rt');
+        $rt->nik_kepala_rt = trim(explode('-', $request->input('kepala_rt'))[1]);
         $rt->alamat = $request->input('alamat');
         $rt->dusun = $request->input('dusun');
         $rt->rt = $request->input('rt');
@@ -71,6 +73,7 @@ class RumahTanggaController extends Controller
     public function detail() {
         $rt = RumahTangga::find(request('rt'));
         $desa = Desa::find(request('desa'));
+        $sensus = $desa->sensus;
     
         if (! Gate::allows('access-admin', $desa)) {
             abort(403);
@@ -81,7 +84,8 @@ class RumahTanggaController extends Controller
         return view('admin.rumah-tangga-detail', [
             'rumah_tangga' => $rt,
             'desa' => $desa,
-            'anggota' => $anggota
+            'anggota' => $anggota,
+            'sensus' => $sensus
         ]);
     }
 
@@ -97,7 +101,7 @@ class RumahTanggaController extends Controller
             'id_desa' => request('desa'),
             'no_rt' => request('no_rt'),
             'hubungan_rt' => request('hubungan_rt'),
-            'nik_anggota' => request('nik')
+            'nik_anggota' => trim(explode('-', $request->input('nik'))[1])
         ]);
     
         return back();

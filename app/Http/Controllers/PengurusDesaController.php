@@ -12,6 +12,7 @@ class PengurusDesaController extends Controller
 {
     public function index() {
         $desa = Desa::find(request('desa'));
+        $sensus = $desa->sensus;
     
         if (! Gate::allows('access-admin', $desa)) {
             abort(403);
@@ -21,7 +22,8 @@ class PengurusDesaController extends Controller
     
         return view('admin.pengurus_desa', [
             'desa' => $desa,
-            'pengurus' => $pengurus
+            'pengurus' => $pengurus,
+            'sensus' => $sensus
         ]);
     }
 
@@ -43,7 +45,7 @@ class PengurusDesaController extends Controller
     public function tambah(Request $request) {
         StaffDesa::create([
             'id_desa' => request('desa'),
-            'nik_staff' => $request->input('nik_pegawai'),
+            'nik_staff' => trim(explode('-', $request->input('nik_pegawai'))[1]),
             'nipd' => $request->input('nipd'),
             'nip' => $request->input('nip'),
             'no_sk_pengangkatan' => $request->input('no_sk_pengangkatan'),
@@ -60,7 +62,7 @@ class PengurusDesaController extends Controller
 
     public function ubah(Request $request) {
         $staff = StaffDesa::find(request('staff'));
-        $staff->nik_staff = $request->input('nik_pegawai');
+        $staff->nik_staff = trim(explode('-', $request->input('nik_pegawai'))[1]);
         $staff->nipd = $request->input('nipd');
         $staff->nip = $request->input('nip');
         $staff->no_sk_pengangkatan = $request->input('no_sk_pengangkatan');

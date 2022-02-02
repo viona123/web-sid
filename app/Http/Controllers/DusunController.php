@@ -16,6 +16,7 @@ class DusunController extends Controller
 
 	public function index() {
 	    $desa = Desa::find(request('desa'));
+		$sensus = $desa->sensus;
 		$semua_dusun = $desa->dusun;
 
 		if (! Gate::allows('access-admin', $desa)) {
@@ -24,13 +25,14 @@ class DusunController extends Controller
 	
 	    return view('admin.dusun', [
 	        'semua_dusun' => $semua_dusun,
-	        'desa' => $desa
+	        'desa' => $desa,
+			'sensus' => $sensus
 	    ]);
 	}
 
 	public function tambah(Request $request) {
 	    $nama = $request->input('nama-dusun');
-	    $kepala = $request->input('kepala-dusun');
+	    $kepala = trim(explode('-', $request->input('kepala-dusun'))[1]);
 		$rw = $request->input('jumlah-rw');
 		$rt = $request->input('jumlah-rt');
 		$kk = $request->input('jumlah-kk');
@@ -62,7 +64,7 @@ class DusunController extends Controller
 
 	public function ubah(Request $request) {
 	     $nama = $request->input('nama-dusun');
-	     $kepala = $request->input('kepala-dusun');
+	     $kepala = trim(explode('-', $request->input('kepala-dusun'))[1]);
 	     $rw = $request->input('jumlah-rw');
 	     $rt = $request->input('jumlah-rt');
 	     $kk = $request->input('jumlah-kk');

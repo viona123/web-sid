@@ -81,7 +81,14 @@
             <input type="hidden" value="{{ $rumah_tangga->no_rt }}" name="no_rt">
             <div class="mb-3">
                 <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
-                <input type="number" class="form-control" id="nik" name="nik" required>
+                <div class="suggested-input">
+                    <input type="text" class="form-control" id="nik" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="nik" autocomplete="off" required>
+                    <ul class="suggestion" id="suggestion">
+                        @foreach ($sensus as $penduduk)
+                        <li>{{ $penduduk->nama }} - {{ $penduduk->nik }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="hubungan_rt" class="form-label">Hubungan Dalam Rumah Tangga</label>
@@ -143,6 +150,28 @@
 
             fieldElem.value = field[1];
         }
+    }
+
+    let sensus = [];
+    function filter(element) {
+        const suggestions = document.getElementById(element.getAttribute('data-sug-id'));
+        suggestions.style.display = "block";
+        suggestions.focus();
+        if (sensus.length === 0) {
+            sensus = Array.from(suggestions.querySelectorAll('li'));
+        }
+        const filtered = sensus.filter(function(penduduk) {
+            return penduduk.textContent.toLowerCase().includes(element.value.toLowerCase());
+        });
+
+        suggestions.innerHTML = "";
+        filtered.forEach(function(liElement) {
+            liElement.onclick = function() {
+                element.value = liElement.textContent;
+                suggestions.style.display = "none";
+            }
+            suggestions.appendChild(liElement);
+        });
     }
 </script>
 @endsection
