@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <title>Administrasi - @yield('title')</title>
+    <script src="https://www.momentcrm.com/embed"></script>
+    <script>
+      MomentCRM('init', {
+        'teamVanityId': 'siskacontact',
+        'doChat': true,
+        'doTracking': true,
+      });
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-dark position-sticky top-0" style="background-color: #339DFF">
