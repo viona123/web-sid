@@ -24,47 +24,49 @@ class DatabaseSeeder extends Seeder
 		// Admin Desa
 		User::create([
 			'id_desa' => 1,
-			'name' => 'admin_desa1',
-			'password' => bcrypt('admin123desa1')
+			'name' => 'admin_bancarkembar',
+			'password' => bcrypt('admin123bancarkembar')
 		]);
 		User::create([
 			'id_desa' => 2,
-			'name' => 'admin_desa2',
-			'password' => bcrypt('admin123desa2')
+			'name' => 'admin_pwtwetan',
+			'password' => bcrypt('admin123pwtwetan')
 		]);
 
 		// Desa
 		Desa::create([
-			'nama' => 'Desa 1',
+			'nama' => 'Bancarkembar',
+			'kode' => '33.02.27.1002',
 			'kode_pos' => '52212',
 			'nik_kepala' => '3302231510050002',
 			'alamat_kantor' => 'Jl. Consectetur',
 			'email' => 'desa1@desa.id',
 			'no_telp' => '088245678940',
 			'website' => 'https://desasatu.desa.id',
-			'nama_kecamatan' => 'Kecamatan 1',
-			'kode_kecamatan' => 32,
+			'nama_kecamatan' => 'Purwokerto Utara',
+			'kode_kecamatan' => 27,
 			'nama_camat' => 'Adipiscing Elit',
-			'nama_kabupaten' => 'Kabupaten 1',
-			'kode_kabupaten' => 42,
-			'nama_provinsi' => 'Provinsi 1',
-			'kode_provinsi' => 52
+			'nama_kabupaten' => 'Banyumas',
+			'kode_kabupaten' => 02,
+			'nama_provinsi' => 'Jawa Tengah',
+			'kode_provinsi' => 33
 		]);
 		Desa::create([
-			'nama' => 'Desa 2',
+			'nama' => 'Purwokerto Wetan',
+			'kode' => '33.02.26.1004',
 			'kode_pos' => '52318',
 			'nik_kepala' => '3302231010070002',
 			'alamat_kantor' => 'Jl. Adipiscing Elit',
 			'email' => 'desa2@desa.id',
 			'no_telp' => '088245678940',
 			'website' => 'https://desadua.desa.id',
-			'nama_kecamatan' => 'Kecamatan 1',
-			'kode_kecamatan' => 32,
+			'nama_kecamatan' => 'Purwokerto Timur',
+			'kode_kecamatan' => 26,
 			'nama_camat' => 'Adipiscing Elit',
-			'nama_kabupaten' => 'Kabupaten 1',
-			'kode_kabupaten' => 42,
-			'nama_provinsi' => 'Provinsi 1',
-			'kode_provinsi' => 52
+			'nama_kabupaten' => 'Banyumas',
+			'kode_kabupaten' => 02,
+			'nama_provinsi' => 'Jawa Tengah',
+			'kode_provinsi' => 33
 		]);
 
 		// Dusun di desa 1

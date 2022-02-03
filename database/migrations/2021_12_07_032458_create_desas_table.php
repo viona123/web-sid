@@ -16,6 +16,7 @@ class CreateDesasTable extends Migration
         Schema::create('desas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('kode');
             $table->integer('kode_pos')->unique();
             $table->string('nik_kepala');
             $table->string('alamat_kantor');

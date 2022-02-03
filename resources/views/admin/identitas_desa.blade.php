@@ -16,6 +16,10 @@
         <td>: {{ $desa->nama }}</td>
     </tr>
     <tr>
+        <td width="30%">Kode Wilayah</td>
+        <td>: {{ $desa->kode }}</td>
+    </tr>
+    <tr>
         <td width="30%">Kode Pos Desa</td>
         <td>: {{ $desa->kode_pos }}</td>
     </tr>

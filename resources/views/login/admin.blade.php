@@ -27,6 +27,24 @@
         @endif
         <form method="post" class="form">
             @csrf
+            <select name="provinsi" id="provinsi" class="form-content" oninput="query(this)" data-next="#kabupaten">
+                <option selected>---PILIH PROVINSI---</option>
+                @foreach($daftarProvinsi as $provinsi)
+                <option value="{{ $provinsi->region_code }}">{{ $provinsi->region_name }}</option>
+                @endforeach
+            </select>
+            <select name="kabupaten" id="kabupaten" class="form-content" oninput="query(this)" data-next="#kecamatan">
+                <option selected>---PILIH KABUPATEN---</option>
+            </select>
+            <select name="kecamatan" id="kecamatan" class="form-content" oninput="query(this)" data-next="#desa">
+                <option selected>---PILIH KECAMATAN---</option>
+            </select>
+            <select name="desa" id="desa" class="form-content">
+                <option selected>---PILIH DESA---</option>
+                @foreach($list_desa as $desa)
+                <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
+                @endforeach
+            </select>
             <input
             id="nama-pengguna"
             class="form-content"
@@ -42,13 +60,24 @@
             name="password"
             placeholder="Password"
             required />
-            <select name="desa" id="desa" class="form-content">
-                <option selected>---PILIH DESA---</option>
-                @foreach($list_desa as $desa)
-                <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
-                @endforeach
-            </select>
             <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
         </form>
+        <script>
+            function query(element) {
+                const next = document.querySelector(element.getAttribute('data-next'));
+                fetch('/api/wilayah/query?parent=' + element.value)
+                    .then(response => response.json())
+                    .then(data => {
+                        next.innerHTML = '';
+                        data.forEach(function(wilayah) {
+                            const option = document.createElement('option');
+                            option.value = wilayah.region_code;
+                            option.textContent = wilayah.region_name;
+                            next.appendChild(option);
+                        });
+                        query(next);
+                    });
+            }
+        </script>
     </body>
 </html>
