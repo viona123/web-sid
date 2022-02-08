@@ -241,6 +241,22 @@ footer {
     border: 1px solid #909090;
 }
 
+.hasil-lokasi {
+    position: absolute;
+    width: 18rem;
+    height: 8rem;
+    overflow: auto;
+}
+
+.hasil-lokasi .hasil {
+    cursor: pointer;
+    padding: 0.4rem;
+    border-bottom: 1px solid #d3d3d3;
+}
+.hasil-lokasi .hasil:hover {
+    background-color: #d3d3d3;
+}
+
 @keyframes muter {
     from {
         width: 2rem;

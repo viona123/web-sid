@@ -16,27 +16,40 @@
 @section('content')
 <h1 class="text-center mb-4">Peta {{ $desa->nama }}</h1><hr>
 <button type="button" class="btn btn-primary mb-4" data-toggle-display="#ubah-lokasi" onclick="ubah(this)"><i class="fas fa-edit fa-fw"></i> Edit lokasi</button>
-<div id="ubah-lokasi" class="d-none">
+<div id="ubah-lokasi" class="d-none position-relative">
     <div>
         <input type="checkbox" id="lokasi-otomatis" data-toggle-display="#lokasi-manual"> <label for="lokasi-otomatis">Gunakan Lokasi saat ini</label>
     </div>
-    <form action="/admin/peta/ubah?desa={{ $desa->id }}" method="post" id="lokasi-manual" style="max-width: 18rem; background-color: #dddddd" class="p-3 mt-3 mb-4">
+    <form action="/admin/peta/ubah?desa={{ $desa->id }}" method="post" id="lokasi-manual" style="max-width: 20rem; background-color: #dddddd" class="p-3 mt-3 mb-4">
         @csrf
         <div>
-            <label class="form-label" for="lokasi-longitude">Masukan longitude Lokasi</label>
-            <input class="form-control" type="number" id="lokasi-longitude" name="lokasi-longitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[0] : 0  }} required>
-        </div>
-        <div>
-            <label class="form-label" for="lokasi-latitude">Masukan latitude Lokasi</label>
-            <input class="form-control" type="number" id="lokasi-latitude" name="lokasi-latitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[1] : 0 }} required>
+            <label class="form-label" for="lokasi">Cari Lokasi</label>
+            <div class="d-flex justify-content-evenly">
+                <input class="form-control" type="text" id="lokasi" autocomplete="off">
+                <button type="button" class="btn btn-primary ms-2" onclick="geocode('lokasi')">Cari</button>
+            </div>
+            <div class="hasil-lokasi p-2 bg-white d-none">
+            </div>
+            <div class="mt-4">
+                <label class="form-label" for="lokasi-longitude">Masukan longitude Lokasi</label>
+                <input class="form-control" type="number" id="lokasi-longitude" name="lokasi-longitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[0] : 0  }}>
+            </div>
+            <div>
+                <label class="form-label" for="lokasi-latitude">Masukan latitude Lokasi</label>
+                <input class="form-control" type="number" id="lokasi-latitude" name="lokasi-latitude" step="any" value={{ $desa->lokasi ? explode(",", $desa->lokasi)[1] : 0 }}>
+            </div>
         </div>
         <button class="btn btn-primary mt-4" type="submit">Simpan</button>
-        <button class="btn btn-secondary mt-4" type="button" onclick="showLocation(false)">Lihat</button>
+        <button class="btn btn-secondary mt-4" type="button" onclick="showLocation()">Lihat</button>
     </form>
 </div>
 <div id="map" class="map"></div>
 
 <script type="text/javascript">
+    const lokasiLongitude = document.getElementById('lokasi-longitude');
+    const lokasiLatitude = document.getElementById('lokasi-latitude');
+
+
     const map = new ol.Map({
         target: 'map',
         layers: [
@@ -78,9 +91,6 @@
     }
 
     function showLocation(auto = true) {
-        const lokasiLongitude = document.getElementById('lokasi-longitude');
-        const lokasiLatitude = document.getElementById('lokasi-latitude');
-
         if (auto) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 const coords = position.coords;
@@ -101,6 +111,44 @@
         }
 
         map.getView().setZoom(13);
+    }
+
+    function geocode(qID) {
+        const input = document.getElementById(qID);
+        fetch("https://api.geoapify.com/v1/geocode/search?text=" + input.value + "&lang=id&apiKey=7d3ff92ab18846549d78cf9fa670a049")
+            .then(response => response.json())
+            .then(result => showResults(result.features))
+            .catch(err => console.log('err', err));
+    }
+
+    const results = document.querySelector('.hasil-lokasi');
+    function showResults(features) {
+        results.classList.remove('d-none');
+        results.innerHTML = '';
+        features.forEach(function(feature) {
+            const resultElem = document.createElement('div');
+            const addressDiv = document.createElement('div');
+            const coordsDiv = document.createElement('div');
+
+            resultElem.classList.add('hasil');
+            addressDiv.classList.add('fw-bold');
+            coordsDiv.classList.add('text-secondary');
+
+            resultElem.onclick = function() {
+                lokasiLongitude.value = feature.properties.lon;
+                lokasiLatitude.value = feature.properties.lat;
+
+                showLocation(false);
+                results.classList.add('d-none');
+            };
+
+            addressDiv.textContent = feature.properties.formatted;
+            coordsDiv.textContent = feature.properties.lon + ',' + feature.properties.lat;
+
+            results.appendChild(resultElem);
+            resultElem.appendChild(addressDiv);
+            resultElem.appendChild(coordsDiv);
+        });
     }
 </script>
 @endsection
