@@ -16,18 +16,6 @@ use App\Http\Controllers\PembangunanController;
 use App\Http\Controllers\KeuanganController;
 
 use App\Models\Desa;
-use App\Models\Penduduk;
-use App\Models\Dusun;
-use App\Models\Sensus;
-use App\Models\Keluarga;
-use App\Models\Kelompok;
-use App\Models\RumahTangga;
-use App\Models\ProgramBantuan;
-use App\Models\PenerimaBantuan;
-use App\Models\StaffDesa;
-use App\Models\Pembangunan;
-use App\Models\DokumentasiPembangunan;
-use App\Models\Keuangan;
 
 /*
 |--------------------------------------------------------------------------
