@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
-<body class="bg-primary ms-2 me-2">
-<img src="/images/background-portrait.png" alt="background" class="position-fixed top-0 start-0" style="width: 100%; height: 100%; z-index: -1">
+<body class="ms-2 me-2" style="background-image: url('/images/background-portrait.png'); background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-md-5 m-auto shadow mt-4 bg-white" style="max-width: 30rem; border-radius: 1rem">

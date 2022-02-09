@@ -8,8 +8,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
-    <body>
-        <img src="/images/background-biru.png" alt="background" id="background">
+    <body style="background-image: url('/images/background-biru.png'); background-size: cover;">
         <div id="card" style="max-width: 25rem; width: auto">
             <div id="card-content">
             <img src="/images/logo-provinsi-jawa-tengah.jpg" id="logo-desa"/>

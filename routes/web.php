@@ -16,6 +16,7 @@ use App\Http\Controllers\PembangunanController;
 use App\Http\Controllers\KeuanganController;
 
 use App\Models\Desa;
+use App\Models\Penduduk;
 
 /*
 |--------------------------------------------------------------------------
