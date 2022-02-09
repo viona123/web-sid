@@ -114,7 +114,7 @@ class SensusController extends Controller
 
 	    $bantuan = $penduduk->bantuan;
 	
-	    return view('admin.penduduk-detail', [
+	    return view('admin.penduduk_detail', [
 	        'penduduk' => $penduduk,
 	        'desa' => $desa,
 	        'bantuan' => $bantuan

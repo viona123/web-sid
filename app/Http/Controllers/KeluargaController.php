@@ -89,7 +89,7 @@ class KeluargaController extends Controller
 			abort(403);
 		}
 	
-	    return view('admin.keluarga-detail', [
+	    return view('admin.keluarga_detail', [
 	        'keluarga' => $keluarga,
 	        'anggota' => $anggota,
 	        'desa' => $desa,

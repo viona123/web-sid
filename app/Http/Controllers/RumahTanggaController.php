@@ -22,7 +22,7 @@ class RumahTanggaController extends Controller
     
         $semua_rt = $desa->rumahTangga;
     
-        return view('admin.rumah-tangga', [
+        return view('admin.rumah_tangga', [
             'desa' => $desa,
             'semua_rt' => $semua_rt,
             'dusun' => $dusun,
@@ -81,7 +81,7 @@ class RumahTanggaController extends Controller
     
         $anggota = $rt->anggota;
     
-        return view('admin.rumah-tangga-detail', [
+        return view('admin.rumah_tangga_detail', [
             'rumah_tangga' => $rt,
             'desa' => $desa,
             'anggota' => $anggota,

@@ -86,7 +86,7 @@ class KelompokController extends Controller
 
 	    $anggota = $kelompok->anggota;
 	
-	    return view('admin.kelompok-detail', [
+	    return view('admin.kelompok_detail', [
 	        'desa' => $desa,
 	        'kelompok' => $kelompok,
 	        'anggotas' => $anggota,
@@ -103,7 +103,7 @@ class KelompokController extends Controller
 
 	    $kategori_kelompok = $desa->kategoriKelompok;
 	
-	    return view('admin.kategori-kelompok', [
+	    return view('admin.kategori_kelompok', [
 	        'desa' => $desa,
 	        'kategori_kelompok' => $kategori_kelompok
 	    ]);
