@@ -87,7 +87,7 @@
       @csrf
         <div class="modal-body">
             <div class="mb-3">
-                <label for="fkey_value" class="form-label">Kode Kelompok</label>
+                <label for="fkey_value" class="form-label">Nama/Kode Kelompok Penerima</label>
                 <div class="suggested-input">
                     <input type="text" class="form-control" id="fkey_value" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="fkey_value" autocomplete="off" required>
                     <ul class="suggestion" id="suggestion">

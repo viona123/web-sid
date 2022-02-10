@@ -94,7 +94,7 @@
         <div class="modal-body">
             <input type="hidden" value="{{ $kelompok->kode }}" name="kode_kelompok">
             <div class="mb-3">
-                <label for="nik" class="form-label">Nomor Induk Kependudukan</label>
+                <label for="nik" class="form-label">NIK Anggota</label>
                 <div class="suggested-input">
                     <input type="text" class="form-control" id="nik" onkeyup="filter(this)" onfocus="this.value=''" data-sug-id="suggestion" name="nik" autocomplete="off" required>
                     <ul class="suggestion" id="suggestion">
