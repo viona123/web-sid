@@ -26,7 +26,7 @@ class SensusController extends Controller
 			abort(403);
 		}
 	
-	    return view('admin.penduduk', [
+	    return view('admin.penduduk.index', [
 	        'semua_penduduk' => $semua_penduduk,
 			'dusun' => $dusun,
 	        'desa' => $desa
@@ -114,7 +114,7 @@ class SensusController extends Controller
 
 	    $bantuan = $penduduk->bantuan;
 	
-	    return view('admin.penduduk_detail', [
+	    return view('admin.penduduk.detail', [
 	        'penduduk' => $penduduk,
 	        'desa' => $desa,
 	        'bantuan' => $bantuan

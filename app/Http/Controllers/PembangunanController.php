@@ -13,7 +13,7 @@ class PembangunanController extends Controller
         $desa = Desa::find(request('desa'));
         $semuaPembangunan = $desa->pembangunan;
     
-        return view('admin.pembangunan', [
+        return view('admin.pembangunan.index', [
             'desa' => $desa,
             'semuaPembangunan' => $semuaPembangunan
         ]);
@@ -70,7 +70,7 @@ class PembangunanController extends Controller
         $pembangunan = Pembangunan::find(request('pembangunan'));
         $dokumentasi = $pembangunan->dokumentasi;
     
-        return view('admin.pembangunan_dokumentasi', [
+        return view('admin.pembangunan.dokumentasi', [
             'desa' => $desa,
             'pembangunan' => $pembangunan,
             'dokumentasi' => $dokumentasi

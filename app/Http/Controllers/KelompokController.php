@@ -27,7 +27,7 @@ class KelompokController extends Controller
 	    $kategori_kelompok = KategoriKelompok::all();
 	    $kelompok = $desa->kelompok;
 	
-	    return view('admin.kelompok', [
+	    return view('admin.kelompok.index', [
 	        'desa' => $desa,
 	        'kategori_kelompok' => $kategori_kelompok,
 	        'kelompoks' => $kelompok,
@@ -86,7 +86,7 @@ class KelompokController extends Controller
 
 	    $anggota = $kelompok->anggota;
 	
-	    return view('admin.kelompok_detail', [
+	    return view('admin.kelompok.detail', [
 	        'desa' => $desa,
 	        'kelompok' => $kelompok,
 	        'anggotas' => $anggota,
@@ -103,7 +103,7 @@ class KelompokController extends Controller
 
 	    $kategori_kelompok = $desa->kategoriKelompok;
 	
-	    return view('admin.kategori_kelompok', [
+	    return view('admin.kelompok.detail', [
 	        'desa' => $desa,
 	        'kategori_kelompok' => $kategori_kelompok
 	    ]);

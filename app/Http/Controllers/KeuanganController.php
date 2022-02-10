@@ -24,7 +24,7 @@ class KeuanganController extends Controller
 	                        ->get();
 	    }
 	
-	    return view('admin.keuangan', [
+	    return view('admin.keuangan.index', [
 	        'desa' => $desa,
 	        'dataKeuangan' => $dataKeuangan,
 	        'tahun' => $tahun
@@ -112,7 +112,7 @@ class KeuanganController extends Controller
 			]
 		];
 
-		return view('admin.laporan_keuangan', [
+		return view('admin.keuangan.laporan', [
 			'desa' => $desa,
 			'tahun' => $tahun,
 			'dataPendapatan' => $dataPendapatan,
